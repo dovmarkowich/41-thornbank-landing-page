@@ -161,29 +161,29 @@
 
     .hero {
       position: relative;
-      min-height: 72vh;
+      min-height: 66vh;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       overflow: hidden;
       border-bottom: 1px solid var(--line);
     }
 
-   .hero-bg {
+ .hero-bg {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.22)),
-    linear-gradient(to right, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.03)),
-    url("thornbank-hero.jpg") center top / 100% auto no-repeat;
-  background-color: #0b0b0b;
-  filter: brightness(1.08);
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.34)),
+    linear-gradient(to right, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.06)),
+    url("thornbank-hero.jpg") center top / cover no-repeat;
+  background-position: center 18%;
+  filter: brightness(1.02);
 }
 
     .hero-content {
   position: relative;
   z-index: 2;
   max-width: 880px;
-  padding: 0 0 40px;
+  padding: 20px 0 10px;
 }
 
     .eyebrow {
@@ -226,11 +226,11 @@
     }
 
     .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 42px;
-    }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
 
     .stat {
       background: rgba(255, 255, 255, 0.06);
