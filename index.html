@@ -4,22 +4,23 @@
   <meta charset="UTF-8" />
   <title>41 Thornbank Road | Vaughan (Thornhill) Luxury Estate</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="41 Thornbank Road, Vaughan (Thornhill). Private luxury estate backing onto the golf course in Uplands." />
+  <meta
+    name="description"
+    content="41 Thornbank Road, Vaughan (Thornhill). Private luxury estate backing onto the golf course in Uplands."
+  />
 
   <style>
     :root {
       --bg: #0b0b0b;
-      --bg-soft: #121212;
       --panel: #161616;
-      --panel-2: #1b1b1b;
       --text: #f5f5f5;
       --muted: #c8c8c8;
       --gold: #d4af37;
       --gold-soft: #ecd37a;
-      --line: rgba(255,255,255,0.08);
+      --line: rgba(255, 255, 255, 0.08);
       --max: 1180px;
       --radius: 18px;
-      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
     }
 
     * {
@@ -59,7 +60,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10,10,10,0.90);
+      background: rgba(10, 10, 10, 0.9);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
@@ -84,7 +85,7 @@
 
     .brand {
       font-size: 16px;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       color: #ffffff;
       font-weight: 700;
     }
@@ -125,9 +126,10 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #f2dd97, var(--gold));
+      background: linear-gradient(135deg, #f4df96, #d4af37);
       color: #111111;
-      box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+      font-weight: 800;
     }
 
     .btn-primary:hover {
@@ -136,13 +138,13 @@
     }
 
     .btn-secondary {
-      border-color: rgba(255,255,255,0.14);
+      border-color: rgba(255, 255, 255, 0.14);
       color: var(--text);
       background: transparent;
     }
 
     .btn-secondary:hover {
-      border-color: rgba(212,175,55,0.35);
+      border-color: rgba(212, 175, 55, 0.35);
       color: var(--gold-soft);
     }
 
@@ -159,9 +161,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.75)),
-        linear-gradient(to right, rgba(0,0,0,0.65), rgba(0,0,0,0.20)),
-        url('thornbank-hero.jpg') center center / cover no-repeat;
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)),
+        linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.2)),
+        url("thornbank-hero.jpg") center center / cover no-repeat;
       transform: scale(1.02);
     }
 
@@ -212,8 +214,8 @@
     }
 
     .stat {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 16px;
       padding: 18px 16px;
       box-shadow: var(--shadow);
@@ -274,7 +276,7 @@
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.025));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 28px;
@@ -291,7 +293,7 @@
       margin-top: 18px;
       padding: 22px;
       border-left: 3px solid var(--gold);
-      background: rgba(212,175,55,0.06);
+      background: rgba(212, 175, 55, 0.06);
       border-radius: 0 14px 14px 0;
       color: #f2f2f2;
       font-size: 20px;
@@ -350,13 +352,9 @@
 
     .embed iframe {
       width: 100%;
-      height: 640px;
+      min-height: 640px;
       border: 0;
       display: block;
-    }
-
-    .embed.video iframe {
-      height: 620px;
     }
 
     .floorplan img {
@@ -369,9 +367,9 @@
 
     .contact-panel {
       background:
-        radial-gradient(circle at top right, rgba(212,175,55,0.18), transparent 24%),
-        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      border: 1px solid rgba(212,175,55,0.16);
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.18), transparent 24%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(212, 175, 55, 0.16);
       border-radius: 24px;
       padding: 34px;
       box-shadow: var(--shadow);
@@ -417,9 +415,8 @@
         grid-template-columns: 1fr;
       }
 
-      .embed iframe,
-      .embed.video iframe {
-        height: 420px;
+      .embed iframe {
+        min-height: 420px;
       }
     }
 
@@ -455,7 +452,6 @@
   </style>
 </head>
 <body>
-
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand-block">
@@ -470,7 +466,7 @@
         <a href="#floorplan">Floorplan</a>
         <a href="#map">Map</a>
         <a href="#contact">Contact</a>
-        <a class="btn btn-primary" href="mailto:YOUR-EMAIL-HERE">Request Details</a>
+        <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Details</a>
       </nav>
     </div>
   </header>
@@ -486,7 +482,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:YOUR-EMAIL-HERE">Request Private Property Brief</a>
+          <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Private Property Brief</a>
           <a class="btn btn-secondary" href="#contact">Arrange Confidential Viewing</a>
         </div>
 
@@ -584,16 +580,19 @@
         <span class="kicker">Matterport 3D</span>
         <h2>Immersive 3D Walkthrough</h2>
         <p class="intro">
-          Paste your Matterport embed link below.
+          Explore the home in an interactive 3D tour.
         </p>
       </div>
 
       <div class="embed">
         <iframe
-          src="PASTE-YOUR-MATTERPORT-EMBED-LINK-HERE"
+          src="https://my.matterport.com/show/?m=WcbbH2PnRUe"
+          width="100%"
+          height="640"
+          frameborder="0"
           allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
+          allow="xr-spatial-tracking"
+          loading="lazy">
         </iframe>
       </div>
     </div>
@@ -609,7 +608,7 @@
         </p>
       </div>
 
-      <div class="embed video">
+      <div class="embed">
         <iframe
           src="https://www.youtube.com/embed/yZ0LhIEfoW4"
           title="41 Thornbank Road property video"
@@ -643,15 +642,18 @@
         <span class="kicker">Map</span>
         <h2>Location</h2>
         <p class="intro">
-          Your current Google link is not an embeddable map link. Replace the iframe source below with a Google Maps embed URL.
+          41 Thornbank Road, Vaughan (Thornhill)
         </p>
       </div>
 
       <div class="embed">
         <iframe
-          src=<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5757.652142173766!2d-79.43256600000001!3d43.817967!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2c66e8645243%3A0x4dda15f5f64b76ab!2s41%20Thornbank%20Rd%2C%20Thornhill%2C%20ON%20L4J%202A1%2C%20Canada!5e0!3m2!1sen!2sus!4v1774143918649!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5757.652142173766!2d-79.43256600000001!3d43.817967!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2c66e8645243%3A0x4dda15f5f64b76ab!2s41%20Thornbank%20Rd%2C%20Thornhill%2C%20ON%20L4J%202A1%2C%20Canada!5e0!3m2!1sen!2sus!4v1774143918649!5m2!1sen!2sus"
+          width="100%"
+          height="640"
+          style="border:0;"
+          allowfullscreen=""
           loading="lazy"
-          allowfullscreen
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
@@ -674,654 +676,6 @@
             <h3 class="contact-name">Dov Markowich</h3>
             <div class="contact-role">Broker, RE/MAX Realtron Realty Inc.</div>
             <div class="contact-link">Phone: <a href="tel:14167274829">416-727-4829</a></div>
-            <div class="contact-link">Email: <a href="mailto:YOUR-EMAIL-HERE">YOUR-EMAIL-HERE</a></div>
-          </div>
-
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn-primary" href="mailto:YOUR-EMAIL-HERE">Email Dov</a>
-            <a class="btn btn-secondary" href="YOUR-BROCHURE-LINK-HERE" target="_blank" rel="noopener">View Brochure</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      41 Thornbank Road, Vaughan (Thornhill), private inquiries only.
-    </div>
-  </footer>
-
-</body>
-</html>      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,10,10,0.88);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .topbar-inner {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-      padding: 10px 0;
-    }
-
-    .brand {
-      font-size: 14px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .brand strong {
-      color: var(--white, #fff);
-    }
-
-    .nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav a {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .nav a:hover {
-      color: var(--gold-soft);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 20px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: 0.25s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
-      color: #111;
-      box-shadow: 0 8px 24px rgba(212,175,55,0.25);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      border-color: rgba(255,255,255,0.14);
-      color: var(--text);
-      background: transparent;
-    }
-
-    .btn-secondary:hover {
-      border-color: rgba(212,175,55,0.35);
-      color: var(--gold-soft);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 86vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.75)),
-        linear-gradient(to right, rgba(0,0,0,0.65), rgba(0,0,0,0.20)),
-        url('thornbank-hero.jpg') center center / cover no-repeat;
-      transform: scale(1.02);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 820px;
-      padding: 90px 0 72px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-soft);
-      margin-bottom: 18px;
-      font-weight: 700;
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(38px, 7vw, 74px);
-      line-height: 1.02;
-      letter-spacing: -1.5px;
-      font-weight: 800;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(18px, 2.2vw, 24px);
-      color: #e3e3e3;
-      max-width: 760px;
-      margin: 0 0 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 26px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 42px;
-    }
-
-    .stat {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 16px;
-      padding: 18px 16px;
-      box-shadow: var(--shadow);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 4px;
-      color: #fff;
-    }
-
-    .stat span {
-      font-size: 12px;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    section {
-      padding: 84px 0;
-    }
-
-    .section-header {
-      max-width: 780px;
-      margin-bottom: 30px;
-    }
-
-    .kicker {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      color: var(--gold-soft);
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.08;
-      margin: 0 0 14px;
-      font-weight: 800;
-      letter-spacing: -0.8px;
-    }
-
-    .intro {
-      font-size: 18px;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 26px;
-      align-items: start;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .card p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .quote {
-      margin-top: 18px;
-      padding: 22px;
-      border-left: 3px solid var(--gold);
-      background: rgba(212,175,55,0.06);
-      border-radius: 0 14px 14px 0;
-      color: #f2f2f2;
-      font-size: 20px;
-      line-height: 1.5;
-      font-weight: 500;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .feature {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 22px 20px;
-    }
-
-    .feature h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-      color: #fff;
-    }
-
-    .feature p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .media-grid img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      background: #111;
-    }
-
-    .embed {
-      overflow: hidden;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: #0e0e0e;
-      box-shadow: var(--shadow);
-    }
-
-    .embed iframe {
-      width: 100%;
-      height: 640px;
-      border: 0;
-      display: block;
-    }
-
-    .embed.video iframe {
-      height: 620px;
-    }
-
-    .floorplan img {
-      width: 100%;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      background: #111;
-    }
-
-    .contact-panel {
-      background:
-        radial-gradient(circle at top right, rgba(212,175,55,0.18), transparent 24%),
-        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      border: 1px solid rgba(212,175,55,0.16);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: var(--shadow);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: end;
-    }
-
-    .contact-name {
-      margin: 0 0 8px;
-      font-size: 28px;
-      font-weight: 800;
-    }
-
-    .contact-role,
-    .contact-link {
-      color: var(--muted);
-      font-size: 17px;
-      margin: 6px 0;
-    }
-
-    .contact-link a:hover {
-      color: var(--gold-soft);
-    }
-
-    footer {
-      padding: 30px 0 50px;
-      border-top: 1px solid var(--line);
-      color: #9e9e9e;
-      font-size: 13px;
-    }
-
-    @media (max-width: 980px) {
-      .stats,
-      .grid-2,
-      .feature-grid,
-      .media-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .embed iframe,
-      .embed.video iframe {
-        height: 420px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-content {
-        padding: 64px 0 54px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .topbar-inner {
-        min-height: 64px;
-      }
-
-      .nav {
-        width: 100%;
-      }
-
-      .media-grid img {
-        height: 220px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand"><strong>41 Thornbank Road</strong>, Vaughan</div>
-
-      <nav class="nav">
-        <a href="#photos">Photos</a>
-        <a href="#matterport">3D Tour</a>
-        <a href="#video">Video</a>
-        <a href="#floorplan">Floorplan</a>
-        <a href="#map">Map</a>
-        <a href="#contact">Contact</a>
-        <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Details</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="wrap">
-      <div class="hero-content">
-        <span class="eyebrow">Private Estate Opportunity</span>
-        <h1>41 Thornbank Road, Vaughan</h1>
-        <p class="hero-subtitle">
-          A rare golf course estate in Uplands, newly built, architecturally striking, and positioned as a compelling acquisition below replacement value.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Private Property Brief</a>
-          <a class="btn btn-secondary" href="#contact">Arrange Confidential Viewing</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <strong>16,000+ Sq.Ft.</strong>
-            <span>Total Living Space</span>
-          </div>
-          <div class="stat">
-            <strong>100 x 302 Ft.</strong>
-            <span>Estate Lot</span>
-          </div>
-          <div class="stat">
-            <strong>Golf Course</strong>
-            <span>Direct Rear Exposure</span>
-          </div>
-          <div class="stat">
-            <strong>Uplands</strong>
-            <span>Prestige Enclave</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="opportunity">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">The Opportunity</span>
-        <h2>Not a Typical Listing, a Strategic Acquisition</h2>
-        <p class="intro">
-          Set on a spectacular lot backing directly onto the Thornhill Golf &amp; Country Club, this newly built custom estate delivers scale, privacy, architectural drama, and long-term positioning in one of Vaughan’s most exclusive residential enclaves.
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <p>
-            Opportunities of this nature are increasingly difficult to replicate. The combined cost of land acquisition, design, approvals, construction, and carrying time for a residence of this scale and caliber would likely exceed the current asking price.
-          </p>
-          <p>
-            For the right buyer, this is less about simply purchasing a home and more about securing a turnkey estate without the delay, uncertainty, and friction of building from scratch.
-          </p>
-          <div class="quote">
-            For buyers seeking scale, privacy, and permanence, this represents value through replacement logic, not just price per square foot.
-          </div>
-        </div>
-
-        <div class="feature-grid">
-          <div class="feature">
-            <h3>Architectural Presence</h3>
-            <p>Dramatic proportions, soaring ceilings, and visual scale designed to make an impression.</p>
-          </div>
-          <div class="feature">
-            <h3>Private Setting</h3>
-            <p>Estate-level privacy with direct golf course backing on one of the area’s most coveted streets.</p>
-          </div>
-          <div class="feature">
-            <h3>Turnkey Advantage</h3>
-            <p>Newly constructed and move-in ready, without the timeline and execution risk of a custom build.</p>
-          </div>
-          <div class="feature">
-            <h3>Prestige Location</h3>
-            <p>Uplands remains one of the most established and desirable luxury enclaves in Vaughan.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="photos">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">Photos</span>
-        <h2>Property Gallery</h2>
-        <p class="intro">
-          Your current property tour includes a large photo gallery. This section is where those images should live in the new page.  [oai_citation:1‡show.tours](https://show.tours/thornbankroad)
-        </p>
-      </div>
-
-      <div class="media-grid">
-        <img src="thornbank-hero.jpg" alt="41 Thornbank Road exterior" />
-        <img src="photo-2.jpg" alt="41 Thornbank Road interior photo 2" />
-        <img src="photo-3.jpg" alt="41 Thornbank Road interior photo 3" />
-        <img src="photo-4.jpg" alt="41 Thornbank Road interior photo 4" />
-        <img src="photo-5.jpg" alt="41 Thornbank Road interior photo 5" />
-        <img src="photo-6.jpg" alt="41 Thornbank Road interior photo 6" />
-      </div>
-    </div>
-  </section>
-
-  <section id="matterport">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">Matterport 3D</span>
-        <h2>Immersive 3D Walkthrough</h2>
-        <p class="intro">
-          Your current page includes a Matterport 3D section. Add your Matterport embed link below to carry that experience into this page.  [oai_citation:2‡show.tours](https://show.tours/thornbankroad)
-        </p>
-      </div>
-
-      <div class="embed">
-        <iframe
-          src="https://my.matterport.com/show/?m=WcbbH2PnRUe&play=1"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="video">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">Video</span>
-        <h2>Cinematic Property Video</h2>
-        <p class="intro">
-          Your current page also includes a video tab. Add the YouTube or Vimeo embed link below.  [oai_citation:3‡show.tours](https://show.tours/thornbankroad)
-        </p>
-      </div>
-
-      <div class="embed video">
-        <iframe
-          src="https://www.youtube.com/watch?v=yZ0LhIEfoW4"
-          title="41 Thornbank Road property video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="floorplan">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">Floorplan</span>
-        <h2>Floorplan Overview</h2>
-        <p class="intro">
-          Your current page includes a floorplan image. Upload that floorplan into your repo and replace the file name below.  [oai_citation:4‡show.tours](https://show.tours/thornbankroad)
-        </p>
-      </div>
-
-      <div class="floorplan">
-        <img src="floorplan.jpg" alt="41 Thornbank Road floorplan" />
-      </div>
-    </div>
-  </section>
-
-  <section id="map">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">Map</span>
-        <h2>Location</h2>
-        <p class="intro">
-          Your current page includes a map view. Add your Google Maps embed link below.  [oai_citation:5‡show.tours](https://show.tours/thornbankroad)
-        </p>
-      </div>
-
-      <div class="embed">
-        <iframe
-          src="https://maps.app.goo.gl/i8NQaciP5DB2UxE68"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <div class="contact-panel">
-        <div class="section-header">
-          <span class="kicker">Contact</span>
-          <h2>Request Private Details or Arrange a Confidential Viewing</h2>
-          <p class="intro">
-            Your current page includes a contact section with your name, brokerage, and phone number. This keeps that function, but presents it in a cleaner way.  [oai_citation:6‡show.tours](https://show.tours/thornbankroad)
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <div>
-            <h3 class="contact-name">Dov Markowich</h3>
-            <div class="contact-role">Broker, RE/MAX Realtron Realty Inc., Brokerage</div>
-            <div class="contact-link">Phone: <a href="tel:14167274829">416-727-4829</a></div>
             <div class="contact-link">Email: <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a></div>
           </div>
 
@@ -1336,9 +690,8 @@
 
   <footer>
     <div class="wrap">
-      41 Thornbank Road, Vaughan, private inquiries only.
+      41 Thornbank Road, Vaughan (Thornhill), private inquiries only.
     </div>
   </footer>
-
 </body>
 </html>
