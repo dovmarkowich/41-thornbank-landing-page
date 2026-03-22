@@ -386,13 +386,58 @@
       display: block;
     }
 
-    .floorplan img {
-      width: 100%;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      background: #111;
-    }
+   .floorplan-viewer {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: #111;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.floorplan-stage {
+  overflow: auto;
+  max-height: 850px;
+  padding: 20px;
+  background: #111;
+  text-align: center;
+}
+
+.floorplan-stage img {
+  max-width: 100%;
+  height: auto;
+  transform: scale(1);
+  transform-origin: center top;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.floorplan-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+.floorplan-controls button {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(15, 15, 15, 0.82);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.floorplan-controls button:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  color: var(--gold-soft);
+}
 
     .contact-panel {
       background:
@@ -755,5 +800,33 @@
       41 Thornbank Road, Vaughan (Thornhill), private inquiries only.
     </div>
   </footer>
+  <script>
+  let floorplanZoom = 1;
+  const floorplanMinZoom = 1;
+  const floorplanMaxZoom = 3;
+  const floorplanStep = 0.2;
+
+  function updateFloorplanZoom() {
+    const img = document.getElementById("floorplanImage");
+    if (img) {
+      img.style.transform = `scale(${floorplanZoom})`;
+    }
+  }
+
+  function zoomInFloorplan() {
+    floorplanZoom = Math.min(floorplanZoom + floorplanStep, floorplanMaxZoom);
+    updateFloorplanZoom();
+  }
+
+  function zoomOutFloorplan() {
+    floorplanZoom = Math.max(floorplanZoom - floorplanStep, floorplanMinZoom);
+    updateFloorplanZoom();
+  }
+
+  function resetFloorplan() {
+    floorplanZoom = 1;
+    updateFloorplanZoom();
+  }
+</script>
 </body>
 </html>
