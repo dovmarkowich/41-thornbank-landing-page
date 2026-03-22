@@ -671,20 +671,32 @@
   </section>
 
   <section id="floorplan">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">Floorplan</span>
-        <h2>Floorplan Overview</h2>
-        <p class="intro">
-          Upload your floorplan image into the repo and name it exactly <strong>floorplan.jpg</strong>, or change the filename below.
-        </p>
+  <div class="wrap">
+    <div class="section-header">
+      <span class="kicker">Floorplan</span>
+      <h2>Floorplan Overview</h2>
+      <p class="intro">
+        View and zoom the floorplan below.
+      </p>
+    </div>
+
+    <div class="floorplan-viewer">
+      <div class="floorplan-stage" id="floorplanStage">
+        <img
+          id="floorplanImage"
+          src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg"
+          alt="41 Thornbank Road floorplan"
+        />
       </div>
 
-      <div class="floorplan">
-        <img src="floorplan.jpg" alt="41 Thornbank Road floorplan" />
+      <div class="floorplan-controls">
+        <button type="button" onclick="zoomOutFloorplan()">−</button>
+        <button type="button" onclick="resetFloorplan()">Reset</button>
+        <button type="button" onclick="zoomInFloorplan()">+</button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="map">
     <div class="wrap">
