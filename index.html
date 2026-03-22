@@ -161,29 +161,30 @@
 
     .hero {
       position: relative;
-      min-height: 80vh;
+      min-height: 72vh;
       display: flex;
       align-items: center;
       overflow: hidden;
       border-bottom: 1px solid var(--line);
     }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-  linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.55)),
-  linear-gradient(to right, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.10)),
-  url("thornbank-hero.jpg") center center / cover no-repeat;
-      transform: scale(1.02);
-    }
+   .hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.22)),
+    linear-gradient(to right, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.03)),
+    url("thornbank-hero.jpg") center top / 100% auto no-repeat;
+  background-color: #0b0b0b;
+  filter: brightness(1.08);
+}
 
     .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 880px;
-      padding: 30px 0 72px;
-    }
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  padding: 0 0 40px;
+}
 
     .eyebrow {
       display: inline-block;
