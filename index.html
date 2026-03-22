@@ -1,160 +1,722 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>41 Thornbank Road | Private Estate Opportunity</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="41 Thornbank Road, Vaughan. A rare custom golf course estate in Uplands, offered below replacement value." />
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a0a0a;
-      color: #ffffff;
-      line-height: 1.6;
+    :root {
+      --bg: #0b0b0b;
+      --bg-soft: #121212;
+      --card: rgba(255, 255, 255, 0.04);
+      --text: #f5f1e8;
+      --muted: #c9c1b3;
+      --line: rgba(212, 175, 55, 0.22);
+      --gold: #d4af37;
+      --gold-soft: #f0d67a;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
+      --max: 1180px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(212, 175, 55, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.05), transparent 24%),
+        linear-gradient(180deg, #090909 0%, #0d0d0d 100%);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(7, 7, 7, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 16px;
+    }
+
+    .brand {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .brand strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #111;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.14);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(212, 175, 55, 0.45);
+      color: var(--gold-soft);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to bottom, rgba(5, 5, 5, 0.45), rgba(5, 5, 5, 0.78)),
+        linear-gradient(to right, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.18)),
+        url('YOUR-HERO-IMAGE-URL-HERE');
+      background-size: cover;
+      background-position: center center;
+      transform: scale(1.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 160px;
+      background: linear-gradient(to bottom, transparent, rgba(11, 11, 11, 0.96));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 90px 0 70px;
+      max-width: 820px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+      margin: 0 0 16px;
+      font-size: clamp(40px, 7vw, 76px);
+      line-height: 1.02;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: -1.5px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(18px, 2.3vw, 24px);
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 18px 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-value {
+      display: block;
+      font-size: 24px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.7px;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      max-width: 800px;
+      margin-bottom: 32px;
+    }
+
+    .section-kicker {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2.8px;
+      font-size: 12px;
+      color: var(--gold-soft);
+      margin-bottom: 14px;
+      display: inline-block;
     }
 
     h2 {
-      color: #d4af37;
-      margin-top: 40px;
-      margin-bottom: 10px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.1;
+      margin: 0 0 14px;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: -0.8px;
     }
 
-    p {
+    .section-intro {
       font-size: 18px;
-      color: #e0e0e0;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0;
     }
 
-    ul {
-      padding-left: 20px;
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
     }
 
-    li {
-      margin-bottom: 10px;
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: var(--muted);
       font-size: 18px;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .highlight {
-      color: #d4af37;
-      font-weight: bold;
+      background: var(--card);
+      border: 1px solid rgba(212, 175, 55, 0.13);
+      border-radius: 16px;
+      padding: 22px 20px;
     }
 
-    .cta {
-      margin-top: 40px;
-      padding: 20px;
-      border: 1px solid #d4af37;
-      text-align: center;
+    .highlight-title {
+      display: block;
+      color: var(--white);
+      font-size: 20px;
+      margin-bottom: 8px;
     }
 
-    .cta a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 12px 20px;
-      background-color: #d4af37;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .contact {
-      margin-top: 20px;
+    .highlight-text {
+      color: var(--muted);
       font-size: 16px;
-      color: #ccc;
     }
 
-    hr {
-      border: none;
-      border-top: 1px solid #333;
-      margin: 40px 0;
+    .quote-box {
+      padding: 28px;
+      border-left: 3px solid var(--gold);
+      background: rgba(212, 175, 55, 0.05);
+      border-radius: 0 16px 16px 0;
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    .audience-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .audience-item {
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .audience-item strong {
+      color: var(--white);
+    }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 38px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.18), transparent 24%),
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(212, 175, 55, 0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-panel h3 {
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 500;
+      margin: 0 0 12px;
+      color: var(--white);
+    }
+
+    .cta-panel p {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 760px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .contact-block {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-name {
+      font-size: 28px;
+      color: var(--white);
+      margin: 0;
+    }
+
+    .contact-role {
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 0.3px;
+    }
+
+    .contact-link {
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    .contact-link a:hover {
+      color: var(--gold-soft);
+    }
+
+    .advisor {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .advisor .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      padding: 28px 0 50px;
+      color: #9f988d;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-stats,
+      .highlights,
+      .grid-2,
+      .advisor,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        min-height: 64px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 64px 0 56px;
+      }
+
+      .card,
+      .cta-panel {
+        padding: 24px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
-
 <body>
 
-  <div class="container">
-
-    <h1>41 Thornbank Road, Vaughan</h1>
-    <p class="highlight">A Rare Golf Course Estate in Uplands, Priced Below Replacement Value</p>
-
-    <p>
-      This is not a typical offering.
-      A newly built custom estate set on a 100 x 302 ft lot, backing directly onto the Thornhill Golf & Country Club,
-      offering over 16,000 sq.ft. of total living space in one of Vaughan’s most exclusive enclaves.
-    </p>
-
-    <hr>
-
-    <h2>Key Highlights</h2>
-    <ul>
-      <li>Over 16,000 sq.ft. of total living space</li>
-      <li>100 x 302 ft lot backing onto the golf course</li>
-      <li>Soaring 28-ft ceilings with dramatic architectural scale</li>
-      <li>Private estate setting in the Uplands community</li>
-      <li>Newly constructed and move-in ready</li>
-      <li>Currently offered below replacement cost</li>
-    </ul>
-
-    <hr>
-
-    <h2>Why This Opportunity Stands Out</h2>
-    <p>
-      Opportunities like this are increasingly rare.
-    </p>
-    <p>
-      The cost to acquire land, design, and construct a home of this scale and quality today would exceed the current asking price,
-      without accounting for the time, complexity, and risk involved.
-    </p>
-    <p>
-      For buyers seeking a turnkey estate with long-term value, this represents a strategic acquisition rather than a typical purchase.
-    </p>
-
-    <hr>
-
-    <h2>Who This Is For</h2>
-    <ul>
-      <li>Buyers who value privacy and scale</li>
-      <li>Those seeking proximity to top-tier amenities and golf</li>
-      <li>Individuals focused on long-term real estate positioning</li>
-      <li>Buyers looking for a residence that reflects both lifestyle and presence</li>
-    </ul>
-
-    <hr>
-
-    <div class="cta">
-      <h2>Request Private Details or Arrange a Confidential Viewing</h2>
-      <p>For additional information or a private property brief:</p>
-
-      <a href="mailto:dov@dmhomes.ca">Request Information</a>
-
-      <div class="contact">
-        <p><strong>Dov Markowich</strong></p>
-        <p>Real Estate Broker, RE/MAX Realtron Realty Inc.</p>
-        <p>📞 416-727-4829</p>
-        <p>📧 dov@dmhomes.ca</p>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <strong>41 Thornbank Road</strong>, Vaughan
+      </div>
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="#opportunity">View Opportunity</a>
+        <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Private Details</a>
       </div>
     </div>
+  </header>
 
-    <hr>
+  <section class="hero">
+    <div class="hero-media"></div>
+    <div class="wrap">
+      <div class="hero-content">
+        <span class="eyebrow">Private Estate Opportunity</span>
+        <h1>41 Thornbank Road, Vaughan</h1>
+        <p class="hero-subtitle">
+          A rare golf course estate in Uplands, newly built, architecturally striking, and positioned as a compelling acquisition below replacement value.
+        </p>
 
-    <h2>About the Advisor</h2>
-    <p>
-      Dov Markowich is a Toronto-based real estate broker specializing in high-value residential properties across the GTA.
-      Known for strategic negotiation and discretion, he advises clients on acquisitions and dispositions at the top end of the market.
-    </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Private Property Brief</a>
+          <a class="btn btn-secondary" href="#contact">Arrange Confidential Viewing</a>
+        </div>
 
-  </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">16,000+ Sq.Ft.</span>
+            <span class="stat-label">Total Living Space</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">100 x 302 Ft.</span>
+            <span class="stat-label">Estate Lot</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">Golf Course</span>
+            <span class="stat-label">Direct Rear Exposure</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">Uplands</span>
+            <span class="stat-label">Prestige Enclave</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="opportunity">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="section-kicker">The Opportunity</span>
+        <h2>Not a Typical Listing, a Strategic Acquisition</h2>
+        <p class="section-intro">
+          Set on a spectacular lot backing directly onto the Thornhill Golf &amp; Country Club, this newly built custom estate delivers scale, privacy, architectural drama, and long-term positioning in one of Vaughan’s most exclusive residential enclaves.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <p>
+            Opportunities of this nature are increasingly difficult to replicate. The combined cost of land acquisition, design, approvals, construction, and carrying time for a residence of this scale and caliber would likely exceed the current asking price.
+          </p>
+          <p>
+            For the right buyer, this is less about simply purchasing a home and more about securing a turnkey estate without the delay, uncertainty, and friction of building from scratch.
+          </p>
+          <div class="quote-box">
+            “For buyers seeking scale, privacy, and permanence, this represents value through replacement logic, not just price per square foot.”
+          </div>
+        </div>
+
+        <div class="highlights">
+          <div class="highlight">
+            <span class="highlight-title">Architectural Presence</span>
+            <div class="highlight-text">
+              Dramatic proportions, soaring ceilings, and a visual scale intended to make an impression.
+            </div>
+          </div>
+          <div class="highlight">
+            <span class="highlight-title">Private Setting</span>
+            <div class="highlight-text">
+              Estate-level privacy with direct golf course backing on one of the area’s most coveted streets.
+            </div>
+          </div>
+          <div class="highlight">
+            <span class="highlight-title">Turnkey Advantage</span>
+            <div class="highlight-text">
+              Newly constructed and move-in ready, without the timeline and execution risk of a custom build.
+            </div>
+          </div>
+          <div class="highlight">
+            <span class="highlight-title">Prestige Location</span>
+            <div class="highlight-text">
+              Uplands remains one of the most established and desirable luxury enclaves in Vaughan.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-header">
+        <span class="section-kicker">Key Highlights</span>
+        <h2>Estate-Level Features That Matter</h2>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight">
+          <span class="highlight-title">Over 16,000 Sq.Ft.</span>
+          <div class="highlight-text">
+            Expansive total living space designed for family living, entertaining, and elevated everyday use.
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-title">100 x 302 Ft. Lot</span>
+          <div class="highlight-text">
+            A substantial footprint with presence, depth, and the rarity expected at this level.
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-title">Golf Course Backing</span>
+          <div class="highlight-text">
+            A premium rear exposure that enhances privacy, tranquility, and long-term appeal.
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-title">New Construction</span>
+          <div class="highlight-text">
+            A move-in ready estate that removes the cost overruns and delays associated with building today.
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-title">Dramatic Interior Scale</span>
+          <div class="highlight-text">
+            Soaring ceilings and grand proportions deliver the visual impact luxury buyers expect.
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-title">Below Replacement Logic</span>
+          <div class="highlight-text">
+            Positioned as a value proposition relative to the current cost of land and comparable build execution.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-header">
+        <span class="section-kicker">Ideal Buyer Profile</span>
+        <h2>Who This Property Is Best Suited For</h2>
+        <p class="section-intro">
+          This residence is tailored to buyers who are not just looking for a house, but for privacy, stature, and a residence that aligns with a high-level lifestyle.
+        </p>
+      </div>
+
+      <div class="audience-list">
+        <div class="audience-item">
+          <strong>Privacy-driven buyers</strong>, seeking a discreet estate environment with meaningful separation from surrounding homes.
+        </div>
+        <div class="audience-item">
+          <strong>Families or principals</strong>, who value scale, entertaining capacity, and long-term residential positioning.
+        </div>
+        <div class="audience-item">
+          <strong>Executives, founders, and professionals</strong>, who want turnkey quality without taking on a custom build project themselves.
+        </div>
+        <div class="audience-item">
+          <strong>Strategic buyers</strong>, who understand replacement cost dynamics and recognize when a property is difficult to reproduce at its asking level.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta-panel">
+        <h3>Request Private Details or Arrange a Confidential Viewing</h3>
+        <p>
+          For a private property brief, further information, or to arrange a discreet viewing, please contact me directly.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-block">
+            <h4 class="contact-name">Dov Markowich</h4>
+            <div class="contact-role">Real Estate Broker, RE/MAX Realtron Realty Inc.</div>
+            <div class="contact-link">Phone: <a href="tel:14167274829">416-727-4829</a></div>
+            <div class="contact-link">Email: <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a></div>
+          </div>
+
+          <div class="nav-actions">
+            <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Email Dov</a>
+            <a class="btn btn-secondary" href="YOUR-BROCHURE-LINK-HERE" target="_blank" rel="noopener">View Brochure</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-header">
+        <span class="section-kicker">About the Advisor</span>
+        <h2>Strategic Representation at the Top End of the Market</h2>
+      </div>
+
+      <div class="advisor">
+        <div class="card">
+          <p>
+            Dov Markowich is a Toronto-based real estate broker specializing in high-value residential properties across Toronto and the GTA.
+          </p>
+          <p>
+            Known for discretion, strategic positioning, and direct execution, he advises clients on acquisitions and dispositions where nuance, leverage, and negotiation quality materially affect the outcome.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            His approach is built around clarity, controlled messaging, and identifying the right buyer rather than simply maximizing noise.
+          </p>
+          <p>
+            For exceptional properties, that often means creating a narrative around opportunity, rarity, and strategic value, not just square footage and finish quality.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <div>41 Thornbank Road, Vaughan</div>
+        <div>Private inquiries only</div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
