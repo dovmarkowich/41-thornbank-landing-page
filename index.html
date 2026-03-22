@@ -396,20 +396,30 @@
 }
 
 .floorplan-stage {
-  overflow: auto;
-  max-height: 850px;
-  padding: 20px;
+  position: relative;
+  height: 780px;
+  overflow: hidden;
   background: #111;
-  text-align: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.floorplan-stage.dragging {
+  cursor: grabbing;
 }
 
 .floorplan-stage img {
-  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  width: 100%;
   height: auto;
-  transform: scale(1);
-  transform-origin: center top;
-  transition: transform 0.2s ease;
-  display: inline-block;
+  transform-origin: top left;
+  transition: transform 0.08s linear;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 .floorplan-controls {
@@ -419,7 +429,7 @@
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 5;
+  z-index: 10;
 }
 
 .floorplan-controls button {
@@ -437,6 +447,21 @@
 .floorplan-controls button:hover {
   border-color: rgba(212, 175, 55, 0.55);
   color: var(--gold-soft);
+}
+
+@media (max-width: 768px) {
+  .floorplan-stage {
+    height: 520px;
+  }
+
+  .floorplan-controls {
+    bottom: 12px;
+  }
+
+  .floorplan-controls button {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
 }
 
     .contact-panel {
@@ -721,7 +746,7 @@
       <span class="kicker">Floorplan</span>
       <h2>Floorplan Overview</h2>
       <p class="intro">
-        View and zoom the floorplan below.
+        Zoom and drag to explore the floorplan.
       </p>
     </div>
 
@@ -731,18 +756,19 @@
           id="floorplanImage"
           src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg"
           alt="41 Thornbank Road floorplan"
+          draggable="false"
         />
       </div>
 
       <div class="floorplan-controls">
-        <button type="button" onclick="zoomOutFloorplan()">−</button>
-        <button type="button" onclick="resetFloorplan()">Reset</button>
-        <button type="button" onclick="zoomInFloorplan()">+</button>
+        <button type="button" id="zoomOutBtn">−</button>
+        <button type="button" id="resetZoomBtn">Reset</button>
+        <button type="button" id="zoomInBtn">+</button>
       </div>
     </div>
   </div>
 </section>
-
+  
   <section id="map">
     <div class="wrap">
       <div class="section-header">
@@ -801,32 +827,142 @@
     </div>
   </footer>
   <script>
-  let floorplanZoom = 1;
-  const floorplanMinZoom = 1;
-  const floorplanMaxZoom = 3;
-  const floorplanStep = 0.2;
-
-  function updateFloorplanZoom() {
+  (function () {
+    const stage = document.getElementById("floorplanStage");
     const img = document.getElementById("floorplanImage");
-    if (img) {
-      img.style.transform = `scale(${floorplanZoom})`;
+    const zoomInBtn = document.getElementById("zoomInBtn");
+    const zoomOutBtn = document.getElementById("zoomOutBtn");
+    const resetZoomBtn = document.getElementById("resetZoomBtn");
+
+    if (!stage || !img || !zoomInBtn || !zoomOutBtn || !resetZoomBtn) return;
+
+    let scale = 1;
+    const minScale = 1;
+    const maxScale = 3;
+    const step = 0.2;
+
+    let offsetX = 0;
+    let offsetY = 0;
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let startOffsetX = 0;
+    let startOffsetY = 0;
+
+    function clampOffsets() {
+      const stageRect = stage.getBoundingClientRect();
+      const displayedWidth = img.offsetWidth * scale;
+      const displayedHeight = img.offsetHeight * scale;
+
+      const minX = Math.min(0, stageRect.width - displayedWidth);
+      const minY = Math.min(0, stageRect.height - displayedHeight);
+
+      offsetX = Math.max(minX, Math.min(0, offsetX));
+      offsetY = Math.max(minY, Math.min(0, offsetY));
     }
-  }
 
-  function zoomInFloorplan() {
-    floorplanZoom = Math.min(floorplanZoom + floorplanStep, floorplanMaxZoom);
-    updateFloorplanZoom();
-  }
+    function centerImage() {
+      const stageRect = stage.getBoundingClientRect();
+      const displayedWidth = img.offsetWidth * scale;
+      const displayedHeight = img.offsetHeight * scale;
 
-  function zoomOutFloorplan() {
-    floorplanZoom = Math.max(floorplanZoom - floorplanStep, floorplanMinZoom);
-    updateFloorplanZoom();
-  }
+      if (displayedWidth <= stageRect.width) {
+        offsetX = (stageRect.width - displayedWidth) / 2;
+      } else {
+        offsetX = 0;
+      }
 
-  function resetFloorplan() {
-    floorplanZoom = 1;
-    updateFloorplanZoom();
-  }
+      if (displayedHeight <= stageRect.height) {
+        offsetY = (stageRect.height - displayedHeight) / 2;
+      } else {
+        offsetY = 0;
+      }
+    }
+
+    function updateTransform() {
+      clampOffsets();
+      img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    }
+
+    function resetFloorplan() {
+      scale = 1;
+      centerImage();
+      updateTransform();
+    }
+
+    function zoomAtPoint(newScale, clientX, clientY) {
+      const oldScale = scale;
+      scale = Math.max(minScale, Math.min(maxScale, newScale));
+
+      const stageRect = stage.getBoundingClientRect();
+      const pointX = clientX - stageRect.left;
+      const pointY = clientY - stageRect.top;
+
+      const imageX = (pointX - offsetX) / oldScale;
+      const imageY = (pointY - offsetY) / oldScale;
+
+      offsetX = pointX - imageX * scale;
+      offsetY = pointY - imageY * scale;
+
+      updateTransform();
+    }
+
+    zoomInBtn.addEventListener("click", function () {
+      const rect = stage.getBoundingClientRect();
+      zoomAtPoint(scale + step, rect.left + rect.width / 2, rect.top + rect.height / 2);
+    });
+
+    zoomOutBtn.addEventListener("click", function () {
+      const rect = stage.getBoundingClientRect();
+      zoomAtPoint(scale - step, rect.left + rect.width / 2, rect.top + rect.height / 2);
+    });
+
+    resetZoomBtn.addEventListener("click", resetFloorplan);
+
+    stage.addEventListener("wheel", function (e) {
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? step : -step;
+      zoomAtPoint(scale + delta, e.clientX, e.clientY);
+    }, { passive: false });
+
+    stage.addEventListener("mousedown", function (e) {
+      if (scale <= 1) return;
+      isDragging = true;
+      stage.classList.add("dragging");
+      startX = e.clientX;
+      startY = e.clientY;
+      startOffsetX = offsetX;
+      startOffsetY = offsetY;
+    });
+
+    window.addEventListener("mousemove", function (e) {
+      if (!isDragging) return;
+      offsetX = startOffsetX + (e.clientX - startX);
+      offsetY = startOffsetY + (e.clientY - startY);
+      updateTransform();
+    });
+
+    window.addEventListener("mouseup", function () {
+      isDragging = false;
+      stage.classList.remove("dragging");
+    });
+
+    img.addEventListener("load", function () {
+      resetFloorplan();
+    });
+
+    window.addEventListener("resize", function () {
+      if (scale === 1) {
+        centerImage();
+      }
+      updateTransform();
+    });
+
+    if (img.complete) {
+      resetFloorplan();
+    }
+  })();
 </script>
 </body>
 </html>
