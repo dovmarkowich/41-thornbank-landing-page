@@ -4,12 +4,10 @@
   <meta charset="UTF-8" />
   <title>41 Thornbank Road | Vaughan (Thornhill) Luxury Estate</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="41 Thornbank Road, Vaughan (Thornhill). Private luxury estate backing onto the golf course in Uplands." />
-
-  <!-- CHANGE 1: Luxury serif + refined sans replacing Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta
+    name="description"
+    content="41 Thornbank Road, Vaughan (Thornhill). Private luxury estate backing onto the golf course in Uplands."
+  />
 
   <style>
     :root {
@@ -17,136 +15,162 @@
       --panel: #161616;
       --text: #f5f5f5;
       --muted: #c8c8c8;
-      --gold: #c9a030;
-      --gold-soft: #dfc06a;
+      --gold: #d4af37;
+      --gold-soft: #ecd37a;
       --line: rgba(255, 255, 255, 0.08);
       --max: 1180px;
       --radius: 18px;
       --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      background: #0a0a0a;
+      background: linear-gradient(180deg, #090909 0%, #111111 100%);
       color: var(--text);
-      font-family: var(--sans);
-      font-weight: 300;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
     .wrap {
-      width: min(var(--max), calc(100% - 40px));
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    /* ─── TOPBAR ─── */
     .topbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8, 8, 8, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 0.5px solid rgba(201, 160, 48, 0.18);
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
 
     .topbar-inner {
-      width: min(var(--max), calc(100% - 40px));
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
-      min-height: 72px;
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      flex-wrap: wrap;
       padding: 10px 0;
     }
 
     .brand-block {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
     }
 
-    /* CHANGE 1: brand name in serif */
     .brand {
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 400;
-      letter-spacing: 0.02em;
+      font-size: 16px;
+      letter-spacing: 0.3px;
       color: var(--gold-soft);
+      font-weight: 700;
     }
 
     .brand-sub {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.35);
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
     }
 
     .brand-contact {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
     }
 
-    .brand-contact a:hover { color: var(--gold-soft); }
+    .brand-contact a:hover {
+      color: var(--gold-soft);
+    }
 
     .nav {
       display: flex;
-      gap: 28px;
+      gap: 14px;
+      flex-wrap: wrap;
       align-items: center;
     }
 
-    .nav a {
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.45);
-      transition: color 0.2s;
+   .nav a {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: var(--muted);
+}
+
+    .nav a:hover {
+      color: var(--gold-soft);
     }
 
-    .nav a:hover { color: var(--gold-soft); }
-
-    /* ─── BUTTON ─── */
-    /* CHANGE 2: single CTA class only | CHANGE 3: flat gold, no gradient */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 13px 26px;
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      transition: background 0.2s, transform 0.15s;
-      border: none;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
       cursor: pointer;
       white-space: nowrap;
-      background: var(--gold);
-      color: #0f0f0f;
     }
 
-    .btn:hover {
-      background: var(--gold-soft);
+    .btn-primary {
+      background: linear-gradient(135deg, #f4df96, #d4af37);
+      color: #111111 !important;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+      font-weight: 800;
+    }
+
+    .btn-primary:hover {
       transform: translateY(-1px);
+      filter: brightness(1.03);
     }
 
-    /* ─── HERO ─── */
+  .btn-secondary {
+  border: 1.5px solid rgba(255, 255, 255, 0.38);
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(4px);
+}
+
+   .btn-secondary:hover {
+  border-color: rgba(212, 175, 55, 0.65);
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.hero-content h1,
+.hero-content .price-line,
+.hero-content .hero-subtitle,
+.hero-content .eyebrow {
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.60);
+}
+    
+     /* ─── HERO ─── */
     .hero {
       position: relative;
       min-height: 96svh;
@@ -154,225 +178,184 @@
       align-items: flex-end;
       overflow: hidden;
     }
-
+ 
+    /* Photo as background-image only — overlay is a separate pseudo */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url("thornbank-hero.jpg");
+      background-image: url("thornbank-hero.jpg?w=1920");
       background-size: cover;
       background-position: center 30%;
     }
-
+ 
+    /* Single clean overlay — not stacked with the photo */
     .hero-bg::after {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to top,
-        rgba(5, 4, 2, 0.97) 0%,
-        rgba(5, 4, 2, 0.75) 32%,
-        rgba(5, 4, 2, 0.28) 62%,
-        rgba(5, 4, 2, 0.10) 100%
+        rgba(5, 4, 2, 0.96) 0%,
+        rgba(5, 4, 2, 0.72) 35%,
+        rgba(5, 4, 2, 0.28) 65%,
+        rgba(5, 4, 2, 0.12) 100%
       );
     }
 
+ /* Decorative corner marks */
     .hero-corner-tr {
       position: absolute;
       top: 28px;
       right: 36px;
       width: 44px;
       height: 44px;
-      border-top: 0.5px solid rgba(201, 160, 48, 0.4);
-      border-right: 0.5px solid rgba(201, 160, 48, 0.4);
+      border-top: 0.5px solid rgba(201,160,48,0.4);
+      border-right: 0.5px solid rgba(201,160,48,0.4);
       z-index: 2;
     }
-
+ 
     .hero-corner-bl {
       position: absolute;
       bottom: 140px;
       left: 36px;
       width: 44px;
       height: 44px;
-      border-bottom: 0.5px solid rgba(201, 160, 48, 0.22);
-      border-left: 0.5px solid rgba(201, 160, 48, 0.22);
+      border-bottom: 0.5px solid rgba(201,160,48,0.25);
+      border-left: 0.5px solid rgba(201,160,48,0.25);
       z-index: 2;
     }
+    
+   .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  padding: 6px 0 0;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 0 72px;
-      max-width: 820px;
-    }
-
+.hero-content::before {
+  content: "";
+  position: absolute;
+  inset: -20px -30px -20px -30px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.08));
+  border-radius: 24px;
+  z-index: -1;
+}
+    
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .eyebrow-line {
-      width: 28px;
-      height: 0.5px;
-      background: var(--gold);
-      opacity: 0.7;
-      flex-shrink: 0;
-    }
-
-    /* CHANGE 1: eyebrow in sans spaced caps */
-    .eyebrow-text {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.22em;
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold-soft);
-      opacity: 0.85;
+      margin-bottom: 18px;
+      font-weight: 700;
     }
 
-    /* CHANGE 1: display headline in serif */
-    h1 {
-      font-family: var(--serif);
-      margin: 0 0 6px;
-      font-size: clamp(54px, 8.5vw, 92px);
-      font-weight: 300;
-      line-height: 0.98;
-      letter-spacing: -0.01em;
-      color: #ffffff;
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
-    }
+   h1 {
+  margin: 0 0 10px;
+  font-size: clamp(38px, 7vw, 74px);
+  line-height: 1.02;
+  letter-spacing: -1.5px;
+  font-weight: 900;
+  color: #ffffff;
+}
 
-    h1 em {
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .sub-location {
-      display: block;
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.38);
-      margin-top: 14px;
-      margin-bottom: 22px;
-    }
-
-    /* CHANGE 1: price in serif */
+.sub-location {
+  display: block;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.6em;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-top: 6px;
+}
+    
     .price-line {
-      font-family: var(--serif);
-      font-size: clamp(24px, 3.2vw, 40px);
-      font-weight: 400;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 800;
       color: var(--gold-soft);
       margin-bottom: 20px;
-      letter-spacing: 0.01em;
     }
 
-    .price-line span {
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.28);
-      margin-right: 10px;
-      vertical-align: middle;
-    }
-
-    /* CHANGE 1: subtitle in serif italic */
-    .hero-subtitle {
-      font-family: var(--serif);
-      font-size: clamp(16px, 1.9vw, 20px);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.52);
-      max-width: 560px;
-      margin: 0 0 32px;
-    }
+   .hero-subtitle {
+  font-size: clamp(18px, 2.2vw, 24px);
+  color: #f3f3f3;
+  max-width: 820px;
+  margin: 0 0 28px;
+}
 
     .hero-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+      margin-top: 26px;
     }
 
-    /* ─── CHANGE 5: STATS BAR — full-width band below hero ─── */
-    .stats-bar {
-      background: #0f0f0f;
-      border-top: 0.5px solid rgba(201, 160, 48, 0.2);
-      border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-    }
-
+    .stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+  max-width: 720px;
+}
     .stat {
-      padding: 20px 12px;
-      border-right: 0.5px solid rgba(255, 255, 255, 0.05);
-      text-align: center;
+  background: rgba(18, 18, 18, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  padding: 16px 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.stat strong {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 4px;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.stat span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+  line-height: 1.25;
+}
+    
+    section {
+      padding: 84px 0;
     }
-
-    .stat:last-child { border-right: none; }
-
-    /* CHANGE 1: stat numbers in serif */
-    .stat strong {
-      display: block;
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 400;
-      color: #fff;
-      margin-bottom: 5px;
-      line-height: 1.1;
-    }
-
-    .stat span {
-      display: block;
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.28);
-    }
-
-    /* ─── SECTIONS ─── */
-    section { padding: 84px 0; }
 
     .section-header {
       max-width: 780px;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
     }
 
     .kicker {
       display: inline-block;
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: 0.22em;
+      font-size: 12px;
+      letter-spacing: 2.8px;
       text-transform: uppercase;
       color: var(--gold-soft);
       margin-bottom: 12px;
-      font-weight: 400;
+      font-weight: 700;
     }
 
-    /* CHANGE 1: section headings in serif */
     h2 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 4.5vw, 56px);
-      font-weight: 300;
+      font-size: clamp(30px, 4vw, 48px);
       line-height: 1.08;
       margin: 0 0 14px;
-      letter-spacing: -0.01em;
+      font-weight: 800;
+      letter-spacing: -0.8px;
     }
 
     .intro {
-      font-family: var(--sans);
-      font-size: 16px;
-      font-weight: 300;
+      font-size: 18px;
       color: var(--muted);
       margin: 0;
-      line-height: 1.7;
     }
 
     .grid-2 {
@@ -384,87 +367,75 @@
 
     .card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.025));
-      border: 0.5px solid var(--line);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 32px;
+      padding: 28px;
       box-shadow: var(--shadow);
     }
 
     .card p {
       margin: 0 0 16px;
-      font-family: var(--sans);
       color: var(--muted);
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 1.7;
+      font-size: 17px;
     }
 
-    /* CHANGE 1: pull quote in serif italic */
     .quote {
       margin-top: 18px;
-      padding: 24px;
-      border-left: 1.5px solid var(--gold);
-      background: rgba(201, 160, 48, 0.05);
-      border-radius: 0 12px 12px 0;
-      font-family: var(--serif);
-      color: #f0f0f0;
-      font-size: 22px;
-      font-style: italic;
-      font-weight: 300;
-      line-height: 1.55;
+      padding: 22px;
+      border-left: 3px solid var(--gold);
+      background: rgba(212, 175, 55, 0.06);
+      border-radius: 0 14px 14px 0;
+      color: #f2f2f2;
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      gap: 16px;
     }
 
     .feature {
       background: var(--panel);
-      border: 0.5px solid var(--line);
-      border-radius: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
       padding: 22px 20px;
     }
 
-    /* CHANGE 1: feature headings in serif */
     .feature h3 {
-      font-family: var(--serif);
       margin: 0 0 8px;
-      font-size: 21px;
-      font-weight: 400;
+      font-size: 20px;
       color: #fff;
     }
 
     .feature p {
-      font-family: var(--sans);
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.6;
+      font-size: 16px;
     }
 
     .media-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 16px;
     }
 
     .media-grid img {
       width: 100%;
       height: 260px;
       object-fit: cover;
-      border-radius: 14px;
-      border: 0.5px solid var(--line);
+      border-radius: 16px;
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
       background: #111;
     }
 
     .embed {
       overflow: hidden;
-      border-radius: 16px;
-      border: 0.5px solid var(--line);
+      border-radius: 18px;
+      border: 1px solid var(--line);
       background: #0e0e0e;
       box-shadow: var(--shadow);
     }
@@ -476,78 +447,91 @@
       display: block;
     }
 
-    /* ─── FLOORPLAN ─── */
-    .floorplan-viewer {
-      position: relative;
-      border-radius: 16px;
-      border: 0.5px solid var(--line);
-      background: #111;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
+   .floorplan-viewer {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: #111;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
 
-    .floorplan-stage {
-      position: relative;
-      height: 780px;
-      overflow: hidden;
-      background: #111;
-      cursor: grab;
-      user-select: none;
-    }
+.floorplan-stage {
+  position: relative;
+  height: 780px;
+  overflow: hidden;
+  background: #111;
+  cursor: grab;
+  user-select: none;
+}
 
-    .floorplan-stage.dragging { cursor: grabbing; }
+.floorplan-stage.dragging {
+  cursor: grabbing;
+}
 
-    .floorplan-stage img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      max-width: none;
-      width: 100%;
-      height: auto;
-      transform-origin: top left;
-      transition: transform 0.08s linear;
-      user-select: none;
-      -webkit-user-drag: none;
-      pointer-events: none;
-    }
+.floorplan-stage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  width: 100%;
+  height: auto;
+  transform-origin: top left;
+  transition: transform 0.08s linear;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
 
-    .floorplan-controls {
-      position: absolute;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      z-index: 10;
-    }
+.floorplan-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
 
-    .floorplan-controls button {
-      border: 0.5px solid rgba(255, 255, 255, 0.18);
-      background: rgba(12, 12, 12, 0.85);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 400;
-      cursor: pointer;
-      backdrop-filter: blur(6px);
-      letter-spacing: 0.06em;
-    }
+.floorplan-controls button {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(15, 15, 15, 0.82);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
 
-    .floorplan-controls button:hover {
-      border-color: rgba(201, 160, 48, 0.55);
-      color: var(--gold-soft);
-    }
+.floorplan-controls button:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  color: var(--gold-soft);
+}
 
-    /* ─── CONTACT ─── */
+@media (max-width: 768px) {
+  .floorplan-stage {
+    height: 520px;
+  }
+
+  .floorplan-controls {
+    bottom: 12px;
+  }
+
+  .floorplan-controls button {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+}
+
     .contact-panel {
       background:
-        radial-gradient(circle at top right, rgba(201, 160, 48, 0.12), transparent 26%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-      border: 0.5px solid rgba(201, 160, 48, 0.16);
-      border-radius: 22px;
-      padding: 40px;
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.18), transparent 24%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(212, 175, 55, 0.16);
+      border-radius: 24px;
+      padding: 34px;
       box-shadow: var(--shadow);
     }
 
@@ -558,169 +542,163 @@
       align-items: end;
     }
 
-    /* CHANGE 1: contact name in serif */
     .contact-name {
-      font-family: var(--serif);
       margin: 0 0 8px;
-      font-size: 34px;
-      font-weight: 300;
+      font-size: 28px;
+      font-weight: 800;
     }
 
     .contact-role,
     .contact-link {
-      font-family: var(--sans);
       color: var(--muted);
-      font-size: 15px;
-      font-weight: 300;
-      margin: 5px 0;
+      font-size: 17px;
+      margin: 6px 0;
     }
 
-    .contact-link a:hover { color: var(--gold-soft); }
+    .contact-link a:hover {
+      color: var(--gold-soft);
+    }
 
-    /* ─── FOOTER ─── */
     footer {
-      padding: 28px 0 44px;
-      border-top: 0.5px solid var(--line);
-      font-family: var(--sans);
-      color: rgba(255, 255, 255, 0.22);
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.06em;
+      padding: 30px 0 50px;
+      border-top: 1px solid var(--line);
+      color: #9e9e9e;
+      font-size: 13px;
     }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 980px) {
-      .stats-bar { grid-template-columns: repeat(4, 1fr); }
+      .stats,
       .grid-2,
       .feature-grid,
       .media-grid,
-      .contact-grid { grid-template-columns: 1fr; }
-      .embed iframe { min-height: 420px; }
-    }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
 
-    @media (max-width: 768px) {
-      .floorplan-stage { height: 520px; }
+      .embed iframe {
+        min-height: 420px;
+      }
     }
 
     @media (max-width: 640px) {
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .hero { min-height: 100svh; }
-      .hero-content { padding: 0 0 48px; }
-      .btn { width: 100%; }
-      .hero-actions { flex-direction: column; }
-      .topbar-inner { min-height: 64px; }
-      .nav { display: none; }
-      .media-grid img { height: 200px; }
-      .floorplan-stage { height: 420px; }
+      .hero {
+        min-height: auto;
+      }
+
+     .hero-content {
+  padding: 24px 0 20px;
+}
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .topbar-inner {
+        min-height: 64px;
+      }
+
+      .nav {
+        width: 100%;
+      }
+
+      .media-grid img {
+        height: 220px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- ─── TOPBAR ─── -->
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand-block">
         <div class="brand">Dov Markowich, Broker</div>
         <div class="brand-sub">RE/MAX Realtron Realty Inc.</div>
         <div class="brand-contact">
-          <a href="tel:14167274829">416-727-4829</a> &nbsp;·&nbsp;
+          <a href="tel:14167274829">416-727-4829</a> | 
           <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a>
         </div>
       </div>
 
-      <!-- CHANGE 2: single CTA in nav -->
       <nav class="nav">
-        <a href="#photos">Gallery</a>
+        <a href="#photos">Photos</a>
         <a href="#matterport">3D Tour</a>
+        <a href="#video">Video</a>
         <a href="#floorplan">Floorplan</a>
-        <a href="#map">Location</a>
-        <a href="#contact" class="btn" style="margin-left: 8px;">Request Details</a>
+        <a href="#map">Map</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Details</a>
       </nav>
     </div>
   </header>
 
-  <!-- ─── HERO ─── -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-corner-tr"></div>
-    <div class="hero-corner-bl"></div>
-
     <div class="wrap">
       <div class="hero-content">
-
-        <div class="eyebrow">
-          <div class="eyebrow-line"></div>
-          <span class="eyebrow-text">Private Estate Opportunity &nbsp;·&nbsp; Uplands, Vaughan</span>
-        </div>
-
-        <!-- CHANGE 1: serif h1, italic Road -->
-        <h1>41 Thornbank <em>Road</em></h1>
-        <div class="sub-location">Vaughan (Thornhill) &nbsp;·&nbsp; Ontario</div>
-
-        <!-- CHANGE 1: serif price with muted sans prefix -->
-        <div class="price-line">
-          <span>Offered at</span>$9,499,999
-        </div>
-
-        <!-- CHANGE 1: serif italic subtitle, tightened copy -->
+        <span class="eyebrow">Private Estate Opportunity</span>
+        <h1>
+  41 Thornbank Road<br>
+  <span class="sub-location">Vaughan (Thornhill)</span>
+</h1>
+         <div class="price-line">Offered at $9,499,999</div>
         <p class="hero-subtitle">
-          A rare golf course estate in Uplands, newly built, architecturally striking, and positioned below replacement cost.
+          A rare golf course estate in Uplands, Vaughan (Thornhill), newly built, architecturally striking, and positioned as a compelling acquisition below replacement value.
         </p>
 
-        <!-- CHANGE 2: single CTA only -->
         <div class="hero-actions">
-          <a class="btn" href="mailto:dov@dmhomes.ca">Request Private Property Brief</a>
+          <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Private Property Brief</a>
+          <a class="btn btn-secondary" href="#contact">Arrange Confidential Viewing</a>
         </div>
 
+        <div class="stats">
+          <div class="stat">
+            <strong>16,000+ Sq.Ft.</strong>
+            <span>Total Living Space</span>
+          </div>
+          <div class="stat">
+            <strong>5+2</strong>
+            <span>Bedrooms</span>
+          </div>
+          <div class="stat">
+            <strong>7</strong>
+            <span>Bathrooms</span>
+          </div>
+          <div class="stat">
+            <strong>11</strong>
+            <span>Parking Spaces</span>
+          </div>
+          <div class="stat">
+            <strong>100 x 302 Ft.</strong>
+            <span>Estate Lot</span>
+          </div>
+          <div class="stat">
+            <strong>Golf Course</strong>
+            <span>Views</span>
+          </div>
+          <div class="stat">
+            <strong>Uplands</strong>
+            <span>Community</span>
+          </div>
+          <div class="stat">
+            <strong>Vaughan (Thornhill)</strong>
+            <span>Location</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── CHANGE 5: STATS BAR — full-width band, outside hero ─── -->
-  <div class="stats-bar">
-    <div class="stat">
-      <strong>16,000+</strong>
-      <span>Sq. Ft.</span>
-    </div>
-    <div class="stat">
-      <strong>5+2</strong>
-      <span>Bedrooms</span>
-    </div>
-    <div class="stat">
-      <strong>7</strong>
-      <span>Bathrooms</span>
-    </div>
-    <div class="stat">
-      <strong>11</strong>
-      <span>Parking</span>
-    </div>
-    <div class="stat">
-      <strong>100×302</strong>
-      <span>Lot, Ft.</span>
-    </div>
-    <div class="stat">
-      <strong>Golf Course</strong>
-      <span>Views</span>
-    </div>
-    <div class="stat">
-      <strong>Uplands</strong>
-      <span>Community</span>
-    </div>
-    <div class="stat">
-      <strong>New Build</strong>
-      <span>Construction</span>
-    </div>
-  </div>
-
-  <!-- ─── OPPORTUNITY ─── -->
   <section id="opportunity">
     <div class="wrap">
       <div class="section-header">
         <span class="kicker">The Opportunity</span>
-        <h2>Not a Typical Listing — a Strategic Acquisition</h2>
+        <h2>Not a Typical Listing, a Strategic Acquisition</h2>
         <p class="intro">
-          Set on a spectacular lot backing directly onto the Thornhill Golf &amp; Country Club, this newly built custom estate delivers scale, privacy, architectural drama, and long-term positioning in one of Vaughan (Thornhill)'s most exclusive residential enclaves.
+          Set on a spectacular lot backing directly onto the Thornhill Golf &amp; Country Club, this newly built custom estate delivers scale, privacy, architectural drama, and long-term positioning in one of Vaughan (Thornhill)’s most exclusive residential enclaves.
         </p>
       </div>
 
@@ -733,7 +711,7 @@
             For the right buyer, this is less about simply purchasing a home and more about securing a turnkey estate without the delay, uncertainty, and friction of building from scratch.
           </p>
           <div class="quote">
-            For buyers seeking scale, privacy, and permanence, this represents value through replacement logic — not just price per square foot.
+            For buyers seeking scale, privacy, and permanence, this represents value through replacement logic, not just price per square foot.
           </div>
         </div>
 
@@ -744,7 +722,7 @@
           </div>
           <div class="feature">
             <h3>Private Setting</h3>
-            <p>Estate-level privacy with direct golf course backing on one of the area's most coveted streets.</p>
+            <p>Estate-level privacy with direct golf course backing on one of the area’s most coveted streets.</p>
           </div>
           <div class="feature">
             <h3>Turnkey Advantage</h3>
@@ -759,33 +737,37 @@
     </div>
   </section>
 
-  <!-- ─── PHOTOS ─── -->
-  <!-- CHANGE 4: instruction text removed, hero file wired as first slot -->
   <section id="photos">
     <div class="wrap">
       <div class="section-header">
-        <span class="kicker">Gallery</span>
-        <h2>Property Photography</h2>
+        <span class="kicker">Photos</span>
+        <h2>Property Gallery</h2>
+        <p class="intro">
+          Upload your gallery images into the same GitHub folder as this file, then make sure the filenames below match exactly.
+        </p>
       </div>
+
       <div class="media-grid">
         <img src="thornbank-hero.jpg" alt="41 Thornbank Road exterior" />
-        <img src="photo-2.jpg" alt="41 Thornbank Road" />
-        <img src="photo-3.jpg" alt="41 Thornbank Road" />
-        <img src="photo-4.jpg" alt="41 Thornbank Road" />
-        <img src="photo-5.jpg" alt="41 Thornbank Road" />
-        <img src="photo-6.jpg" alt="41 Thornbank Road" />
+        <img src="photo-2.jpg" alt="41 Thornbank Road photo 2" />
+        <img src="photo-3.jpg" alt="41 Thornbank Road photo 3" />
+        <img src="photo-4.jpg" alt="41 Thornbank Road photo 4" />
+        <img src="photo-5.jpg" alt="41 Thornbank Road photo 5" />
+        <img src="photo-6.jpg" alt="41 Thornbank Road photo 6" />
       </div>
     </div>
   </section>
 
-  <!-- ─── 3D TOUR ─── -->
   <section id="matterport">
     <div class="wrap">
       <div class="section-header">
         <span class="kicker">Matterport 3D</span>
         <h2>Immersive 3D Walkthrough</h2>
-        <p class="intro">Explore the home in an interactive 3D tour.</p>
+        <p class="intro">
+          Explore the home in an interactive 3D tour.
+        </p>
       </div>
+
       <div class="embed">
         <iframe
           src="https://my.matterport.com/show/?m=WcbbH2PnRUe"
@@ -800,13 +782,16 @@
     </div>
   </section>
 
-  <!-- ─── VIDEO ─── -->
   <section id="video">
     <div class="wrap">
       <div class="section-header">
         <span class="kicker">Video</span>
-        <h2>Cinematic Property Tour</h2>
+        <h2>Cinematic Property Video</h2>
+        <p class="intro">
+          Embedded directly from YouTube.
+        </p>
       </div>
+
       <div class="embed">
         <iframe
           src="https://www.youtube.com/embed/yZ0LhIEfoW4"
@@ -819,45 +804,50 @@
     </div>
   </section>
 
-  <!-- ─── FLOORPLAN ─── -->
   <section id="floorplan">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">Floorplan</span>
-        <h2>Floorplan Overview</h2>
-        <p class="intro">Zoom and drag to explore the floorplan.</p>
-      </div>
-
-      <div class="floorplan-viewer">
-        <div class="floorplan-stage" id="floorplanStage">
-          <img
-            id="floorplanImage"
-            src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg"
-            alt="41 Thornbank Road floorplan"
-            draggable="false"
-          />
-        </div>
-        <div class="floorplan-controls">
-          <button type="button" id="zoomOutBtn">−</button>
-          <button type="button" id="resetZoomBtn">Reset</button>
-          <button type="button" id="zoomInBtn">+</button>
-        </div>
-      </div>
+  <div class="wrap">
+    <div class="section-header">
+      <span class="kicker">Floorplan</span>
+      <h2>Floorplan Overview</h2>
+      <p class="intro">
+        Zoom and drag to explore the floorplan.
+      </p>
     </div>
-  </section>
 
-  <!-- ─── MAP ─── -->
+    <div class="floorplan-viewer">
+  <div class="floorplan-stage" id="floorplanStage">
+    <img
+      id="floorplanImage"
+      src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg"
+      alt="41 Thornbank Road floorplan"
+      draggable="false"
+    />
+  </div>
+
+  <div class="floorplan-controls">
+    <button type="button" id="zoomOutBtn">−</button>
+    <button type="button" id="resetZoomBtn">Reset</button>
+    <button type="button" id="zoomInBtn">+</button>
+  </div>
+</div>
+  </div>
+</section>
+  
   <section id="map">
     <div class="wrap">
       <div class="section-header">
-        <span class="kicker">Location</span>
-        <h2>41 Thornbank Road, Vaughan (Thornhill)</h2>
+        <span class="kicker">Map</span>
+        <h2>Location</h2>
+        <p class="intro">
+          41 Thornbank Road, Vaughan (Thornhill)
+        </p>
       </div>
+
       <div class="embed">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5757.652142173766!2d-79.43256600000001!3d43.817967!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2c66e8645243%3A0x4dda15f5f64b76ab!2s41%20Thornbank%20Rd%2C%20Thornhill%2C%20ON%20L4J%202A1%2C%20Canada!5e0!3m2!1sen!2sus!4v1774143918649!5m2!1sen!2sus"
           width="100%"
-          height="520"
+          height="640"
           style="border:0;"
           allowfullscreen=""
           loading="lazy"
@@ -867,7 +857,6 @@
     </div>
   </section>
 
-  <!-- ─── CONTACT ─── -->
   <section id="contact">
     <div class="wrap">
       <div class="contact-panel">
@@ -886,9 +875,10 @@
             <div class="contact-link">Phone: <a href="tel:14167274829">416-727-4829</a></div>
             <div class="contact-link">Email: <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a></div>
           </div>
-          <!-- CHANGE 2: single CTA -->
-          <div style="display:flex; align-items:flex-end;">
-            <a class="btn" href="mailto:dov@dmhomes.ca">Email Dov</a>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Email Dov</a>
+            <a class="btn btn-secondary" href="YOUR-BROCHURE-LINK-HERE" target="_blank" rel="noopener">View Brochure</a>
           </div>
         </div>
       </div>
@@ -897,11 +887,9 @@
 
   <footer>
     <div class="wrap">
-      41 Thornbank Road, Vaughan (Thornhill) &nbsp;·&nbsp; Private inquiries only &nbsp;·&nbsp; RE/MAX Realtron Realty Inc.
+      41 Thornbank Road, Vaughan (Thornhill), private inquiries only.
     </div>
   </footer>
-
-  <!-- ─── FLOORPLAN SCRIPT (logic unchanged) ─── -->
   <script>
   (function () {
     const stage = document.getElementById("floorplanStage");
@@ -916,24 +904,44 @@
     const minScale = 1;
     const maxScale = 3;
     const step = 0.2;
-    let offsetX = 0, offsetY = 0;
+
+    let offsetX = 0;
+    let offsetY = 0;
+
     let isDragging = false;
-    let startX = 0, startY = 0, startOffsetX = 0, startOffsetY = 0;
+    let startX = 0;
+    let startY = 0;
+    let startOffsetX = 0;
+    let startOffsetY = 0;
 
     function clampOffsets() {
-      const r = stage.getBoundingClientRect();
-      const dw = img.offsetWidth * scale;
-      const dh = img.offsetHeight * scale;
-      offsetX = Math.max(Math.min(0, r.width - dw), Math.min(0, offsetX));
-      offsetY = Math.max(Math.min(0, r.height - dh), Math.min(0, offsetY));
+      const stageRect = stage.getBoundingClientRect();
+      const displayedWidth = img.offsetWidth * scale;
+      const displayedHeight = img.offsetHeight * scale;
+
+      const minX = Math.min(0, stageRect.width - displayedWidth);
+      const minY = Math.min(0, stageRect.height - displayedHeight);
+
+      offsetX = Math.max(minX, Math.min(0, offsetX));
+      offsetY = Math.max(minY, Math.min(0, offsetY));
     }
 
     function centerImage() {
-      const r = stage.getBoundingClientRect();
-      const dw = img.offsetWidth * scale;
-      const dh = img.offsetHeight * scale;
-      offsetX = dw <= r.width ? (r.width - dw) / 2 : 0;
-      offsetY = dh <= r.height ? (r.height - dh) / 2 : 0;
+      const stageRect = stage.getBoundingClientRect();
+      const displayedWidth = img.offsetWidth * scale;
+      const displayedHeight = img.offsetHeight * scale;
+
+      if (displayedWidth <= stageRect.width) {
+        offsetX = (stageRect.width - displayedWidth) / 2;
+      } else {
+        offsetX = 0;
+      }
+
+      if (displayedHeight <= stageRect.height) {
+        offsetY = (stageRect.height - displayedHeight) / 2;
+      } else {
+        offsetY = 0;
+      }
     }
 
     function updateTransform() {
@@ -950,58 +958,77 @@
     function zoomAtPoint(newScale, clientX, clientY) {
       const oldScale = scale;
       scale = Math.max(minScale, Math.min(maxScale, newScale));
-      const r = stage.getBoundingClientRect();
-      const px = clientX - r.left;
-      const py = clientY - r.top;
-      const ix = (px - offsetX) / oldScale;
-      const iy = (py - offsetY) / oldScale;
-      offsetX = px - ix * scale;
-      offsetY = py - iy * scale;
+
+      const stageRect = stage.getBoundingClientRect();
+      const pointX = clientX - stageRect.left;
+      const pointY = clientY - stageRect.top;
+
+      const imageX = (pointX - offsetX) / oldScale;
+      const imageY = (pointY - offsetY) / oldScale;
+
+      offsetX = pointX - imageX * scale;
+      offsetY = pointY - imageY * scale;
+
       updateTransform();
     }
 
-    zoomInBtn.addEventListener("click", () => {
-      const r = stage.getBoundingClientRect();
-      zoomAtPoint(scale + step, r.left + r.width / 2, r.top + r.height / 2);
+    zoomInBtn.addEventListener("click", function () {
+      const rect = stage.getBoundingClientRect();
+      zoomAtPoint(scale + step, rect.left + rect.width / 2, rect.top + rect.height / 2);
     });
 
-    zoomOutBtn.addEventListener("click", () => {
-      const r = stage.getBoundingClientRect();
-      zoomAtPoint(scale - step, r.left + r.width / 2, r.top + r.height / 2);
+    zoomOutBtn.addEventListener("click", function () {
+      const rect = stage.getBoundingClientRect();
+      zoomAtPoint(scale - step, rect.left + rect.width / 2, rect.top + rect.height / 2);
     });
 
     resetZoomBtn.addEventListener("click", resetFloorplan);
 
-    stage.addEventListener("wheel", (e) => {
+    stage.addEventListener("wheel", function (e) {
       e.preventDefault();
-      zoomAtPoint(scale + (e.deltaY < 0 ? step : -step), e.clientX, e.clientY);
+      const delta = e.deltaY < 0 ? step : -step;
+      zoomAtPoint(scale + delta, e.clientX, e.clientY);
     }, { passive: false });
 
-    stage.addEventListener("mousedown", (e) => {
+    stage.addEventListener("mousedown", function (e) {
       if (scale <= 1) return;
       isDragging = true;
       stage.classList.add("dragging");
-      startX = e.clientX; startY = e.clientY;
-      startOffsetX = offsetX; startOffsetY = offsetY;
+      startX = e.clientX;
+      startY = e.clientY;
+      startOffsetX = offsetX;
+      startOffsetY = offsetY;
     });
 
-    window.addEventListener("mousemove", (e) => {
+    window.addEventListener("mousemove", function (e) {
       if (!isDragging) return;
       offsetX = startOffsetX + (e.clientX - startX);
       offsetY = startOffsetY + (e.clientY - startY);
       updateTransform();
     });
 
-    window.addEventListener("mouseup", () => {
+    window.addEventListener("mouseup", function () {
       isDragging = false;
       stage.classList.remove("dragging");
     });
 
-    img.addEventListener("load", resetFloorplan);
-    window.addEventListener("resize", () => { if (scale === 1) centerImage(); updateTransform(); });
-    if (img.complete) resetFloorplan();
-  })();
-  </script>
+    img.addEventListener("load", function () {
+      resetFloorplan();
+    });
 
+    window.addEventListener("resize", function () {
+      if (scale === 1) {
+        centerImage();
+      }
+      updateTransform();
+    });
+
+    if (img.complete) {
+      resetFloorplan();
+    }
+  })();
+</script>
 </body>
 </html>
+
+
