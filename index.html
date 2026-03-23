@@ -139,18 +139,19 @@
     }
 
     .btn-primary {
-  background: #c8a73a;
-      letter-spacing: 0.5px;
+  background: #d4af37;
   color: #111 !important;
-  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.22);
   font-weight: 800;
-  border: 1px solid rgba(212, 175, 55, 0.6);
+  transition: all 0.2s ease;
 }
 
     .btn-primary:hover {
-  background: #c29b2f;
+  background: #d4af37; /* SAME COLOR */
   transform: translateY(-1px);
   box-shadow: 0 10px 28px rgba(212, 175, 55, 0.35);
+  filter: brightness(1.05);
 }
     
     .btn-secondary {
@@ -167,13 +168,13 @@
     }
 
     .hero {
-      position: relative;
-      min-height: calc(100vh - 82px);
-      display: flex;
-      align-items: flex-start;
-      overflow: hidden;
-      border-bottom: 1px solid var(--line);
-    }
+  position: relative;
+  min-height: calc(100vh - 70px); /* slightly tighter */
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
 
     .hero::before {
       content: "";
@@ -193,22 +194,22 @@
       opacity: 0.75;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 880px;
-      padding: 18px 0 0;
-    }
+ .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  padding: 0;
+  margin-top: 12px;
+}
 
-    .hero-content h1,
-    .hero-content .price-line,
-    .hero-content .hero-subtitle,
-    .hero-content .eyebrow {
-      text-shadow:
-        0 0 120px rgba(0, 0, 0, 0.75),
-        0 0 30px rgba(0, 0, 0, 0.55),
-        2px 2px 4px rgba(0, 0, 0, 0.35);
-    }
+.hero-content h1,
+.hero-content .price-line,
+.hero-content .hero-subtitle,
+.hero-content .eyebrow {
+  text-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.4);
+}
 
     .eyebrow {
       display: inline-block;
@@ -835,35 +836,68 @@
     </div>
   </section>
 
-  <section id="floorplan">
-    <div class="wrap">
-      <div class="section-header">
-        <span class="kicker">Floorplan</span>
-        <h2>Floorplan</h2>
-        <p class="intro">
-          Preview and zoom the floorplan below.
-        </p>
+<section id="floorplan">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="kicker">Floorplan</span>
+      <h2>Floorplan</h2>
+      <p class="intro">
+        View the floorplan below.
+      </p>
+    </div>
+
+    <div class="pdf-viewer-shell">
+      <div class="pdf-preview desktop-only" id="pdfPreview">
+        <img
+          src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=256"
+          alt="Floorplan preview"
+        />
       </div>
 
-      <div class="pdf-viewer-shell" id="pdfShell">
-        <div class="pdf-preview" id="pdfPreview">
-          <img
-            src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=256"
-            alt="Floorplan preview"
-          />
-        </div>
+      <iframe
+        id="floorplanPdf"
+        class="pdf-frame desktop-only"
+        src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.pdf#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width"
+        title="41 Thornbank Road floorplan PDF">
+      </iframe>
 
-        <iframe
-          id="floorplanPdf"
-          class="pdf-frame"
-          src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.pdf#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width"
-          title="41 Thornbank Road floorplan PDF">
-        </iframe>
-
-              </div>
+      <div class="mobile-floorplan">
+        <img
+          src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=1600"
+          alt="41 Thornbank Road floorplan"
+        />
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
+.mobile-floorplan {
+  display: none;
+}
+
+.mobile-floorplan img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-floorplan {
+    display: block;
+  }
+
+  .pdf-viewer-shell {
+    padding: 0;
+    background: #fff;
+  }
+}
+  
   <section id="map">
     <div class="wrap">
       <div class="section-header">
@@ -996,5 +1030,17 @@
       }
     })();
   </script>
+  <script>
+  (function () {
+    const pdfFrame = document.getElementById("floorplanPdf");
+    const pdfPreview = document.getElementById("pdfPreview");
+
+    if (pdfFrame && pdfPreview) {
+      pdfFrame.addEventListener("load", function () {
+        pdfPreview.classList.add("hidden");
+      });
+    }
+  })();
+</script>
 </body>
 </html>
