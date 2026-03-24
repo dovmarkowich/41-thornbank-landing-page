@@ -516,13 +516,14 @@
     /* FIX: .gallery-media-wrap was referenced in HTML but never defined in CSS.
        Must be position:relative so the absolutely-positioned caption anchors to it. */
     .gallery-media-wrap {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: min(92vw, 1800px);
-      width: 100%;
-    }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: min(92vw, 1800px);
+  width: 100%;
+  z-index: 1;
+}
 
     .gallery-modal img {
       width: auto;
@@ -536,39 +537,49 @@
         0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 
-    .gallery-close,
-    .gallery-nav {
-      position: absolute;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(6px);
-    }
+   .gallery-close,
+.gallery-nav {
+  position: absolute;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1003;
+}
 
-    .gallery-close {
-      top: 18px;
-      right: 22px;
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
-      font-size: 30px;
-      line-height: 1;
-    }
+.gallery-close {
+  top: 18px;
+  right: 22px;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  font-size: 30px;
+  line-height: 1;
+}
 
-    .gallery-nav {
-      top: 50%;
-      transform: translateY(-50%);
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
-      font-size: 38px;
-      line-height: 1;
-    }
+.gallery-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  font-size: 38px;
+  line-height: 1;
+  padding: 0;
+}
 
-    .gallery-nav.prev { left: 18px; }
-    .gallery-nav.next { right: 18px; }
+.gallery-nav.prev {
+  left: 18px;
+}
+
+.gallery-nav.next {
+  right: 18px;
+}
 
     .gallery-counter {
       position: absolute;
@@ -887,22 +898,33 @@
       }
 
       .gallery-modal {
-        padding: 56px 12px 56px;
-        align-items: center;
-      }
+  padding: 56px 12px 56px;
+  align-items: center;
+}
 
-      .gallery-nav.prev { left: 10px; }
-      .gallery-nav.next { right: 10px; }
+.gallery-nav {
+  width: 48px;
+  height: 48px;
+  font-size: 32px;
+}
 
-      .gallery-counter {
-        top: 16px;
-        font-size: 13px;
-      }
+.gallery-nav.prev {
+  left: 8px;
+}
 
-      .gallery-caption {
-        font-size: 13px;
-        margin-top: 10px;
-      }
+.gallery-nav.next {
+  right: 8px;
+}
+
+.gallery-counter {
+  top: 16px;
+  font-size: 13px;
+}
+
+.gallery-caption {
+  font-size: 13px;
+  margin-top: 10px;
+}
 
       /* FIX: contact CTA button full width on mobile */
       .contact-grid > div:last-child {
@@ -965,7 +987,7 @@
     <div class="wrap">
       <div class="hero-content">
         <span class="eyebrow">Private Estate Opportunity</span>
-        <h1>41 Thornbank Road <span class="sub-location">Vaughan, (Uplands)</span></h1>
+        <h1>41 Thornbank Road <span class="sub-location">Vaughan (Uplands)</span></h1>
         <div class="price-line">Offered at $9,499,999</div>
         <p class="hero-subtitle">
           A rare golf course estate in Thornhill, Vaughan (Uplands), newly built, architecturally striking, and positioned as a compelling acquisition below replacement value.
