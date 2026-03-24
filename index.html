@@ -552,17 +552,19 @@
 .gallery-counter {
   position: absolute;
   top: 22px;
-  left: 24px;
-  font-size: 14px;           /* match caption */
-  color: #fff;               /* match caption */
-  font-family: inherit;      /* ensures same font */
-  line-height: 1.4;          /* match caption */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #fff;
   background: rgba(0,0,0,0.45);
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 999px;
   z-index: 1002;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
 }
-
+    
 .gallery-caption {
   position: relative;
   margin-top: 12px;
