@@ -766,19 +766,21 @@
         grid-template-areas:
           "brand cta"
           "nav nav";
-        align-items: start;
         gap: 8px 12px;
         min-height: auto;
         padding: 10px 0;
       }
 
-      .brand-block { grid-area: brand; }
+      .brand-block {
+        grid-area: brand;
+        align-self: start;
+      }
 
       .header-cta-mobile {
         display: inline-flex !important;
         grid-area: cta;
         justify-self: end;
-        align-self: start;
+        align-self: center;
         width: auto !important;
         margin: 0 !important;
         padding: 7px 11px !important;
