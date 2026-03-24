@@ -494,6 +494,14 @@
       padding: 60px 80px;
     }
 
+.gallery-media-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 92vw;
+  max-height: 90vh;
+}
+    
     .gallery-modal.open {
       display: flex;
     }
@@ -563,19 +571,15 @@
 }
 
 .gallery-caption {
-  position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  width: min(92vw, 900px);
+  position: relative;
+  margin-top: 12px;
   text-align: center;
   color: #fff;
   font-size: 14px;
   line-height: 1.4;
-  background: rgba(0,0,0,0.5);
-  padding: 10px 14px;
-  border-radius: 12px;
+  max-width: min(92vw, 900px);
   z-index: 1002;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
 }
 
 @media (max-width: 640px) {
@@ -1008,11 +1012,14 @@
   <button class="gallery-close" id="galleryClose" type="button">×</button>
   <div class="gallery-counter" id="galleryCounter"></div>
   <button class="gallery-nav prev" id="galleryPrev" type="button">‹</button>
-  <img id="galleryModalImage" src="" alt="Expanded property photo" />
-  <button class="gallery-nav next" id="galleryNext" type="button">›</button>
-  <div class="gallery-caption" id="galleryCaption"></div>
-</div>
+  <div class="gallery-media-wrap">
+    <img id="galleryModalImage" src="" alt="Expanded property photo" />
+    <div class="gallery-caption" id="galleryCaption"></div>
+  </div>
 
+  <button class="gallery-nav next" id="galleryNext" type="button">›</button>
+</div>
+  
   <div class="gallery-modal-inner">
     <div class="gallery-count" id="galleryCount">1 / 50</div>
     <img id="galleryModalImage" src="" alt="Expanded property photo" />
