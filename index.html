@@ -56,7 +56,7 @@
       margin: 0 auto;
     }
 
-    /* HEADER */
+    /* ─── HEADER ─────────────────────────────────────────── */
 
     .topbar {
       position: sticky;
@@ -79,13 +79,14 @@
       padding: 10px 0;
     }
 
-   .header-cta-mobile {
-  display: none !important;
-}
+    /* Mobile CTA hidden by default; desktop CTA visible by default */
+    .header-cta-mobile {
+      display: none !important;
+    }
 
-.header-cta-desktop {
-  display: inline-flex;
-}
+    .header-cta-desktop {
+      display: inline-flex !important;
+    }
 
     .brand-block {
       display: flex;
@@ -134,13 +135,13 @@
       color: var(--gold-soft);
     }
 
- .nav .btn {
+    .nav .btn {
       width: auto;
       flex: 0 0 auto;
       margin-left: 8px;
     }
-    
-    /* BUTTONS */
+
+    /* ─── BUTTONS ────────────────────────────────────────── */
 
     .btn {
       display: inline-flex;
@@ -186,58 +187,47 @@
       background: rgba(0, 0, 0, 0.28);
     }
 
-.gallery-footer {
-  display: flex;
-  justify-content: center;
-  margin-top: 22px;
-}
+    /* ─── GALLERY FOOTER ─────────────────────────────────── */
 
-.gallery-more-link {
-  appearance: none;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  padding: 12px 20px;
-  font: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  cursor: pointer;
-  transition: 0.25s ease;
-}
+    .gallery-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
 
-.gallery-more-link:hover {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.04);
-}
+    .gallery-more-link {
+      appearance: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 12px 20px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
 
-.gallery-more-link:focus-visible {
-  outline: 2px solid rgba(212, 175, 55, 0.65);
-  outline-offset: 3px;
-}
+    .gallery-more-link:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.04);
+    }
 
-@media (max-width: 640px) {
-  .gallery-footer {
-    margin-top: 18px;
-  }
+    .gallery-more-link:focus-visible {
+      outline: 2px solid rgba(212, 175, 55, 0.65);
+      outline-offset: 3px;
+    }
 
-  .gallery-more-link {
-    width: auto;
-    max-width: 100%;
-    padding: 11px 18px;
-    font-size: 14px;
-  }
-}
-    
-    /* HERO */
+    /* ─── HERO ───────────────────────────────────────────── */
 
     .hero {
       position: relative;
       min-height: calc(100vh - 82px);
       display: flex;
-      align-items: flex-start;
+      align-items: flex-end;       /* FIX: was flex-start — content was flush to header */
       overflow: hidden;
       border-bottom: 1px solid var(--line);
       padding: 0;
@@ -248,6 +238,20 @@
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.22);
+      z-index: 1;
+    }
+
+    /* FIX: added bottom gradient overlay so text always reads against the image */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.78) 0%,
+        rgba(0, 0, 0, 0.30) 45%,
+        rgba(0, 0, 0, 0.10) 100%
+      );
       z-index: 1;
     }
 
@@ -265,8 +269,8 @@
       position: relative;
       z-index: 2;
       max-width: 880px;
-      padding: 0;
-      margin-top: 16px;
+      padding: 40px 0 52px;   /* FIX: was margin-top: 16px with no padding — too tight top+bottom */
+      width: 100%;
     }
 
     .hero-content h1,
@@ -332,6 +336,7 @@
       width: auto;
     }
 
+    /* FIX: stats 2-col at mid-range so 8 items don't collapse to a single column too early */
     .stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -368,7 +373,7 @@
       line-height: 1.25;
     }
 
-    /* GENERAL */
+    /* ─── GENERAL ────────────────────────────────────────── */
 
     section:not(.hero) {
       padding: 84px 0;
@@ -461,7 +466,7 @@
       font-size: 16px;
     }
 
-    /* GALLERY */
+    /* ─── GALLERY GRID ───────────────────────────────────── */
 
     .photo-grid {
       width: 100%;
@@ -491,6 +496,8 @@
       opacity: 0.92;
     }
 
+    /* ─── GALLERY MODAL ──────────────────────────────────── */
+
     .gallery-modal {
       position: fixed;
       inset: 0;
@@ -506,16 +513,27 @@
       display: flex;
     }
 
+    /* FIX: .gallery-media-wrap was referenced in HTML but never defined in CSS.
+       Must be position:relative so the absolutely-positioned caption anchors to it. */
+    .gallery-media-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: min(92vw, 1800px);
+      width: 100%;
+    }
+
     .gallery-modal img {
       width: auto;
       height: auto;
-      max-width: min(92vw, 1800px);
-      max-height: 90vh;
+      max-width: 100%;
+      max-height: 82vh;          /* FIX: was 90vh — leaves room for caption below image */
       object-fit: contain;
       border-radius: 10px;
       box-shadow:
         0 30px 80px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255,255,255,0.08);
+        0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 
     .gallery-close,
@@ -549,89 +567,48 @@
       line-height: 1;
     }
 
-    .gallery-nav.prev {
-      left: 18px;
+    .gallery-nav.prev { left: 18px; }
+    .gallery-nav.next { right: 18px; }
+
+    .gallery-counter {
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #fff;
+      z-index: 1002;
+      line-height: 1.4;
+      text-align: center;
+      white-space: nowrap;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
     }
 
-    .gallery-nav.next {
-      right: 18px;
+    /* FIX: caption is now static flow inside .gallery-media-wrap, not absolute.
+       Absolute + wrong parent caused it to escape containment on some browsers. */
+    .gallery-caption {
+      width: 100%;
+      max-width: min(92vw, 900px);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 12px;
+      padding: 0 8px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      min-height: 20px;          /* reserves space so layout doesn't jump when empty */
     }
 
-.gallery-counter {
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 14px;
-  color: #fff;
-  z-index: 1002;
-  line-height: 1.4;
-  text-align: center;
-  white-space: nowrap;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-}
-    
-.gallery-caption {
-  position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  width: min(92vw, 900px);
-  text-align: center;
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.4;
-  z-index: 1002;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-  white-space: normal;
-}
+    /* ─── FLOORPLAN ──────────────────────────────────────── */
 
-.gallery-modal-inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: min(92vw, 1800px);
-}
-    
-@media (max-width: 640px) {
-  .gallery-counter {
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 13px;
-    padding: 0;
-    text-align: center;
-    white-space: nowrap;
-  }
+    /* FIX: .mobile-only base rule was missing — it was only set inside the media query.
+       Must be hidden at desktop by default so .mobile-floorplan doesn't show on desktop. */
+    .mobile-only {
+      display: none !important;
+    }
 
-  .gallery-caption {
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 24px);
-    font-size: 13px;
-    padding: 0;
-    text-align: center;
-  }
-
-  .gallery-modal {
-    padding: 56px 12px 76px;
-  }
-
-  .gallery-nav.prev {
-    left: 10px;
-  }
-
-  .gallery-nav.next {
-    right: 10px;
-  }
-}    
-    /* FLOORPLAN */
-
-    .mobile-floorplan {
-      display: none;
+    .desktop-only {
+      display: block;
     }
 
     .mobile-floorplan img {
@@ -708,7 +685,7 @@
       background: #fff;
     }
 
-    /* CONTACT */
+    /* ─── CONTACT ────────────────────────────────────────── */
 
     .contact-panel {
       background:
@@ -751,7 +728,7 @@
       font-size: 13px;
     }
 
-    /* TABLET */
+    /* ─── TABLET  (≤ 980px) ──────────────────────────────── */
 
     @media (max-width: 980px) {
       .stats,
@@ -761,6 +738,11 @@
         grid-template-columns: 1fr;
       }
 
+      /* FIX: 2-col stats at tablet so 8 items don't stretch to one tall column */
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .photo-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -768,152 +750,207 @@
       .embed iframe {
         min-height: 420px;
       }
+
+      /* FIX: contact CTA div aligns left when stacked */
+      .contact-grid > div:last-child {
+        justify-content: flex-start;
+      }
     }
 
-  /* MOBILE HEADER FIX */
+    /* ─── MOBILE HEADER  (≤ 1024px) ─────────────────────── */
 
-@media (max-width: 1024px) {
-  .topbar-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "brand cta"
-      "nav nav";
-    align-items: start;
-    gap: 8px 12px;
-    min-height: auto;
-    padding: 10px 0;
-  }
+    @media (max-width: 1024px) {
+      .topbar-inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+          "brand cta"
+          "nav nav";
+        align-items: start;
+        gap: 8px 12px;
+        min-height: auto;
+        padding: 10px 0;
+      }
 
-  .brand-block {
-    grid-area: brand;
-  }
+      .brand-block { grid-area: brand; }
 
-  .header-cta-mobile {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    grid-area: cta;
-    justify-self: end;
-    align-self: start;
-    width: auto !important;
-    margin: 0 !important;
-    padding: 7px 11px !important;
-    font-size: 12.5px !important;
-    line-height: 1 !important;
-    min-height: 34px;
-    white-space: nowrap;
-    border-radius: 999px;
-  }
+      .header-cta-mobile {
+        display: inline-flex !important;
+        grid-area: cta;
+        justify-self: end;
+        align-self: start;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 7px 11px !important;
+        font-size: 12.5px !important;
+        line-height: 1 !important;
+        min-height: 34px;
+        white-space: nowrap;
+        border-radius: 999px;
+      }
 
-  .header-cta-desktop {
-    display: none !important;
-  }
+      .header-cta-desktop {
+        display: none !important;
+      }
 
-  .nav {
-    grid-area: nav;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 16px;
-    width: 100%;
-    align-items: center;
-    margin-top: 0;
-  }
+      .nav {
+        grid-area: nav;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+        width: 100%;
+        align-items: center;
+        margin-top: 0;
+      }
 
-  .nav a:not(.btn) {
-    font-size: 14px;
-    line-height: 1.2;
-  }
+      .nav a:not(.btn) {
+        font-size: 14px;
+        line-height: 1.2;
+      }
 
-  .hero {
-    min-height: auto;
-  }
+      .hero {
+        min-height: auto;
+      }
 
-  .hero-content {
-    padding: 0 0 20px;
-    margin-top: 0;
-  }
+      /* FIX: hero content top/bottom padding for mobile — was 0 top, too cramped */
+      .hero-content {
+        padding: 32px 0 40px;
+      }
 
-  .hero .btn {
-    width: 100%;
-  }
+      .hero .btn {
+        width: 100%;
+      }
 
-  .hero-actions {
-    flex-direction: column;
-  }
+      .hero-actions {
+        flex-direction: column;
+      }
 
-  .photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+      .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
 
-  .embed iframe {
-    min-height: 420px;
-  }
+      .embed iframe {
+        min-height: 420px;
+      }
 
-  .gallery-modal {
-    padding: 60px 18px;
-  }
-}
-@media (max-width: 640px) {
-  .topbar .btn.btn-primary {
-    white-space: nowrap;
-    border-radius: 999px;
-  }
-}
+      .gallery-modal {
+        padding: 60px 18px;
+      }
+    }
 
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
-  }
+    /* ─── MOBILE  (≤ 768px) ──────────────────────────────── */
 
-  .mobile-only {
-    display: block !important;
-  }
+    @media (max-width: 768px) {
+      /* FIX: base .desktop-only / .mobile-only rules properly toggled here */
+      .desktop-only {
+        display: none !important;
+      }
 
-  .mobile-floorplan {
-    display: block;
-  }
+      .mobile-only {
+        display: block !important;
+      }
 
-  .pdf-viewer-shell {
-    padding: 0;
-    background: #fff;
-  }
+      .pdf-viewer-shell {
+        padding: 0;
+        background: #fff;
+      }
 
-  .pdf-frame,
-  .pdf-preview {
-    height: 62vh;
-    min-height: 460px;
-  }
-}  
+      .pdf-frame,
+      .pdf-preview {
+        height: 62vh;
+        min-height: 460px;
+      }
+
+      /* FIX: stats stay 2-col on small mobile for readability */
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+      }
+
+      .gallery-footer {
+        margin-top: 18px;
+      }
+
+      .gallery-more-link {
+        width: auto;
+        max-width: 100%;
+        padding: 11px 18px;
+        font-size: 14px;
+      }
+
+      .gallery-modal {
+        padding: 56px 12px 56px;
+        align-items: center;
+      }
+
+      .gallery-nav.prev { left: 10px; }
+      .gallery-nav.next { right: 10px; }
+
+      .gallery-counter {
+        top: 16px;
+        font-size: 13px;
+      }
+
+      .gallery-caption {
+        font-size: 13px;
+        margin-top: 10px;
+      }
+
+      /* FIX: contact CTA button full width on mobile */
+      .contact-grid > div:last-child {
+        width: 100%;
+      }
+
+      .contact-grid > div:last-child .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ─── SMALL MOBILE  (≤ 480px) ───────────────────────── */
+
+    @media (max-width: 480px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-grid img {
+        height: 220px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <div id="top"></div>
-  
+
   <header class="topbar">
-  <div class="topbar-inner">
-    <div class="brand-block">
-      <a href="#top" class="brand">Dov Markowich, Broker</a>
-      <a href="#top" class="brand-sub">RE/MAX Realtron Realty Inc.</a>
-      <div class="brand-contact">
-        <a href="tel:14167274829">416-727-4829</a> |
-        <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a>
+    <div class="topbar-inner">
+      <div class="brand-block">
+        <a href="#top" class="brand">Dov Markowich, Broker</a>
+        <a href="#top" class="brand-sub">RE/MAX Realtron Realty Inc.</a>
+        <div class="brand-contact">
+          <a href="tel:14167274829">416-727-4829</a> |
+          <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a>
+        </div>
       </div>
+
+      <a class="btn btn-primary header-cta-mobile" href="#contact">Request Details</a>
+
+      <nav class="nav">
+        <a href="#photos">Photos</a>
+        <a href="#matterport">3D Tour</a>
+        <a href="#video">Video</a>
+        <a href="#floorplan">Floorplan</a>
+        <a href="#map">Map</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary header-cta-desktop" href="#contact">Request Details</a>
+      </nav>
     </div>
-
-    <a class="btn btn-primary header-cta-mobile" href="#contact">Request Details</a>
-
-    <nav class="nav">
-      <a href="#photos">Photos</a>
-      <a href="#matterport">3D Tour</a>
-      <a href="#video">Video</a>
-      <a href="#floorplan">Floorplan</a>
-      <a href="#map">Map</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn-primary header-cta-desktop" href="#contact">Request Details</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
   <section class="hero">
     <div class="hero-bg"></div>
@@ -974,7 +1011,7 @@
         <span class="kicker">The Opportunity</span>
         <h2>Not a Typical Listing, a Strategic Acquisition</h2>
         <p class="intro">
-          Set on a spectacular lot backing directly onto the Thornhill Golf &amp; Country Club, this newly built custom estate delivers scale, privacy, architectural drama, and long-term positioning in one of Vaughan (Uplands)’s most exclusive residential enclaves.
+          Set on a spectacular lot backing directly onto the Thornhill Golf &amp; Country Club, this newly built custom estate delivers scale, privacy, architectural drama, and long-term positioning in one of Vaughan (Uplands)'s most exclusive residential enclaves.
         </p>
       </div>
 
@@ -998,7 +1035,7 @@
           </div>
           <div class="feature">
             <h3>Private Setting</h3>
-            <p>Estate-level privacy with direct golf course backing on one of the area’s most coveted streets.</p>
+            <p>Estate-level privacy with direct golf course backing on one of the area's most coveted streets.</p>
           </div>
           <div class="feature">
             <h3>Turnkey Advantage</h3>
@@ -1038,26 +1075,28 @@
         <img src="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=800" data-full="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=1920" alt="41 Thornbank Road photo 12" data-index="11" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
       </div>
       <div class="gallery-footer">
-      <button class="gallery-more-link" id="viewFullGallery" type="button">
-      View Full Gallery
-      </button>
+        <button class="gallery-more-link" id="viewFullGallery" type="button">
+          View Full Gallery
+        </button>
       </div>
     </div>
   </section>
 
-<div class="gallery-modal" id="galleryModal" aria-hidden="true">
-  <button class="gallery-close" id="galleryClose" type="button">×</button>
-  <div class="gallery-counter" id="galleryCounter"></div>
-  <button class="gallery-nav prev" id="galleryPrev" type="button">‹</button>
+  <!-- FIX: gallery-media-wrap now has CSS defined (position:relative, flex column)
+       so caption renders in flow below the image rather than escaping its container -->
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+    <button class="gallery-close" id="galleryClose" type="button">×</button>
+    <div class="gallery-counter" id="galleryCounter"></div>
+    <button class="gallery-nav prev" id="galleryPrev" type="button">‹</button>
 
-  <div class="gallery-media-wrap">
-    <img id="galleryModalImage" src="" alt="Expanded property photo" />
-    <div class="gallery-caption" id="galleryCaption"></div>
+    <div class="gallery-media-wrap">
+      <img id="galleryModalImage" src="" alt="Expanded property photo" />
+      <div class="gallery-caption" id="galleryCaption"></div>
+    </div>
+
+    <button class="gallery-nav next" id="galleryNext" type="button">›</button>
   </div>
 
-  <button class="gallery-nav next" id="galleryNext" type="button">›</button>
-</div>
-  
   <section id="matterport">
     <div class="wrap">
       <div class="section-header">
@@ -1182,7 +1221,7 @@
             <div class="contact-link">Email: <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a></div>
           </div>
 
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
             <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Email Dov</a>
           </div>
         </div>
@@ -1205,263 +1244,62 @@
     const galleryPrev = document.getElementById("galleryPrev");
     const galleryNext = document.getElementById("galleryNext");
     const viewFullGallery = document.getElementById("viewFullGallery");
-
     const galleryCounter = document.getElementById("galleryCounter");
     const galleryCaption = document.getElementById("galleryCaption");
 
     const totalFullGalleryPhotos = 50;
 
     const fullGalleryImages = [
-      {
-        thumb: "https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId@caf8b21e19.jpg?w=800",
-        full: "https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId@caf8b21e19.jpg?w=1920",
-        caption: "Actual House with Rendered Driveway & Landscaping"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=800",
-        full: "https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=1920",
-        caption: "Actual House with Rendered Driveway & Landscaping"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr@c59150b6ac.jpg?w=800",
-        full: "https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr@c59150b6ac.jpg?w=1920",
-        caption: "Main Foyer - 28 Foot Ceiling"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33@2fbe85c3b7.jpg?w=800",
-        full: "https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33@2fbe85c3b7.jpg?w=1920",
-        caption: "Main Foyer - 28 Foot Ceiling"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv@efdb872566.jpg?w=800",
-        full: "https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv@efdb872566.jpg?w=1920",
-        caption: "Main Foyer - View into Office"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr@12d0a13c85.jpg?w=800",
-        full: "https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr@12d0a13c85.jpg?w=1920",
-        caption: "Office with 2 Separate Entrances"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv@d8ecc84b22.jpg?w=800",
-        full: "https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv@d8ecc84b22.jpg?w=1920",
-        caption: "Main Foyer - View into Living Room"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP@64b9bf6b60.jpg?w=800",
-        full: "https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP@64b9bf6b60.jpg?w=1920",
-        caption: "Living Room - View into Dining Room"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0@69d68ff71f.jpg?w=800",
-        full: "https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0@69d68ff71f.jpg?w=1920",
-        caption: "Main Hallway -View of Staircase & Elevator Hallway"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq@1b45821ae8.jpg?w=800",
-        full: "https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq@1b45821ae8.jpg?w=1920",
-        caption: "Main Hallway - View into Kitchen & Family Room"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=800",
-        full: "https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=1920",
-        caption: "View of Family Room with 28 Foot Ceiling"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=800",
-        full: "https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=1920",
-        caption: "View from Family Room with Feature Wall"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/Urgab90ZG0iA5qjfDurF@745ff921d2.jpg?w=800",
-        full: "https://cdn.show.tours/p/Urgab90ZG0iA5qjfDurF@745ff921d2.jpg?w=1920",
-        caption: "View from Family Room into Kitchen"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/C1lbViWclwGYoajcrwIj@83bc7b7791.jpg?w=800",
-        full: "https://cdn.show.tours/p/C1lbViWclwGYoajcrwIj@83bc7b7791.jpg?w=1920",
-        caption: "View from Family Room towards Kitchen"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/e6RAWYVmueVl94R5RkFO@22f0bb4089.jpg?w=800",
-        full: "https://cdn.show.tours/p/e6RAWYVmueVl94R5RkFO@22f0bb4089.jpg?w=1920",
-        caption: "View from Family Room into Kitchen & Breakfast"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/HN6y99rmKR8g8uNUX4UC@134abacd77.jpg?w=800",
-        full: "https://cdn.show.tours/p/HN6y99rmKR8g8uNUX4UC@134abacd77.jpg?w=1920",
-        caption: "View of Family Room to Kitchen & Main Hallway"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/wJ6mxCnB1cZSb0q0pIgn@edbbb9db8b.jpg?w=800",
-        full: "https://cdn.show.tours/p/wJ6mxCnB1cZSb0q0pIgn@edbbb9db8b.jpg?w=1920",
-        caption: "View of Family Room to Kitchen & Main Hallway"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/SeOi47WgOqGHoC19yqZG@6cb350ba87.jpg?w=800",
-        full: "https://cdn.show.tours/p/SeOi47WgOqGHoC19yqZG@6cb350ba87.jpg?w=1920",
-        caption: "View of Prep Kitchen"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/MHZBNXchjOuLXt9yT9Kw@7c358829e6.jpg?w=800",
-        full: "https://cdn.show.tours/p/MHZBNXchjOuLXt9yT9Kw@7c358829e6.jpg?w=1920",
-        caption: "View from U/L outside of the Primary BR Entrance"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/h1CBC7O7pRQoms2hLhOJ@08cfb8233b.jpg?w=800",
-        full: "https://cdn.show.tours/p/h1CBC7O7pRQoms2hLhOJ@08cfb8233b.jpg?w=1920",
-        caption: "Primary BR - WIC Left & Primary WR right"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/ZGDnDDHsXMQbVYDv8osI@6bfc6fa094.jpg?w=800",
-        full: "https://cdn.show.tours/p/ZGDnDDHsXMQbVYDv8osI@6bfc6fa094.jpg?w=1920",
-        caption: "Primary BR Walk In Closet - 2 Islands - 500 sq.ft"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/ncH0abyVIDc4rAIQMZPG@de9854a891.jpg?w=800",
-        full: "https://cdn.show.tours/p/ncH0abyVIDc4rAIQMZPG@de9854a891.jpg?w=1920",
-        caption: "Primary WR - 2 Floating Mirrors on Back Order"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=800",
-        full: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=1920",
-        caption: "Primary WR - 2 Floating Mirrors on Back Order"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/bJJ3Z7XvozmRvKnSKgD1@57a13ce384.jpg?w=800",
-        full: "https://cdn.show.tours/p/bJJ3Z7XvozmRvKnSKgD1@57a13ce384.jpg?w=1920",
-        caption: "Primary Bedroom with Walk out to Private Terrace"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/3vPu0hZVL7uoSyBPaol0@e6377780a7.jpg?w=800",
-        full: "https://cdn.show.tours/p/3vPu0hZVL7uoSyBPaol0@e6377780a7.jpg?w=1920",
-        caption: "Primary Bedroom w Fireplace - Stone on Back Order"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/zpjKG0TSgvgfoOXp6WLW@c4469e5392.jpg?w=800",
-        full: "https://cdn.show.tours/p/zpjKG0TSgvgfoOXp6WLW@c4469e5392.jpg?w=1920",
-        caption: "2nd Bedroom - Front Part of the House"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/pnbwyhQ5uexTLHXwp2LU@86fcf61006.jpg?w=800",
-        full: "https://cdn.show.tours/p/pnbwyhQ5uexTLHXwp2LU@86fcf61006.jpg?w=1920",
-        caption: "Large Walk In Closet with Natural Light"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/7Njc40aPovmcjCHwYERo@e7b0bbebaa.jpg?w=800",
-        full: "https://cdn.show.tours/p/7Njc40aPovmcjCHwYERo@e7b0bbebaa.jpg?w=1920",
-        caption: "2nd Bedroom - Front part of the house"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/fUM0hjROllzy03OkD29m@46a2024920.jpg?w=800",
-        full: "https://cdn.show.tours/p/fUM0hjROllzy03OkD29m@46a2024920.jpg?w=1920",
-        caption: "Large Washroom with Shower"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/wm5Lc55ScjggarUARdiI@bda3360cd2.jpg?w=800",
-        full: "https://cdn.show.tours/p/wm5Lc55ScjggarUARdiI@bda3360cd2.jpg?w=1920",
-        caption: "Outside of 2nd BR - View of 2nd Staircase & 3rd BR"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/KyBw0YjNFLJNYL5YsZdq@57a1f21fde.jpg?w=800",
-        full: "https://cdn.show.tours/p/KyBw0YjNFLJNYL5YsZdq@57a1f21fde.jpg?w=1920",
-        caption: "3rd Bedroom - Facing Back of House & Golf Course"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/I4HncLovJG40CX8oQ0Tg@d03ec5e71d.jpg?w=800",
-        full: "https://cdn.show.tours/p/I4HncLovJG40CX8oQ0Tg@d03ec5e71d.jpg?w=1920",
-        caption: "3rd Bedroom - Plenty of Space"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/JwTgEYjq77uhdfgAcedA@d9f97a94a7.jpg?w=800",
-        full: "https://cdn.show.tours/p/JwTgEYjq77uhdfgAcedA@d9f97a94a7.jpg?w=1920",
-        caption: "Large Walk In Closet & into Ensuite - 3rd Bedroom"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/Q4oG9FY3k37Z7ySu28gH@935d6ba6ad.jpg?w=800",
-        full: "https://cdn.show.tours/p/Q4oG9FY3k37Z7ySu28gH@935d6ba6ad.jpg?w=1920",
-        caption: "Ensuite of 3rd Bedroom"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/2NClnRRl1fgoeiW6FiJB@0d1a4db41e.jpg?w=800",
-        full: "https://cdn.show.tours/p/2NClnRRl1fgoeiW6FiJB@0d1a4db41e.jpg?w=1920",
-        caption: "Hallway from 3rd BR - views of Backyard, Family RM"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/3rkFpBVyv0PspPXXDRsa@c3a3619c15.jpg?w=800",
-        full: "https://cdn.show.tours/p/3rkFpBVyv0PspPXXDRsa@c3a3619c15.jpg?w=1920",
-        caption: "View from Upper floor into Family Room"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/tU4DgkMAvqclh5tntWvX@62f2d4d93b.jpg?w=800",
-        full: "https://cdn.show.tours/p/tU4DgkMAvqclh5tntWvX@62f2d4d93b.jpg?w=1920",
-        caption: "4th Bedroom - with Walk In Closet & Ensuite"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/JbSI4CfjiEZzzqGsDCvY@a7a4c0c0cf.jpg?w=800",
-        full: "https://cdn.show.tours/p/JbSI4CfjiEZzzqGsDCvY@a7a4c0c0cf.jpg?w=1920",
-        caption: "4th BR Ensuite - 4 pcs Washroom"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/mzR1fGs1eSuF4rHBB4hW@989f748911.jpg?w=800",
-        full: "https://cdn.show.tours/p/mzR1fGs1eSuF4rHBB4hW@989f748911.jpg?w=1920",
-        caption: "4th BR Ensuite - 4 pcs Washroom"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/W80KiSdF4uD2H1QEIx25@3e85d25fbd.jpg?w=800",
-        full: "https://cdn.show.tours/p/W80KiSdF4uD2H1QEIx25@3e85d25fbd.jpg?w=1920",
-        caption: "5th Bedroom - with Walk In Closet and Ensuite"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/5qbJJwerHahNYlTtfawD@6132460e48.jpg?w=800",
-        full: "https://cdn.show.tours/p/5qbJJwerHahNYlTtfawD@6132460e48.jpg?w=1920",
-        caption: "5th BR - w Built ins, Walk In Closet & Ensuite"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/UK0zOQSvymo8QudrhC30@8dec576a67.jpg?w=800",
-        full: "https://cdn.show.tours/p/UK0zOQSvymo8QudrhC30@8dec576a67.jpg?w=1920",
-        caption: "5th Bathroom Ensuite - 3pcs Washroom"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/uxBO2BQxrwmikOGw24gn@405f2d6921.jpg?w=800",
-        full: "https://cdn.show.tours/p/uxBO2BQxrwmikOGw24gn@405f2d6921.jpg?w=1920",
-        caption: "Upper Level Laundry"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/0dgxSXucnLaoyhG12ELK@5034fcaa95.jpg?w=800",
-        full: "https://cdn.show.tours/p/0dgxSXucnLaoyhG12ELK@5034fcaa95.jpg?w=1920",
-        caption: "Outdoor Sitting Area - Walk out from Kitchen"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/PdCIHDaOtNnYu1IGeltW@68a2b70066.jpg?w=800",
-        full: "https://cdn.show.tours/p/PdCIHDaOtNnYu1IGeltW@68a2b70066.jpg?w=1920",
-        caption: "Cabana - Roughed in W Plumbing for WR & Shower"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/OXdxvHZWJ4nAzOVrhbQK@ebfc520b1a.jpg?w=800",
-        full: "https://cdn.show.tours/p/OXdxvHZWJ4nAzOVrhbQK@ebfc520b1a.jpg?w=1920",
-        caption: "Overhead view Facing N - Unfinished DW & Landscaping"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/s9XuR71I615lZEYO0A1B@c126c042c0.jpg?w=800",
-        full: "https://cdn.show.tours/p/s9XuR71I615lZEYO0A1B@c126c042c0.jpg?w=1920",
-        caption: "Front of House - Day time"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/MHm2ZaBkfzLvo4avmc1z@d56cb96c82.jpg?w=800",
-        full: "https://cdn.show.tours/p/MHm2ZaBkfzLvo4avmc1z@d56cb96c82.jpg?w=1920",
-        caption: "Front of House - Twilight Shot"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/o9IMJKdpsHwtJRmDNwUK@1ed93def42.jpg?w=800",
-        full: "https://cdn.show.tours/p/o9IMJKdpsHwtJRmDNwUK@1ed93def42.jpg?w=1920",
-        caption: "Back of House - Twilight Shot"
-      },
-      {
-        thumb: "https://cdn.show.tours/p/RSqTLWzW5bEk0F0rPXpT@0f83ba422c.jpg?w=800",
-        full: "https://cdn.show.tours/p/RSqTLWzW5bEk0F0rPXpT@0f83ba422c.jpg?w=1920",
-        caption: "Overhead view Facing N - Twilight"
-      }
+      { thumb: "https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId@caf8b21e19.jpg?w=800", full: "https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId@caf8b21e19.jpg?w=1920", caption: "Actual House with Rendered Driveway & Landscaping" },
+      { thumb: "https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=800", full: "https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=1920", caption: "Actual House with Rendered Driveway & Landscaping" },
+      { thumb: "https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr@c59150b6ac.jpg?w=800", full: "https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr@c59150b6ac.jpg?w=1920", caption: "Main Foyer - 28 Foot Ceiling" },
+      { thumb: "https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33@2fbe85c3b7.jpg?w=800", full: "https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33@2fbe85c3b7.jpg?w=1920", caption: "Main Foyer - 28 Foot Ceiling" },
+      { thumb: "https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv@efdb872566.jpg?w=800", full: "https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv@efdb872566.jpg?w=1920", caption: "Main Foyer - View into Office" },
+      { thumb: "https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr@12d0a13c85.jpg?w=800", full: "https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr@12d0a13c85.jpg?w=1920", caption: "Office with 2 Separate Entrances" },
+      { thumb: "https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv@d8ecc84b22.jpg?w=800", full: "https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv@d8ecc84b22.jpg?w=1920", caption: "Main Foyer - View into Living Room" },
+      { thumb: "https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP@64b9bf6b60.jpg?w=800", full: "https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP@64b9bf6b60.jpg?w=1920", caption: "Living Room - View into Dining Room" },
+      { thumb: "https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0@69d68ff71f.jpg?w=800", full: "https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0@69d68ff71f.jpg?w=1920", caption: "Main Hallway -View of Staircase & Elevator Hallway" },
+      { thumb: "https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq@1b45821ae8.jpg?w=800", full: "https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq@1b45821ae8.jpg?w=1920", caption: "Main Hallway - View into Kitchen & Family Room" },
+      { thumb: "https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=800", full: "https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=1920", caption: "View of Family Room with 28 Foot Ceiling" },
+      { thumb: "https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=800", full: "https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=1920", caption: "View from Family Room with Feature Wall" },
+      { thumb: "https://cdn.show.tours/p/Urgab90ZG0iA5qjfDurF@745ff921d2.jpg?w=800", full: "https://cdn.show.tours/p/Urgab90ZG0iA5qjfDurF@745ff921d2.jpg?w=1920", caption: "View from Family Room into Kitchen" },
+      { thumb: "https://cdn.show.tours/p/C1lbViWclwGYoajcrwIj@83bc7b7791.jpg?w=800", full: "https://cdn.show.tours/p/C1lbViWclwGYoajcrwIj@83bc7b7791.jpg?w=1920", caption: "View from Family Room towards Kitchen" },
+      { thumb: "https://cdn.show.tours/p/e6RAWYVmueVl94R5RkFO@22f0bb4089.jpg?w=800", full: "https://cdn.show.tours/p/e6RAWYVmueVl94R5RkFO@22f0bb4089.jpg?w=1920", caption: "View from Family Room into Kitchen & Breakfast" },
+      { thumb: "https://cdn.show.tours/p/HN6y99rmKR8g8uNUX4UC@134abacd77.jpg?w=800", full: "https://cdn.show.tours/p/HN6y99rmKR8g8uNUX4UC@134abacd77.jpg?w=1920", caption: "View of Family Room to Kitchen & Main Hallway" },
+      { thumb: "https://cdn.show.tours/p/wJ6mxCnB1cZSb0q0pIgn@edbbb9db8b.jpg?w=800", full: "https://cdn.show.tours/p/wJ6mxCnB1cZSb0q0pIgn@edbbb9db8b.jpg?w=1920", caption: "View of Family Room to Kitchen & Main Hallway" },
+      { thumb: "https://cdn.show.tours/p/SeOi47WgOqGHoC19yqZG@6cb350ba87.jpg?w=800", full: "https://cdn.show.tours/p/SeOi47WgOqGHoC19yqZG@6cb350ba87.jpg?w=1920", caption: "View of Prep Kitchen" },
+      { thumb: "https://cdn.show.tours/p/MHZBNXchjOuLXt9yT9Kw@7c358829e6.jpg?w=800", full: "https://cdn.show.tours/p/MHZBNXchjOuLXt9yT9Kw@7c358829e6.jpg?w=1920", caption: "View from U/L outside of the Primary BR Entrance" },
+      { thumb: "https://cdn.show.tours/p/h1CBC7O7pRQoms2hLhOJ@08cfb8233b.jpg?w=800", full: "https://cdn.show.tours/p/h1CBC7O7pRQoms2hLhOJ@08cfb8233b.jpg?w=1920", caption: "Primary BR - WIC Left & Primary WR right" },
+      { thumb: "https://cdn.show.tours/p/ZGDnDDHsXMQbVYDv8osI@6bfc6fa094.jpg?w=800", full: "https://cdn.show.tours/p/ZGDnDDHsXMQbVYDv8osI@6bfc6fa094.jpg?w=1920", caption: "Primary BR Walk In Closet - 2 Islands - 500 sq.ft" },
+      { thumb: "https://cdn.show.tours/p/ncH0abyVIDc4rAIQMZPG@de9854a891.jpg?w=800", full: "https://cdn.show.tours/p/ncH0abyVIDc4rAIQMZPG@de9854a891.jpg?w=1920", caption: "Primary WR - 2 Floating Mirrors on Back Order" },
+      { thumb: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=800", full: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=1920", caption: "Primary WR - 2 Floating Mirrors on Back Order" },
+      { thumb: "https://cdn.show.tours/p/bJJ3Z7XvozmRvKnSKgD1@57a13ce384.jpg?w=800", full: "https://cdn.show.tours/p/bJJ3Z7XvozmRvKnSKgD1@57a13ce384.jpg?w=1920", caption: "Primary Bedroom with Walk out to Private Terrace" },
+      { thumb: "https://cdn.show.tours/p/3vPu0hZVL7uoSyBPaol0@e6377780a7.jpg?w=800", full: "https://cdn.show.tours/p/3vPu0hZVL7uoSyBPaol0@e6377780a7.jpg?w=1920", caption: "Primary Bedroom w Fireplace - Stone on Back Order" },
+      { thumb: "https://cdn.show.tours/p/zpjKG0TSgvgfoOXp6WLW@c4469e5392.jpg?w=800", full: "https://cdn.show.tours/p/zpjKG0TSgvgfoOXp6WLW@c4469e5392.jpg?w=1920", caption: "2nd Bedroom - Front Part of the House" },
+      { thumb: "https://cdn.show.tours/p/pnbwyhQ5uexTLHXwp2LU@86fcf61006.jpg?w=800", full: "https://cdn.show.tours/p/pnbwyhQ5uexTLHXwp2LU@86fcf61006.jpg?w=1920", caption: "Large Walk In Closet with Natural Light" },
+      { thumb: "https://cdn.show.tours/p/7Njc40aPovmcjCHwYERo@e7b0bbebaa.jpg?w=800", full: "https://cdn.show.tours/p/7Njc40aPovmcjCHwYERo@e7b0bbebaa.jpg?w=1920", caption: "2nd Bedroom - Front part of the house" },
+      { thumb: "https://cdn.show.tours/p/fUM0hjROllzy03OkD29m@46a2024920.jpg?w=800", full: "https://cdn.show.tours/p/fUM0hjROllzy03OkD29m@46a2024920.jpg?w=1920", caption: "Large Washroom with Shower" },
+      { thumb: "https://cdn.show.tours/p/wm5Lc55ScjggarUARdiI@bda3360cd2.jpg?w=800", full: "https://cdn.show.tours/p/wm5Lc55ScjggarUARdiI@bda3360cd2.jpg?w=1920", caption: "Outside of 2nd BR - View of 2nd Staircase & 3rd BR" },
+      { thumb: "https://cdn.show.tours/p/KyBw0YjNFLJNYL5YsZdq@57a1f21fde.jpg?w=800", full: "https://cdn.show.tours/p/KyBw0YjNFLJNYL5YsZdq@57a1f21fde.jpg?w=1920", caption: "3rd Bedroom - Facing Back of House & Golf Course" },
+      { thumb: "https://cdn.show.tours/p/I4HncLovJG40CX8oQ0Tg@d03ec5e71d.jpg?w=800", full: "https://cdn.show.tours/p/I4HncLovJG40CX8oQ0Tg@d03ec5e71d.jpg?w=1920", caption: "3rd Bedroom - Plenty of Space" },
+      { thumb: "https://cdn.show.tours/p/JwTgEYjq77uhdfgAcedA@d9f97a94a7.jpg?w=800", full: "https://cdn.show.tours/p/JwTgEYjq77uhdfgAcedA@d9f97a94a7.jpg?w=1920", caption: "Large Walk In Closet & into Ensuite - 3rd Bedroom" },
+      { thumb: "https://cdn.show.tours/p/Q4oG9FY3k37Z7ySu28gH@935d6ba6ad.jpg?w=800", full: "https://cdn.show.tours/p/Q4oG9FY3k37Z7ySu28gH@935d6ba6ad.jpg?w=1920", caption: "Ensuite of 3rd Bedroom" },
+      { thumb: "https://cdn.show.tours/p/2NClnRRl1fgoeiW6FiJB@0d1a4db41e.jpg?w=800", full: "https://cdn.show.tours/p/2NClnRRl1fgoeiW6FiJB@0d1a4db41e.jpg?w=1920", caption: "Hallway from 3rd BR - views of Backyard, Family RM" },
+      { thumb: "https://cdn.show.tours/p/3rkFpBVyv0PspPXXDRsa@c3a3619c15.jpg?w=800", full: "https://cdn.show.tours/p/3rkFpBVyv0PspPXXDRsa@c3a3619c15.jpg?w=1920", caption: "View from Upper floor into Family Room" },
+      { thumb: "https://cdn.show.tours/p/tU4DgkMAvqclh5tntWvX@62f2d4d93b.jpg?w=800", full: "https://cdn.show.tours/p/tU4DgkMAvqclh5tntWvX@62f2d4d93b.jpg?w=1920", caption: "4th Bedroom - with Walk In Closet & Ensuite" },
+      { thumb: "https://cdn.show.tours/p/JbSI4CfjiEZzzqGsDCvY@a7a4c0c0cf.jpg?w=800", full: "https://cdn.show.tours/p/JbSI4CfjiEZzzqGsDCvY@a7a4c0c0cf.jpg?w=1920", caption: "4th BR Ensuite - 4 pcs Washroom" },
+      { thumb: "https://cdn.show.tours/p/mzR1fGs1eSuF4rHBB4hW@989f748911.jpg?w=800", full: "https://cdn.show.tours/p/mzR1fGs1eSuF4rHBB4hW@989f748911.jpg?w=1920", caption: "4th BR Ensuite - 4 pcs Washroom" },
+      { thumb: "https://cdn.show.tours/p/W80KiSdF4uD2H1QEIx25@3e85d25fbd.jpg?w=800", full: "https://cdn.show.tours/p/W80KiSdF4uD2H1QEIx25@3e85d25fbd.jpg?w=1920", caption: "5th Bedroom - with Walk In Closet and Ensuite" },
+      { thumb: "https://cdn.show.tours/p/5qbJJwerHahNYlTtfawD@6132460e48.jpg?w=800", full: "https://cdn.show.tours/p/5qbJJwerHahNYlTtfawD@6132460e48.jpg?w=1920", caption: "5th BR - w Built ins, Walk In Closet & Ensuite" },
+      { thumb: "https://cdn.show.tours/p/UK0zOQSvymo8QudrhC30@8dec576a67.jpg?w=800", full: "https://cdn.show.tours/p/UK0zOQSvymo8QudrhC30@8dec576a67.jpg?w=1920", caption: "5th Bathroom Ensuite - 3pcs Washroom" },
+      { thumb: "https://cdn.show.tours/p/uxBO2BQxrwmikOGw24gn@405f2d6921.jpg?w=800", full: "https://cdn.show.tours/p/uxBO2BQxrwmikOGw24gn@405f2d6921.jpg?w=1920", caption: "Upper Level Laundry" },
+      { thumb: "https://cdn.show.tours/p/0dgxSXucnLaoyhG12ELK@5034fcaa95.jpg?w=800", full: "https://cdn.show.tours/p/0dgxSXucnLaoyhG12ELK@5034fcaa95.jpg?w=1920", caption: "Outdoor Sitting Area - Walk out from Kitchen" },
+      { thumb: "https://cdn.show.tours/p/PdCIHDaOtNnYu1IGeltW@68a2b70066.jpg?w=800", full: "https://cdn.show.tours/p/PdCIHDaOtNnYu1IGeltW@68a2b70066.jpg?w=1920", caption: "Cabana - Roughed in W Plumbing for WR & Shower" },
+      { thumb: "https://cdn.show.tours/p/OXdxvHZWJ4nAzOVrhbQK@ebfc520b1a.jpg?w=800", full: "https://cdn.show.tours/p/OXdxvHZWJ4nAzOVrhbQK@ebfc520b1a.jpg?w=1920", caption: "Overhead view Facing N - Unfinished DW & Landscaping" },
+      { thumb: "https://cdn.show.tours/p/s9XuR71I615lZEYO0A1B@c126c042c0.jpg?w=800", full: "https://cdn.show.tours/p/s9XuR71I615lZEYO0A1B@c126c042c0.jpg?w=1920", caption: "Front of House - Day time" },
+      { thumb: "https://cdn.show.tours/p/MHm2ZaBkfzLvo4avmc1z@d56cb96c82.jpg?w=800", full: "https://cdn.show.tours/p/MHm2ZaBkfzLvo4avmc1z@d56cb96c82.jpg?w=1920", caption: "Front of House - Twilight Shot" },
+      { thumb: "https://cdn.show.tours/p/o9IMJKdpsHwtJRmDNwUK@1ed93def42.jpg?w=800", full: "https://cdn.show.tours/p/o9IMJKdpsHwtJRmDNwUK@1ed93def42.jpg?w=1920", caption: "Back of House - Twilight Shot" },
+      { thumb: "https://cdn.show.tours/p/RSqTLWzW5bEk0F0rPXpT@0f83ba422c.jpg?w=800", full: "https://cdn.show.tours/p/RSqTLWzW5bEk0F0rPXpT@0f83ba422c.jpg?w=1920", caption: "Overhead view Facing N - Twilight" }
     ];
 
     let currentGalleryIndex = 0;
@@ -1469,13 +1307,12 @@
 
     function updateModalMeta() {
       if (!galleryCounter || !galleryCaption) return;
-
       if (usingFullGallery) {
         galleryCounter.textContent = `${currentGalleryIndex + 1} / ${fullGalleryImages.length}`;
         galleryCaption.textContent = fullGalleryImages[currentGalleryIndex].caption;
       } else {
         galleryCounter.textContent = `${currentGalleryIndex + 1} / ${galleryImages.length}`;
-        galleryCaption.textContent = `Click on "View Full Gallery" below to see all ${totalFullGalleryPhotos} photos`;
+        galleryCaption.textContent = `Click "View Full Gallery" to see all ${totalFullGalleryPhotos} photos`;
       }
     }
 
@@ -1516,36 +1353,25 @@
 
     function showPrevImage() {
       if (usingFullGallery) {
-        const newIndex = (currentGalleryIndex - 1 + fullGalleryImages.length) % fullGalleryImages.length;
-        showFullGalleryImage(newIndex);
+        showFullGalleryImage((currentGalleryIndex - 1 + fullGalleryImages.length) % fullGalleryImages.length);
       } else {
-        const newIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
-        showGridImage(newIndex);
+        showGridImage((currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length);
       }
     }
 
     function showNextImage() {
       if (usingFullGallery) {
-        const newIndex = (currentGalleryIndex + 1) % fullGalleryImages.length;
-        showFullGalleryImage(newIndex);
+        showFullGalleryImage((currentGalleryIndex + 1) % fullGalleryImages.length);
       } else {
-        const newIndex = (currentGalleryIndex + 1) % galleryImages.length;
-        showGridImage(newIndex);
+        showGridImage((currentGalleryIndex + 1) % galleryImages.length);
       }
     }
 
     galleryImages.forEach((img, index) => {
-      img.addEventListener("click", function () {
-        openGridGallery(index);
-      });
+      img.addEventListener("click", () => openGridGallery(index));
     });
 
-    if (viewFullGallery) {
-      viewFullGallery.addEventListener("click", function () {
-        openFullGallery(0);
-      });
-    }
-
+    if (viewFullGallery) viewFullGallery.addEventListener("click", () => openFullGallery(0));
     if (galleryClose) galleryClose.addEventListener("click", closeGallery);
     if (galleryPrev) galleryPrev.addEventListener("click", showPrevImage);
     if (galleryNext) galleryNext.addEventListener("click", showNextImage);
@@ -1572,6 +1398,6 @@
       });
     }
   })();
-</script>
+  </script>
 </body>
 </html>
