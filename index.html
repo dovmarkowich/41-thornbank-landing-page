@@ -756,80 +756,88 @@
 
     /* MOBILE HEADER FIX */
 
+@media (max-width: 640px) {
+  .topbar-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand cta"
+      "nav nav";
+    align-items: start;
+    gap: 12px 14px;
+    min-height: auto;
+    padding: 14px 0 16px;
+  }
+
+  .brand-block {
+    grid-area: brand;
+  }
+
+  .nav {
+    grid-area: nav;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .nav a:not(.btn) {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .nav .btn {
+    grid-area: cta;
+    order: 0;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+    margin-left: auto;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1;
+    min-height: 38px;
+    align-self: start;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding: 0 0 20px;
+    margin-top: 0;
+  }
+
+  .hero .btn {
+    width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .embed iframe {
+    min-height: 420px;
+  }
+
+  .gallery-modal {
+    padding: 60px 18px;
+  }
+}
+
     @media (max-width: 640px) {
-      .topbar-inner {
-        align-items: flex-start;
-        min-height: auto;
-        gap: 14px;
-        padding: 14px 0 16px;
-      }
-
-      .nav {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 20px;
-  align-items: center;
+  .topbar .btn.btn-primary {
+    white-space: nowrap;
+    border-radius: 999px;
+  }
 }
-      .nav a:not(.btn) {
-        font-size: 14px;
-        line-height: 1.2;
-      }
-
-      .nav .btn {
-  order: 99;
-  flex: 0 0 100%;
-  width: 100%;
-  margin: 4px 0 0;
-  padding: 12px 18px;
-  font-size: 14px;
-}
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-content {
-        padding: 0 0 20px;
-        margin-top: 0;
-      }
-
-      .hero .btn {
-        width: 100%;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .embed iframe {
-        min-height: 420px;
-      }
-
-      .gallery-modal {
-        padding: 60px 18px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .nav {
-  gap: 10px 16px;
-}
-
-      .nav a:not(.btn) {
-        font-size: 13px;
-      }
-
-      .nav .btn {
-        font-size: 13px;
-        padding: 12px 18px;
-      }
-    }
-
+    
     @media (max-width: 768px) {
       .desktop-only {
         display: none !important;
