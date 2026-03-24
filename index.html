@@ -56,6 +56,8 @@
       margin: 0 auto;
     }
 
+    /* HEADER */
+
     .topbar {
       position: sticky;
       top: 0;
@@ -124,6 +126,14 @@
       color: var(--gold-soft);
     }
 
+    .nav .btn {
+      width: auto;
+      flex: 0 0 auto;
+      margin-left: 8px;
+    }
+
+    /* BUTTONS */
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -131,23 +141,28 @@
       padding: 13px 20px;
       border-radius: 999px;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 500;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       transition: 0.25s ease;
       border: 1px solid transparent;
       cursor: pointer;
       white-space: nowrap;
+      letter-spacing: 0.3px;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #f4df96, #d4af37);
-      color: #111111 !important;
-      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
-      font-weight: 800;
+      background: #d4af37;
+      color: #111 !important;
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      box-shadow: 0 6px 18px rgba(212, 175, 55, 0.22);
+      font-weight: 500;
     }
 
     .btn-primary:hover {
+      background: #d4af37;
       transform: translateY(-1px);
-      filter: brightness(1.03);
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.35);
+      filter: brightness(1.05);
     }
 
     .btn-secondary {
@@ -163,6 +178,8 @@
       background: rgba(0, 0, 0, 0.28);
     }
 
+    /* HERO */
+
     .hero {
       position: relative;
       min-height: calc(100vh - 82px);
@@ -170,6 +187,7 @@
       align-items: flex-start;
       overflow: hidden;
       border-bottom: 1px solid var(--line);
+      padding: 0;
     }
 
     .hero::before {
@@ -194,7 +212,8 @@
       position: relative;
       z-index: 2;
       max-width: 880px;
-      padding: 18px 0 0;
+      padding: 0;
+      margin-top: 16px;
     }
 
     .hero-content h1,
@@ -202,9 +221,8 @@
     .hero-content .hero-subtitle,
     .hero-content .eyebrow {
       text-shadow:
-        0 0 120px rgba(0, 0, 0, 0.75),
-        0 0 30px rgba(0, 0, 0, 0.55),
-        2px 2px 4px rgba(0, 0, 0, 0.35);
+        0 6px 20px rgba(0, 0, 0, 0.6),
+        0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
     .eyebrow {
@@ -213,7 +231,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold-soft);
-      margin-bottom: 18px;
+      margin-bottom: 10px;
       font-weight: 700;
     }
 
@@ -254,6 +272,11 @@
       gap: 14px;
       flex-wrap: wrap;
       margin-top: 26px;
+      margin-bottom: 24px;
+    }
+
+    .hero .btn {
+      width: auto;
     }
 
     .stats {
@@ -292,7 +315,9 @@
       line-height: 1.25;
     }
 
-    section {
+    /* GENERAL */
+
+    section:not(.hero) {
       padding: 84px 0;
     }
 
@@ -383,6 +408,8 @@
       font-size: 16px;
     }
 
+    /* GALLERY */
+
     .photo-grid {
       width: 100%;
       margin: 0 auto;
@@ -401,6 +428,9 @@
       background: #111;
       cursor: pointer;
       transition: transform 0.25s ease, opacity 0.25s ease;
+      image-rendering: auto;
+      backface-visibility: hidden;
+      filter: contrast(1.02) saturate(1.03);
     }
 
     .photo-grid img:hover {
@@ -424,10 +454,15 @@
     }
 
     .gallery-modal img {
-      max-width: 92vw;
-      max-height: 88vh;
+      width: auto;
+      height: auto;
+      max-width: min(92vw, 1800px);
+      max-height: 90vh;
       object-fit: contain;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+      border-radius: 10px;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255,255,255,0.08);
     }
 
     .gallery-close,
@@ -467,6 +502,20 @@
 
     .gallery-nav.next {
       right: 18px;
+    }
+
+    /* FLOORPLAN */
+
+    .mobile-floorplan {
+      display: none;
+    }
+
+    .mobile-floorplan img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      background: #fff;
     }
 
     .embed {
@@ -535,35 +584,7 @@
       background: #fff;
     }
 
-    .pdf-zoom-controls {
-      position: absolute;
-      left: calc(50% - 3rem);
-      bottom: 1rem;
-      width: 6rem;
-      height: 3rem;
-      background: #fff;
-      border-radius: 999px;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-    }
-
-    .pdf-zoom-controls button {
-      width: 50%;
-      height: 100%;
-      border: none;
-      background: transparent;
-      color: #1e3745;
-      font-size: 1.35rem;
-      cursor: pointer;
-    }
-
-    .pdf-zoom-controls button:hover {
-      background: rgba(30, 55, 69, 0.10);
-    }
+    /* CONTACT */
 
     .contact-panel {
       background:
@@ -606,13 +627,18 @@
       font-size: 13px;
     }
 
+    /* TABLET */
+
     @media (max-width: 980px) {
       .stats,
       .grid-2,
       .feature-grid,
-      .photo-grid,
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .embed iframe {
@@ -620,24 +646,47 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .pdf-frame,
-      .pdf-preview {
-        height: 62vh;
-        min-height: 460px;
-      }
-    }
+    /* MOBILE HEADER FIX */
 
     @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+        min-height: auto;
+        gap: 14px;
+        padding: 14px 0 16px;
+      }
+
+      .nav {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+}
+      .nav a:not(.btn) {
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      .nav .btn {
+  order: 99;
+  flex: 0 0 100%;
+  width: 100%;
+  margin: 4px 0 0;
+  padding: 12px 18px;
+  font-size: 14px;
+}
+
       .hero {
         min-height: auto;
       }
 
       .hero-content {
-        padding: 24px 0 20px;
+        padding: 0 0 20px;
+        margin-top: 0;
       }
 
-      .btn {
+      .hero .btn {
         width: 100%;
       }
 
@@ -645,16 +694,56 @@
         flex-direction: column;
       }
 
-      .topbar-inner {
-        min-height: 64px;
+      .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .nav {
-        width: 100%;
+      .embed iframe {
+        min-height: 420px;
       }
 
       .gallery-modal {
         padding: 60px 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav {
+  gap: 10px 16px;
+}
+
+      .nav a:not(.btn) {
+        font-size: 13px;
+      }
+
+      .nav .btn {
+        font-size: 13px;
+        padding: 12px 18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: block !important;
+      }
+
+      .mobile-floorplan {
+        display: block;
+      }
+
+      .pdf-viewer-shell {
+        padding: 0;
+        background: #fff;
+      }
+
+      .pdf-frame,
+      .pdf-preview {
+        height: 62vh;
+        min-height: 460px;
       }
     }
   </style>
@@ -678,7 +767,7 @@
         <a href="#floorplan">Floorplan</a>
         <a href="#map">Map</a>
         <a href="#contact">Contact</a>
-        <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Details</a>
+        <a class="btn btn-primary" href="#contact">Request Details</a>
       </nav>
     </div>
   </header>
@@ -695,8 +784,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Request Private Property Brief</a>
-          <a class="btn btn-secondary" href="#contact">Arrange Confidential Viewing</a>
+          <a class="btn btn-primary" href="#contact">Request a Private Showing</a>
         </div>
 
         <div class="stats">
@@ -793,18 +881,18 @@
       </div>
 
       <div class="photo-grid">
-        <img src="https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId.jpg" alt="41 Thornbank Road photo 1" data-index="0" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV.jpg" alt="41 Thornbank Road photo 2" data-index="1" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr.jpg" alt="41 Thornbank Road photo 3" data-index="2" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33.jpg" alt="41 Thornbank Road photo 4" data-index="3" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv.jpg" alt="41 Thornbank Road photo 5" data-index="4" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr.jpg" alt="41 Thornbank Road photo 6" data-index="5" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv.jpg" alt="41 Thornbank Road photo 7" data-index="6" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP.jpg" alt="41 Thornbank Road photo 8" data-index="7" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0.jpg" alt="41 Thornbank Road photo 9" data-index="8" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq.jpg" alt="41 Thornbank Road photo 10" data-index="9" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09.jpg" alt="41 Thornbank Road photo 11" data-index="10" class="gallery-item" />
-        <img src="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt.jpg" alt="41 Thornbank Road photo 12" data-index="11" class="gallery-item" />
+        <img src="https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId@caf8b21e19.jpg?w=800" data-full="https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId@caf8b21e19.jpg?w=1920" alt="41 Thornbank Road photo 1" data-index="0" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=800" data-full="https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=1920" alt="41 Thornbank Road photo 2" data-index="1" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr@c59150b6ac.jpg?w=800" data-full="https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr@c59150b6ac.jpg?w=1920" alt="41 Thornbank Road photo 3" data-index="2" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33@2fbe85c3b7.jpg?w=800" data-full="https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33@2fbe85c3b7.jpg?w=1920" alt="41 Thornbank Road photo 4" data-index="3" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv@efdb872566.jpg?w=800" data-full="https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv@efdb872566.jpg?w=1920" alt="41 Thornbank Road photo 5" data-index="4" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr@12d0a13c85.jpg?w=800" data-full="https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr@12d0a13c85.jpg?w=1920" alt="41 Thornbank Road photo 6" data-index="5" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv@d8ecc84b22.jpg?w=800" data-full="https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv@d8ecc84b22.jpg?w=1920" alt="41 Thornbank Road photo 7" data-index="6" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP@64b9bf6b60.jpg?w=800" data-full="https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP@64b9bf6b60.jpg?w=1920" alt="41 Thornbank Road photo 8" data-index="7" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0@69d68ff71f.jpg?w=800" data-full="https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0@69d68ff71f.jpg?w=1920" alt="41 Thornbank Road photo 9" data-index="8" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq@1b45821ae8.jpg?w=800" data-full="https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq@1b45821ae8.jpg?w=1920" alt="41 Thornbank Road photo 10" data-index="9" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=800" data-full="https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=1920" alt="41 Thornbank Road photo 11" data-index="10" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
+        <img src="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=800" data-full="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=1920" alt="41 Thornbank Road photo 12" data-index="11" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
       </div>
     </div>
   </section>
@@ -868,11 +956,11 @@
         <span class="kicker">Floorplan</span>
         <h2>Floorplan</h2>
         <p class="intro">
-          Preview and zoom the floorplan below.
+          View the floorplan below.
         </p>
       </div>
 
-      <div class="pdf-viewer-shell" id="pdfShell">
+      <div class="pdf-viewer-shell desktop-only">
         <div class="pdf-preview" id="pdfPreview">
           <img
             src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=256"
@@ -886,11 +974,13 @@
           src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.pdf#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width"
           title="41 Thornbank Road floorplan PDF">
         </iframe>
+      </div>
 
-        <div class="pdf-zoom-controls">
-          <button type="button" id="pdfZoomOut">−</button>
-          <button type="button" id="pdfZoomIn">+</button>
-        </div>
+      <div class="mobile-floorplan mobile-only">
+        <img
+          src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=1600"
+          alt="41 Thornbank Road floorplan"
+        />
       </div>
     </div>
   </section>
@@ -940,7 +1030,6 @@
 
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
             <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Email Dov</a>
-            <a class="btn btn-secondary" href="YOUR-BROCHURE-LINK-HERE" target="_blank" rel="noopener">View Brochure</a>
           </div>
         </div>
       </div>
@@ -966,7 +1055,7 @@
 
       function openGallery(index) {
         currentGalleryIndex = index;
-        galleryModalImage.src = galleryImages[currentGalleryIndex].src;
+        galleryModalImage.src = galleryImages[currentGalleryIndex].dataset.full;
         galleryModal.classList.add("open");
         galleryModal.setAttribute("aria-hidden", "false");
       }
@@ -979,12 +1068,12 @@
 
       function showPrevImage() {
         currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
-        galleryModalImage.src = galleryImages[currentGalleryIndex].src;
+        galleryModalImage.src = galleryImages[currentGalleryIndex].dataset.full;
       }
 
       function showNextImage() {
         currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
-        galleryModalImage.src = galleryImages[currentGalleryIndex].src;
+        galleryModalImage.src = galleryImages[currentGalleryIndex].dataset.full;
       }
 
       galleryImages.forEach((img, index) => {
@@ -1012,33 +1101,10 @@
 
       const pdfFrame = document.getElementById("floorplanPdf");
       const pdfPreview = document.getElementById("pdfPreview");
-      const pdfZoomIn = document.getElementById("pdfZoomIn");
-      const pdfZoomOut = document.getElementById("pdfZoomOut");
-
-      let pdfZoom = 100;
-      const pdfBase = "https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.pdf#toolbar=0&navpanes=0&scrollbar=1";
-
-      function updatePdfZoom() {
-        pdfFrame.src = pdfBase + "&zoom=" + pdfZoom;
-      }
 
       if (pdfFrame && pdfPreview) {
         pdfFrame.addEventListener("load", function () {
           pdfPreview.classList.add("hidden");
-        });
-      }
-
-      if (pdfZoomIn) {
-        pdfZoomIn.addEventListener("click", function () {
-          pdfZoom = Math.min(pdfZoom + 20, 300);
-          updatePdfZoom();
-        });
-      }
-
-      if (pdfZoomOut) {
-        pdfZoomOut.addEventListener("click", function () {
-          pdfZoom = Math.max(pdfZoom - 20, 60);
-          updatePdfZoom();
         });
       }
     })();
