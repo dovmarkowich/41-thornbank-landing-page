@@ -598,16 +598,22 @@
 @media (max-width: 640px) {
   .gallery-counter {
     top: 16px;
-    left: 16px;
-    font-size: 12px;
-    padding: 7px 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .gallery-caption {
     bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
     width: calc(100% - 24px);
     font-size: 13px;
-    padding: 9px 12px;
+    padding: 0;
+    text-align: center;
   }
 
   .gallery-modal {
@@ -621,8 +627,7 @@
   .gallery-nav.next {
     right: 10px;
   }
-}
-    
+}    
     /* FLOORPLAN */
 
     .mobile-floorplan {
@@ -775,9 +780,9 @@
       "brand cta"
       "nav nav";
     align-items: start;
-    gap: 10px 12px;
+    gap: 8px 12px;
     min-height: auto;
-    padding: 12px 0;
+    padding: 10px 0;
   }
 
   .brand-block {
@@ -793,10 +798,10 @@
     align-self: start;
     width: auto !important;
     margin: 0 !important;
-    padding: 8px 12px !important;
-    font-size: 13px !important;
+    padding: 7px 11px !important;
+    font-size: 12.5px !important;
     line-height: 1 !important;
-    min-height: 36px;
+    min-height: 34px;
     white-space: nowrap;
     border-radius: 999px;
   }
@@ -849,7 +854,6 @@
     padding: 60px 18px;
   }
 }
-
 @media (max-width: 640px) {
   .topbar .btn.btn-primary {
     white-space: nowrap;
@@ -884,6 +888,7 @@
   </style>
 </head>
 <body>
+  <div id="top"></div>
   
   <header class="topbar">
   <div class="topbar-inner">
