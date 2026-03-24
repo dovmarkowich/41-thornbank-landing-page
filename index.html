@@ -126,12 +126,6 @@
       color: var(--gold-soft);
     }
 
-    .nav .btn {
-      width: auto;
-      flex: 0 0 auto;
-      margin-left: 8px;
-    }
-
     /* BUTTONS */
 
     .btn {
@@ -764,8 +758,7 @@
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-areas:
-      "brand brand"
-      "cta cta"
+      "brand cta"
       "nav nav";
     align-items: start;
     gap: 12px 14px;
@@ -777,6 +770,19 @@
     grid-area: brand;
   }
 
+  .header-cta {
+    grid-area: cta;
+    justify-self: end;
+    align-self: start;
+    width: auto;
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1;
+    min-height: 36px;
+    white-space: nowrap;
+  }
+
   .nav {
     grid-area: nav;
     display: flex;
@@ -786,23 +792,9 @@
     align-items: center;
   }
 
-  .nav a:not(.btn) {
+  .nav a {
     font-size: 14px;
     line-height: 1.2;
-  }
-
-  .nav .btn {
-    grid-area: cta;
-    order: -1;
-    flex: 0 0 auto;
-    width: auto;
-    margin: 0 0 2px auto;
-    padding: 8px 12px;
-    font-size: 13px;
-    line-height: 1;
-    min-height: 36px;
-    white-space: nowrap;
-    align-self: start;
   }
 
   .hero {
@@ -834,7 +826,7 @@
     padding: 60px 18px;
   }
 }
-
+    
 @media (max-width: 640px) {
   .topbar .btn.btn-primary {
     white-space: nowrap;
@@ -869,28 +861,30 @@
   </style>
 </head>
 <body>
+  
   <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand-block">
-        <div class="brand">Dov Markowich, Broker</div>
-        <div class="brand-sub">RE/MAX Realtron Realty Inc.</div>
-        <div class="brand-contact">
-          <a href="tel:14167274829">416-727-4829</a> |
-          <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a>
-        </div>
+  <div class="topbar-inner">
+    <div class="brand-block">
+      <div class="brand">Dov Markowich, Broker</div>
+      <div class="brand-sub">RE/MAX Realtron Realty Inc.</div>
+      <div class="brand-contact">
+        <a href="tel:14167274829">416-727-4829</a> |
+        <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a>
       </div>
-
-      <nav class="nav">
-        <a href="#photos">Photos</a>
-        <a href="#matterport">3D Tour</a>
-        <a href="#video">Video</a>
-        <a href="#floorplan">Floorplan</a>
-        <a href="#map">Map</a>
-        <a href="#contact">Contact</a>
-        <a class="btn btn-primary" href="#contact">Request Details</a>
-      </nav>
     </div>
-  </header>
+
+    <a class="btn btn-primary header-cta" href="#contact">Request Details</a>
+
+    <nav class="nav">
+      <a href="#photos">Photos</a>
+      <a href="#matterport">3D Tour</a>
+      <a href="#video">Video</a>
+      <a href="#floorplan">Floorplan</a>
+      <a href="#map">Map</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
   <section class="hero">
     <div class="hero-bg"></div>
