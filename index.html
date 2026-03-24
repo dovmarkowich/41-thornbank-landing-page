@@ -759,14 +759,14 @@
 
   /* MOBILE HEADER FIX */
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .topbar-inner {
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-areas:
-    "brand cta"
-    "nav nav";
-    grid-template-rows: auto auto;
+      "brand brand"
+      "cta cta"
+      "nav nav";
     align-items: start;
     gap: 12px 14px;
     min-height: auto;
@@ -778,13 +778,13 @@
   }
 
   .nav {
-  grid-area: nav;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-  width: 100%;
-  margin-top: 6px;
-}
+    grid-area: nav;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    width: 100%;
+    align-items: center;
+  }
 
   .nav a:not(.btn) {
     font-size: 14px;
@@ -792,18 +792,19 @@
   }
 
   .nav .btn {
-  grid-area: cta;
-  width: auto;
-  margin-left: auto;
-  padding: 6px 10px;
-  font-size: 12px;
-  height: 32px;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-}
-  
+    grid-area: cta;
+    order: -1;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0 0 2px auto;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1;
+    min-height: 36px;
+    white-space: nowrap;
+    align-self: start;
+  }
+
   .hero {
     min-height: auto;
   }
@@ -834,53 +835,37 @@
   }
 }
 
-    @media (max-width: 640px) {
+@media (max-width: 640px) {
   .topbar .btn.btn-primary {
     white-space: nowrap;
     border-radius: 999px;
   }
 }
-    
-    @media (max-width: 768px) {
-      .desktop-only {
-        display: none !important;
-      }
 
-      .mobile-only {
-        display: block !important;
-      }
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
 
-      .mobile-floorplan {
-        display: block;
-      }
+  .mobile-only {
+    display: block !important;
+  }
 
-      .pdf-viewer-shell {
-        padding: 0;
-        background: #fff;
-      }
+  .mobile-floorplan {
+    display: block;
+  }
 
-      .pdf-frame,
-      .pdf-preview {
-        height: 62vh;
-        min-height: 460px;
-      }
-@media (max-width: 1024px) {
-  .nav .btn {
-    flex: 0 0 auto;
-    width: auto;
-    margin-left: auto;
-    padding: 6px 12px;
-    font-size: 12.5px;
-    line-height: 1;
-    min-height: auto;
-    height: 34px;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 999px;
+  .pdf-viewer-shell {
+    padding: 0;
+    background: #fff;
+  }
+
+  .pdf-frame,
+  .pdf-preview {
+    height: 62vh;
+    min-height: 460px;
   }
 }
-      
-    }
   </style>
 </head>
 <body>
