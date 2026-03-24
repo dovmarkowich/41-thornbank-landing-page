@@ -147,9 +147,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 13px 20px;
+      padding: 9px 18px;
       border-radius: 999px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       transition: 0.25s ease;
@@ -843,6 +843,12 @@
     /* ─── MOBILE  (≤ 768px) ──────────────────────────────── */
 
     @media (max-width: 768px) {
+      /* Restore full-size buttons on mobile — base .btn was tightened for desktop */
+      .btn {
+        padding: 13px 20px;
+        font-size: 14px;
+      }
+
       /* FIX: base .desktop-only / .mobile-only rules properly toggled here */
       .desktop-only {
         display: none !important;
