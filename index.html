@@ -772,50 +772,48 @@
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-areas:
-      "brand brand"
-      "cta cta"
+      "brand cta"
       "nav nav";
     align-items: start;
     gap: 10px 12px;
     min-height: auto;
-    padding: 12px 0 12px;
+    padding: 12px 0;
   }
 
   .brand-block {
     grid-area: brand;
   }
- 
-.header-cta-desktop {
-  display: none !important;
-}
-  
+
   .header-cta-mobile {
-  display: inline-flex !important;
-  grid-area: cta;
-  justify-self: end;
-  align-self: start;
-  width: auto;
-  margin: 0;
-  padding: 7px 11px;
-  font-size: 12.5px;
-  line-height: 1;
-  min-height: 34px;
-  white-space: nowrap;
-}
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    grid-area: cta;
+    justify-self: end;
+    align-self: start;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    min-height: 36px;
+    white-space: nowrap;
+    border-radius: 999px;
+  }
 
   .header-cta-desktop {
-    display: none;
+    display: none !important;
   }
 
   .nav {
-  grid-area: nav;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 16px;
-  width: 100%;
-  align-items: center;
-  margin-top: 0;
-}
+    grid-area: nav;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    width: 100%;
+    align-items: center;
+    margin-top: 0;
+  }
 
   .nav a:not(.btn) {
     font-size: 14px;
@@ -851,7 +849,7 @@
     padding: 60px 18px;
   }
 }
-    
+
 @media (max-width: 640px) {
   .topbar .btn.btn-primary {
     white-space: nowrap;
@@ -882,7 +880,7 @@
     height: 62vh;
     min-height: 460px;
   }
-}
+}  
   </style>
 </head>
 <body>
