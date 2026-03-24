@@ -549,6 +549,48 @@
       right: 18px;
     }
 
+.gallery-modal-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 92vw;
+  max-height: 90vh;
+}
+
+.gallery-count {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.gallery-caption {
+  margin-top: 16px;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  max-width: 900px;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .gallery-count {
+    top: -30px;
+    font-size: 14px;
+  }
+
+  .gallery-caption {
+    font-size: 14px;
+    margin-top: 12px;
+    padding: 0 10px;
+  }
+}
+    
     /* FLOORPLAN */
 
     .mobile-floorplan {
@@ -947,13 +989,19 @@
     </div>
   </section>
 
-  <div class="gallery-modal" id="galleryModal" aria-hidden="true">
-    <button class="gallery-close" id="galleryClose" type="button">×</button>
-    <button class="gallery-nav prev" id="galleryPrev" type="button">‹</button>
+<div class="gallery-modal" id="galleryModal" aria-hidden="true">
+  <button class="gallery-close" id="galleryClose" type="button">×</button>
+  <button class="gallery-nav prev" id="galleryPrev" type="button">‹</button>
+
+  <div class="gallery-modal-inner">
+    <div class="gallery-count" id="galleryCount">1 / 50</div>
     <img id="galleryModalImage" src="" alt="Expanded property photo" />
-    <button class="gallery-nav next" id="galleryNext" type="button">›</button>
+    <div class="gallery-caption" id="galleryCaption"></div>
   </div>
 
+  <button class="gallery-nav next" id="galleryNext" type="button">›</button>
+</div>
+  
   <section id="matterport">
     <div class="wrap">
       <div class="section-header">
@@ -1093,84 +1141,352 @@
   </footer>
 
   <script>
-  (function () {
-    const galleryImages = Array.from(document.querySelectorAll(".gallery-item"));
-    const galleryModal = document.getElementById("galleryModal");
-    const galleryModalImage = document.getElementById("galleryModalImage");
-    const galleryClose = document.getElementById("galleryClose");
-    const galleryPrev = document.getElementById("galleryPrev");
-    const galleryNext = document.getElementById("galleryNext");
-    const viewFullGallery = document.getElementById("viewFullGallery");
+(function () {
+  const galleryImages = Array.from(document.querySelectorAll(".gallery-item"));
+  const galleryModal = document.getElementById("galleryModal");
+  const galleryModalImage = document.getElementById("galleryModalImage");
+  const galleryClose = document.getElementById("galleryClose");
+  const galleryPrev = document.getElementById("galleryPrev");
+  const galleryNext = document.getElementById("galleryNext");
+  const galleryCount = document.getElementById("galleryCount");
+  const galleryCaption = document.getElementById("galleryCaption");
+  const viewFullGallery = document.getElementById("viewFullGallery");
 
-    let currentGalleryIndex = 0;
-
-    function showImage(index) {
-      currentGalleryIndex = index;
-      galleryModalImage.src = galleryImages[currentGalleryIndex].dataset.full;
+  const fullGalleryImages = [
+    {
+      thumb: "https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId@caf8b21e19.jpg?w=800",
+      full: "https://cdn.show.tours/p/TjzFU2ryHkAsSIq3hRId@caf8b21e19.jpg?w=1920",
+      caption: "Actual House with Rendered Driveway & Landscaping"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/s9XuR71I615lZEYO0A1B@c126c042c0.jpg?w=800",
+      full: "https://cdn.show.tours/p/s9XuR71I615lZEYO0A1B@c126c042c0.jpg?w=1920",
+      caption: "Actual House with Rendered Driveway & Landscaping"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr@c59150b6ac.jpg?w=800",
+      full: "https://cdn.show.tours/p/GaC1YH0zx7NrGv0vkepr@c59150b6ac.jpg?w=1920",
+      caption: "Main Foyer - 28 Foot Ceiling"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33@2fbe85c3b7.jpg?w=800",
+      full: "https://cdn.show.tours/p/97tVXZGuRHSK3C6fPJ33@2fbe85c3b7.jpg?w=1920",
+      caption: "Main Foyer - 28 Foot Ceiling"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv@efdb872566.jpg?w=800",
+      full: "https://cdn.show.tours/p/X4W9Crxg881Z5HTHrrtv@efdb872566.jpg?w=1920",
+      caption: "Main Foyer - View into Office"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr@12d0a13c85.jpg?w=800",
+      full: "https://cdn.show.tours/p/TGf0pRsLEkbFN0fl6Zyr@12d0a13c85.jpg?w=1920",
+      caption: "Office with 2 Separate Entrances"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv@d8ecc84b22.jpg?w=800",
+      full: "https://cdn.show.tours/p/HCTYB0SA3WfbkqcXeduv@d8ecc84b22.jpg?w=1920",
+      caption: "Main Foyer - View into Living Room"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP@64b9bf6b60.jpg?w=800",
+      full: "https://cdn.show.tours/p/chB9BtlH2xYuk2hrNmWP@64b9bf6b60.jpg?w=1920",
+      caption: "Living Room - View into Dining Room"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0@69d68ff71f.jpg?w=800",
+      full: "https://cdn.show.tours/p/RnhJ0ljIQRbpQ9AMV1D0@69d68ff71f.jpg?w=1920",
+      caption: "Main Hallway -View of Staircase & Elevator Hallway"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq@1b45821ae8.jpg?w=800",
+      full: "https://cdn.show.tours/p/oJa27sroXBX8YV1ZmlKq@1b45821ae8.jpg?w=1920",
+      caption: "Main Hallway - View into Kitchen & Family Room"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=800",
+      full: "https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=1920",
+      caption: "View of Family Room with 28 Foot Ceiling"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=800",
+      full: "https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=1920",
+      caption: "View from Family Room with Feature Wall"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/Urgab90ZG0iA5qjfDurF@745ff921d2.jpg?w=800",
+      full: "https://cdn.show.tours/p/Urgab90ZG0iA5qjfDurF@745ff921d2.jpg?w=1920",
+      caption: "View from Family Room into Kitchen"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/C1lbViWclwGYoajcrwIj@83bc7b7791.jpg?w=800",
+      full: "https://cdn.show.tours/p/C1lbViWclwGYoajcrwIj@83bc7b7791.jpg?w=1920",
+      caption: "View from Family Room towards Kitchen"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/e6RAWYVmueVl94R5RkFO@22f0bb4089.jpg?w=800",
+      full: "https://cdn.show.tours/p/e6RAWYVmueVl94R5RkFO@22f0bb4089.jpg?w=1920",
+      caption: "View from Family Room into Kitchen & Breakfast"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/HN6y99rmKR8g8uNUX4UC@134abacd77.jpg?w=800",
+      full: "https://cdn.show.tours/p/HN6y99rmKR8g8uNUX4UC@134abacd77.jpg?w=1920",
+      caption: "View of Family Room to Kitchen & Main Hallway"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/wJ6mxCnB1cZSb0q0pIgn@edbbb9db8b.jpg?w=800",
+      full: "https://cdn.show.tours/p/wJ6mxCnB1cZSb0q0pIgn@edbbb9db8b.jpg?w=1920",
+      caption: "View of Family Room to Kitchen & Main Hallway"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/SeOi47WgOqGHoC19yqZG@6cb350ba87.jpg?w=800",
+      full: "https://cdn.show.tours/p/SeOi47WgOqGHoC19yqZG@6cb350ba87.jpg?w=1920",
+      caption: "View of Prep Kitchen"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/MHZBNXchjOuLXt9yT9Kw@7c358829e6.jpg?w=800",
+      full: "https://cdn.show.tours/p/MHZBNXchjOuLXt9yT9Kw@7c358829e6.jpg?w=1920",
+      caption: "View from U/L outside of the Primary BR Entrance"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/h1CBC7O7pRQoms2hLhOJ@08cfb8233b.jpg?w=800",
+      full: "https://cdn.show.tours/p/h1CBC7O7pRQoms2hLhOJ@08cfb8233b.jpg?w=1920",
+      caption: "Primary BR - WIC Left & Primary WR right"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/ZGDnDDHsXMQbVYDv8osI@6bfc6fa094.jpg?w=800",
+      full: "https://cdn.show.tours/p/ZGDnDDHsXMQbVYDv8osI@6bfc6fa094.jpg?w=1920",
+      caption: "Primary BR Walk In Closet - 2 Islands - 500 sq.ft"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/ncH0abyVIDc4rAIQMZPG@de9854a891.jpg?w=800",
+      full: "https://cdn.show.tours/p/ncH0abyVIDc4rAIQMZPG@de9854a891.jpg?w=1920",
+      caption: "Primary WR - 2 Floating Mirrors on Back Order"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=800",
+      full: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=1920",
+      caption: "Primary WR - 2 Floating Mirrors on Back Order"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/bJJ3Z7XvozmRvKnSKgD1@57a13ce384.jpg?w=800",
+      full: "https://cdn.show.tours/p/bJJ3Z7XvozmRvKnSKgD1@57a13ce384.jpg?w=1920",
+      caption: "Primary Bedroom with Walk out to Private Terrace"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/3vPu0hZVL7uoSyBPaol0@e6377780a7.jpg?w=800",
+      full: "https://cdn.show.tours/p/3vPu0hZVL7uoSyBPaol0@e6377780a7.jpg?w=1920",
+      caption: "Primary Bedroom w Fireplace - Stone on Back Order"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/zpjKG0TSgvgfoOXp6WLW@c4469e5392.jpg?w=800",
+      full: "https://cdn.show.tours/p/zpjKG0TSgvgfoOXp6WLW@c4469e5392.jpg?w=1920",
+      caption: "2nd Bedroom - Front Part of the House"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/pnbwyhQ5uexTLHXwp2LU@86fcf61006.jpg?w=800",
+      full: "https://cdn.show.tours/p/pnbwyhQ5uexTLHXwp2LU@86fcf61006.jpg?w=1920",
+      caption: "Large Walk In Closet with Natural Light"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/7Njc40aPovmcjCHwYERo@e7b0bbebaa.jpg?w=800",
+      full: "https://cdn.show.tours/p/7Njc40aPovmcjCHwYERo@e7b0bbebaa.jpg?w=1920",
+      caption: "2nd Bedroom - Front part of the house"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/fUM0hjROllzy03OkD29m@46a2024920.jpg?w=800",
+      full: "https://cdn.show.tours/p/fUM0hjROllzy03OkD29m@46a2024920.jpg?w=1920",
+      caption: "Large Washroom with Shower"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/wm5Lc55ScjggarUARdiI@bda3360cd2.jpg?w=800",
+      full: "https://cdn.show.tours/p/wm5Lc55ScjggarUARdiI@bda3360cd2.jpg?w=1920",
+      caption: "Outside of 2nd BR - View of 2nd Staircase & 3rd BR"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/KyBw0YjNFLJNYL5YsZdq@57a1f21fde.jpg?w=800",
+      full: "https://cdn.show.tours/p/KyBw0YjNFLJNYL5YsZdq@57a1f21fde.jpg?w=1920",
+      caption: "3rd Bedroom - Facing Back of House & Golf Course"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/I4HncLovJG40CX8oQ0Tg@d03ec5e71d.jpg?w=800",
+      full: "https://cdn.show.tours/p/I4HncLovJG40CX8oQ0Tg@d03ec5e71d.jpg?w=1920",
+      caption: "3rd Bedroom - Plenty of Space"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/JwTgEYjq77uhdfgAcedA@d9f97a94a7.jpg?w=800",
+      full: "https://cdn.show.tours/p/JwTgEYjq77uhdfgAcedA@d9f97a94a7.jpg?w=1920",
+      caption: "Large Walk In Closet & into Ensuite - 3rd Bedroom"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/Q4oG9FY3k37Z7ySu28gH@935d6ba6ad.jpg?w=800",
+      full: "https://cdn.show.tours/p/Q4oG9FY3k37Z7ySu28gH@935d6ba6ad.jpg?w=1920",
+      caption: "Ensuite of 3rd Bedroom"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/2NClnRRl1fgoeiW6FiJB@0d1a4db41e.jpg?w=800",
+      full: "https://cdn.show.tours/p/2NClnRRl1fgoeiW6FiJB@0d1a4db41e.jpg?w=1920",
+      caption: "Hallway from 3rd BR - views of Backyard, Family RM"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/3rkFpBVyv0PspPXXDRsa@c3a3619c15.jpg?w=800",
+      full: "https://cdn.show.tours/p/3rkFpBVyv0PspPXXDRsa@c3a3619c15.jpg?w=1920",
+      caption: "View from Upper floor into Family Room"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/tU4DgkMAvqclh5tntWvX@62f2d4d93b.jpg?w=800",
+      full: "https://cdn.show.tours/p/tU4DgkMAvqclh5tntWvX@62f2d4d93b.jpg?w=1920",
+      caption: "4th Bedroom - with Walk In Closet & Ensuite"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/JbSI4CfjiEZzzqGsDCvY@a7a4c0c0cf.jpg?w=800",
+      full: "https://cdn.show.tours/p/JbSI4CfjiEZzzqGsDCvY@a7a4c0c0cf.jpg?w=1920",
+      caption: "4th BR Ensuite - 4 pcs Washroom"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/mzR1fGs1eSuF4rHBB4hW@989f748911.jpg?w=800",
+      full: "https://cdn.show.tours/p/mzR1fGs1eSuF4rHBB4hW@989f748911.jpg?w=1920",
+      caption: "4th BR Ensuite - 4 pcs Washroom"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/W80KiSdF4uD2H1QEIx25@3e85d25fbd.jpg?w=800",
+      full: "https://cdn.show.tours/p/W80KiSdF4uD2H1QEIx25@3e85d25fbd.jpg?w=1920",
+      caption: "5th Bedroom - with Walk In Closet and Ensuite"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/5qbJJwerHahNYlTtfawD@6132460e48.jpg?w=800",
+      full: "https://cdn.show.tours/p/5qbJJwerHahNYlTtfawD@6132460e48.jpg?w=1920",
+      caption: "5th BR - w Built ins, Walk In Closet & Ensuite"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/UK0zOQSvymo8QudrhC30@8dec576a67.jpg?w=800",
+      full: "https://cdn.show.tours/p/UK0zOQSvymo8QudrhC30@8dec576a67.jpg?w=1920",
+      caption: "5th Bathroom Ensuite - 3pcs Washroom"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/uxBO2BQxrwmikOGw24gn@405f2d6921.jpg?w=800",
+      full: "https://cdn.show.tours/p/uxBO2BQxrwmikOGw24gn@405f2d6921.jpg?w=1920",
+      caption: "Upper Level Laundry"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/0dgxSXucnLaoyhG12ELK@5034fcaa95.jpg?w=800",
+      full: "https://cdn.show.tours/p/0dgxSXucnLaoyhG12ELK@5034fcaa95.jpg?w=1920",
+      caption: "Outdoor Sitting Area - Walk out from Kitchen"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/PdCIHDaOtNnYu1IGeltW@68a2b70066.jpg?w=800",
+      full: "https://cdn.show.tours/p/PdCIHDaOtNnYu1IGeltW@68a2b70066.jpg?w=1920",
+      caption: "Cabana - Roughed in W Plumbing for WR & Shower"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/OXdxvHZWJ4nAzOVrhbQK@ebfc520b1a.jpg?w=800",
+      full: "https://cdn.show.tours/p/OXdxvHZWJ4nAzOVrhbQK@ebfc520b1a.jpg?w=1920",
+      caption: "Overhead view Facing N - Unfinished DW & Landscaping"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/s9XuR71I615lZEYO0A1B@c126c042c0.jpg?w=800",
+      full: "https://cdn.show.tours/p/s9XuR71I615lZEYO0A1B@c126c042c0.jpg?w=1920",
+      caption: "Front of House - Day time"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/MHm2ZaBkfzLvo4avmc1z@d56cb96c82.jpg?w=800",
+      full: "https://cdn.show.tours/p/MHm2ZaBkfzLvo4avmc1z@d56cb96c82.jpg?w=1920",
+      caption: "Front of House - Twilight Shot"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/o9IMJKdpsHwtJRmDNwUK@1ed93def42.jpg?w=800",
+      full: "https://cdn.show.tours/p/o9IMJKdpsHwtJRmDNwUK@1ed93def42.jpg?w=1920",
+      caption: "Back of House - Twilight Shot"
+    },
+    {
+      thumb: "https://cdn.show.tours/p/RSqTLWzW5bEk0F0rPXpT@0f83ba422c.jpg?w=800",
+      full: "https://cdn.show.tours/p/RSqTLWzW5bEk0F0rPXpT@0f83ba422c.jpg?w=1920",
+      caption: "Overhead view Facing N - Twilight"
     }
+  ];
 
-    function openGallery(index) {
-      showImage(index);
-      galleryModal.classList.add("open");
-      galleryModal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
+  let activeGallery = fullGalleryImages;
+  let currentGalleryIndex = 0;
 
-    function closeGallery() {
-      galleryModal.classList.remove("open");
-      galleryModal.setAttribute("aria-hidden", "true");
-      galleryModalImage.src = "";
-      document.body.style.overflow = "";
-    }
+  function showImage(index) {
+    currentGalleryIndex = index;
+    const image = activeGallery[currentGalleryIndex];
+    galleryModalImage.src = image.full;
+    galleryCount.textContent = (currentGalleryIndex + 1) + " / " + activeGallery.length;
+    galleryCaption.textContent = image.caption || "";
+  }
 
-    function showPrevImage() {
-      const newIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
-      showImage(newIndex);
-    }
+  function openGallery(index, source = "full") {
+    activeGallery = source === "grid"
+      ? galleryImages.map((img, i) => ({
+          full: img.dataset.full,
+          caption: img.alt || ("Photo " + (i + 1))
+        }))
+      : fullGalleryImages;
 
-    function showNextImage() {
-      const newIndex = (currentGalleryIndex + 1) % galleryImages.length;
-      showImage(newIndex);
-    }
+    showImage(index);
+    galleryModal.classList.add("open");
+    galleryModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
 
-    galleryImages.forEach((img, index) => {
-      img.addEventListener("click", function () {
-        openGallery(index);
-      });
+  function closeGallery() {
+    galleryModal.classList.remove("open");
+    galleryModal.setAttribute("aria-hidden", "true");
+    galleryModalImage.src = "";
+    galleryCaption.textContent = "";
+    galleryCount.textContent = "";
+    document.body.style.overflow = "";
+  }
+
+  function showPrevImage() {
+    const newIndex = (currentGalleryIndex - 1 + activeGallery.length) % activeGallery.length;
+    showImage(newIndex);
+  }
+
+  function showNextImage() {
+    const newIndex = (currentGalleryIndex + 1) % activeGallery.length;
+    showImage(newIndex);
+  }
+
+  galleryImages.forEach((img, index) => {
+    img.addEventListener("click", function () {
+      openGallery(index, "grid");
     });
+  });
 
-    if (viewFullGallery) {
-      viewFullGallery.addEventListener("click", function () {
-        openGallery(0);
-      });
-    }
-
-    if (galleryClose) galleryClose.addEventListener("click", closeGallery);
-    if (galleryPrev) galleryPrev.addEventListener("click", showPrevImage);
-    if (galleryNext) galleryNext.addEventListener("click", showNextImage);
-
-    if (galleryModal) {
-      galleryModal.addEventListener("click", function (e) {
-        if (e.target === galleryModal) closeGallery();
-      });
-    }
-
-    window.addEventListener("keydown", function (e) {
-      if (!galleryModal || !galleryModal.classList.contains("open")) return;
-      if (e.key === "Escape") closeGallery();
-      if (e.key === "ArrowLeft") showPrevImage();
-      if (e.key === "ArrowRight") showNextImage();
+  if (viewFullGallery) {
+    viewFullGallery.addEventListener("click", function () {
+      openGallery(0, "full");
     });
+  }
 
-    const pdfFrame = document.getElementById("floorplanPdf");
-    const pdfPreview = document.getElementById("pdfPreview");
+  if (galleryClose) galleryClose.addEventListener("click", closeGallery);
+  if (galleryPrev) galleryPrev.addEventListener("click", showPrevImage);
+  if (galleryNext) galleryNext.addEventListener("click", showNextImage);
 
-    if (pdfFrame && pdfPreview) {
-      pdfFrame.addEventListener("load", function () {
-        pdfPreview.classList.add("hidden");
-      });
-    }
-  })();
+  if (galleryModal) {
+    galleryModal.addEventListener("click", function (e) {
+      if (e.target === galleryModal) closeGallery();
+    });
+  }
+
+  window.addEventListener("keydown", function (e) {
+    if (!galleryModal || !galleryModal.classList.contains("open")) return;
+    if (e.key === "Escape") closeGallery();
+    if (e.key === "ArrowLeft") showPrevImage();
+    if (e.key === "ArrowRight") showNextImage();
+  });
+
+  const pdfFrame = document.getElementById("floorplanPdf");
+  const pdfPreview = document.getElementById("pdfPreview");
+
+  if (pdfFrame && pdfPreview) {
+    pdfFrame.addEventListener("load", function () {
+      pdfPreview.classList.add("hidden");
+    });
+  }
+})();
 </script>
 </body>
 </html>
