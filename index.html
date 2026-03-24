@@ -178,6 +178,51 @@
       background: rgba(0, 0, 0, 0.28);
     }
 
+.gallery-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.gallery-more-link {
+  appearance: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 12px 20px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.gallery-more-link:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.gallery-more-link:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.65);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .gallery-footer {
+    margin-top: 18px;
+  }
+
+  .gallery-more-link {
+    width: auto;
+    max-width: 100%;
+    padding: 11px 18px;
+    font-size: 14px;
+  }
+}
+    
     /* HERO */
 
     .hero {
@@ -894,6 +939,11 @@
         <img src="https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=800" data-full="https://cdn.show.tours/p/bB2M125oPaY8iMNbLI09@ae5c696a95.jpg?w=1920" alt="41 Thornbank Road photo 11" data-index="10" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
         <img src="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=800" data-full="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=1920" alt="41 Thornbank Road photo 12" data-index="11" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
       </div>
+      <div class="gallery-footer">
+      <button class="gallery-more-link" id="viewFullGallery" type="button">
+      View Full Gallery
+      </button>
+      </div>
     </div>
   </section>
 
@@ -1043,71 +1093,84 @@
   </footer>
 
   <script>
-    (function () {
-      const galleryImages = Array.from(document.querySelectorAll(".gallery-item"));
-      const galleryModal = document.getElementById("galleryModal");
-      const galleryModalImage = document.getElementById("galleryModalImage");
-      const galleryClose = document.getElementById("galleryClose");
-      const galleryPrev = document.getElementById("galleryPrev");
-      const galleryNext = document.getElementById("galleryNext");
+  (function () {
+    const galleryImages = Array.from(document.querySelectorAll(".gallery-item"));
+    const galleryModal = document.getElementById("galleryModal");
+    const galleryModalImage = document.getElementById("galleryModalImage");
+    const galleryClose = document.getElementById("galleryClose");
+    const galleryPrev = document.getElementById("galleryPrev");
+    const galleryNext = document.getElementById("galleryNext");
+    const viewFullGallery = document.getElementById("viewFullGallery");
 
-      let currentGalleryIndex = 0;
+    let currentGalleryIndex = 0;
 
-      function openGallery(index) {
-        currentGalleryIndex = index;
-        galleryModalImage.src = galleryImages[currentGalleryIndex].dataset.full;
-        galleryModal.classList.add("open");
-        galleryModal.setAttribute("aria-hidden", "false");
-      }
+    function showImage(index) {
+      currentGalleryIndex = index;
+      galleryModalImage.src = galleryImages[currentGalleryIndex].dataset.full;
+    }
 
-      function closeGallery() {
-        galleryModal.classList.remove("open");
-        galleryModal.setAttribute("aria-hidden", "true");
-        galleryModalImage.src = "";
-      }
+    function openGallery(index) {
+      showImage(index);
+      galleryModal.classList.add("open");
+      galleryModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
 
-      function showPrevImage() {
-        currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
-        galleryModalImage.src = galleryImages[currentGalleryIndex].dataset.full;
-      }
+    function closeGallery() {
+      galleryModal.classList.remove("open");
+      galleryModal.setAttribute("aria-hidden", "true");
+      galleryModalImage.src = "";
+      document.body.style.overflow = "";
+    }
 
-      function showNextImage() {
-        currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
-        galleryModalImage.src = galleryImages[currentGalleryIndex].dataset.full;
-      }
+    function showPrevImage() {
+      const newIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+      showImage(newIndex);
+    }
 
-      galleryImages.forEach((img, index) => {
-        img.addEventListener("click", function () {
-          openGallery(index);
-        });
+    function showNextImage() {
+      const newIndex = (currentGalleryIndex + 1) % galleryImages.length;
+      showImage(newIndex);
+    }
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener("click", function () {
+        openGallery(index);
       });
+    });
 
-      if (galleryClose) galleryClose.addEventListener("click", closeGallery);
-      if (galleryPrev) galleryPrev.addEventListener("click", showPrevImage);
-      if (galleryNext) galleryNext.addEventListener("click", showNextImage);
-
-      if (galleryModal) {
-        galleryModal.addEventListener("click", function (e) {
-          if (e.target === galleryModal) closeGallery();
-        });
-      }
-
-      window.addEventListener("keydown", function (e) {
-        if (!galleryModal || !galleryModal.classList.contains("open")) return;
-        if (e.key === "Escape") closeGallery();
-        if (e.key === "ArrowLeft") showPrevImage();
-        if (e.key === "ArrowRight") showNextImage();
+    if (viewFullGallery) {
+      viewFullGallery.addEventListener("click", function () {
+        openGallery(0);
       });
+    }
 
-      const pdfFrame = document.getElementById("floorplanPdf");
-      const pdfPreview = document.getElementById("pdfPreview");
+    if (galleryClose) galleryClose.addEventListener("click", closeGallery);
+    if (galleryPrev) galleryPrev.addEventListener("click", showPrevImage);
+    if (galleryNext) galleryNext.addEventListener("click", showNextImage);
 
-      if (pdfFrame && pdfPreview) {
-        pdfFrame.addEventListener("load", function () {
-          pdfPreview.classList.add("hidden");
-        });
-      }
-    })();
-  </script>
+    if (galleryModal) {
+      galleryModal.addEventListener("click", function (e) {
+        if (e.target === galleryModal) closeGallery();
+      });
+    }
+
+    window.addEventListener("keydown", function (e) {
+      if (!galleryModal || !galleryModal.classList.contains("open")) return;
+      if (e.key === "Escape") closeGallery();
+      if (e.key === "ArrowLeft") showPrevImage();
+      if (e.key === "ArrowRight") showNextImage();
+    });
+
+    const pdfFrame = document.getElementById("floorplanPdf");
+    const pdfPreview = document.getElementById("pdfPreview");
+
+    if (pdfFrame && pdfPreview) {
+      pdfFrame.addEventListener("load", function () {
+        pdfPreview.classList.add("hidden");
+      });
+    }
+  })();
+</script>
 </body>
 </html>
