@@ -754,12 +754,15 @@
       }
     }
 
-    /* MOBILE HEADER FIX */
+  /* MOBILE HEADER FIX */
 
 @media (max-width: 640px) {
   .topbar-inner {
     display: grid;
     grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand cta"
+      "nav nav";
     align-items: start;
     gap: 12px 14px;
     min-height: auto;
@@ -783,7 +786,21 @@
     font-size: 14px;
     line-height: 1.2;
   }
-  
+
+  .nav .btn {
+    grid-area: cta;
+    order: 0;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+    margin-left: auto;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1;
+    min-height: 38px;
+    align-self: start;
+  }
+
   .hero {
     min-height: auto;
   }
@@ -822,60 +839,37 @@
 }
     
     @media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
-  }
+      .desktop-only {
+        display: none !important;
+      }
 
-  .mobile-only {
-    display: block !important;
-  }
+      .mobile-only {
+        display: block !important;
+      }
 
-  .mobile-floorplan {
-    display: block;
-  }
+      .mobile-floorplan {
+        display: block;
+      }
 
-  .pdf-viewer-shell {
-    padding: 0;
-    background: #fff;
-  }
+      .pdf-viewer-shell {
+        padding: 0;
+        background: #fff;
+      }
 
-  .pdf-frame,
-  .pdf-preview {
-    height: 62vh;
-    min-height: 460px;
-  }
-
-  .topbar-inner {
-    align-items: flex-start;
-    min-height: auto;
-    gap: 14px;
-    padding: 14px 0 16px;
-  }
-
-  .nav {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 18px;
-    align-items: center;
-  }
-
-  .nav a:not(.btn) {
-    font-size: 14px;
-    line-height: 1.2;
-  }
-
-  .nav .btn {
-    order: -1;
-    flex: 0 0 100%;
+      .pdf-frame,
+      .pdf-preview {
+        height: 62vh;
+        min-height: 460px;
+      }
+       .nav .btn {
     width: auto;
-    margin: 0 0 2px 0;
+    flex: 0 0 auto;
+    margin-left: auto;
     padding: 10px 16px;
     font-size: 13px;
     white-space: nowrap;
-    align-self: flex-start;
   }
-}
+    }
   </style>
 </head>
 <body>
