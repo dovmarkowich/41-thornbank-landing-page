@@ -614,13 +614,27 @@
     }
 
     @media (max-width: 980px) {
-      .stats,
-      .grid-2,
-      .feature-grid,
-      .photo-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
+  .stats,
+  .grid-2,
+  .feature-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .embed iframe {
+    min-height: 420px;
+  }
+}
+
+    @media (max-width: 640px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
       .embed iframe {
         min-height: 420px;
