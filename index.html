@@ -473,6 +473,37 @@
       right: 18px;
     }
 
+.mobile-floorplan {
+  display: none;
+}
+
+.mobile-floorplan img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block !important;
+  }
+
+  .mobile-floorplan {
+    display: block;
+  }
+
+  .pdf-viewer-shell {
+    padding: 0;
+    background: #fff;
+  }
+}
+    
     .embed {
       overflow: hidden;
       border-radius: 18px;
@@ -846,8 +877,8 @@
       </p>
     </div>
 
-    <div class="pdf-viewer-shell">
-      <div class="pdf-preview desktop-only" id="pdfPreview">
+    <div class="pdf-viewer-shell desktop-only">
+      <div class="pdf-preview" id="pdfPreview">
         <img
           src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=256"
           alt="Floorplan preview"
@@ -856,48 +887,21 @@
 
       <iframe
         id="floorplanPdf"
-        class="pdf-frame desktop-only"
+        class="pdf-frame"
         src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.pdf#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width"
         title="41 Thornbank Road floorplan PDF">
       </iframe>
+    </div>
 
-      <div class="mobile-floorplan">
-        <img
-          src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=1600"
-          alt="41 Thornbank Road floorplan"
-        />
-      </div>
+    <div class="mobile-floorplan mobile-only">
+      <img
+        src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=1600"
+        alt="41 Thornbank Road floorplan"
+      />
     </div>
   </div>
 </section>
 
-.mobile-floorplan {
-  display: none;
-}
-
-.mobile-floorplan img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  display: block;
-  background: #fff;
-}
-
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
-  }
-
-  .mobile-floorplan {
-    display: block;
-  }
-
-  .pdf-viewer-shell {
-    padding: 0;
-    background: #fff;
-  }
-}
-  
   <section id="map">
     <div class="wrap">
       <div class="section-header">
