@@ -79,8 +79,8 @@
       padding: 10px 0;
     }
 
-    .header-cta-mobile {
-  display: none;
+   .header-cta-mobile {
+  display: none !important;
 }
 
 .header-cta-desktop {
@@ -776,41 +776,46 @@
       "cta cta"
       "nav nav";
     align-items: start;
-    gap: 12px 14px;
+    gap: 6px 10px;
     min-height: auto;
-    padding: 14px 0 16px;
+    padding: 10px 0 10px;
   }
 
   .brand-block {
     grid-area: brand;
   }
-
+ 
+.header-cta-desktop {
+  display: none !important;
+}
+  
   .header-cta-mobile {
-    display: inline-flex;
-    grid-area: cta;
-    justify-self: end;
-    align-self: start;
-    width: auto;
-    margin: 0;
-    padding: 8px 12px;
-    font-size: 13px;
-    line-height: 1;
-    min-height: 36px;
-    white-space: nowrap;
-  }
+  display: inline-flex;
+  grid-area: cta;
+  justify-self: end;
+  align-self: start;
+  width: auto;
+  margin: -2px 0 0 0; /* THIS pulls it up */
+  padding: 7px 11px;
+  font-size: 12.5px;
+  line-height: 1;
+  min-height: 34px;
+  white-space: nowrap;
+}
 
   .header-cta-desktop {
     display: none;
   }
 
   .nav {
-    grid-area: nav;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 18px;
-    width: 100%;
-    align-items: center;
-  }
+  grid-area: nav;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  width: 100%;
+  align-items: center;
+  margin-top: -4px; /* THIS removes the dead space */
+}
 
   .nav a:not(.btn) {
     font-size: 14px;
@@ -885,8 +890,8 @@
   <header class="topbar">
   <div class="topbar-inner">
     <div class="brand-block">
-      <div class="brand">Dov Markowich, Broker</div>
-      <div class="brand-sub">RE/MAX Realtron Realty Inc.</div>
+      <a href="#top" class="brand">Dov Markowich, Broker</a>
+      <a href="#top" class="brand-sub">RE/MAX Realtron Realty Inc.</a>
       <div class="brand-contact">
         <a href="tel:14167274829">416-727-4829</a> |
         <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a>
