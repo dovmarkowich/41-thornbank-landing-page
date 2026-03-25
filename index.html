@@ -161,14 +161,14 @@
     /* ─── HERO ───────────────────────────────────────────── */
 
     .hero {
-  position: relative;
-  min-height: calc(100vh - 82px);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  border-bottom: 1px solid var(--line);
-  padding: 0;
-}
+      position: relative;
+      min-height: calc(100vh - 82px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+    }
 
     .hero::before {
       content: "";
@@ -202,12 +202,12 @@
     }
 
     .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 880px;
-  padding: 20px 0 52px;
-  width: 100%;
-}
+      position: relative;
+      z-index: 2;
+      max-width: 880px;
+      padding: 20px 0 52px;
+      width: 100%;
+    }
 
     .hero-content h1,
     .hero-content .price-line,
@@ -586,131 +586,113 @@
       align-items: end;
     }
 
+    /* FIX 2: Added explicit display:grid so this doesn't rely on inheritance */
+    .contact-grid-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .contact-left { min-width: 0; }
+
+    .contact-form-wrap { min-width: 0; }
+
+    .contact-form { width: 100%; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      font: inherit;
+      outline: none;
+      appearance: none;
+    }
+
+    .form-grid input::placeholder,
+    .form-grid textarea::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .form-grid select { color: rgba(255, 255, 255, 0.72); }
+    .form-grid select:valid { color: #fff; }
+
+    .form-grid input:focus,
+    .form-grid select:focus,
+    .form-grid textarea:focus {
+      border-color: rgba(212, 175, 55, 0.55);
+      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2);
+    }
+
+    .form-grid textarea {
+      grid-column: 1 / -1;
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit { margin-top: 0; min-width: 180px; }
+
+    .form-disclaimer {
+      font-size: 12px;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.6);
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    /* FIX 3: agent-bio-card moved inside contact-panel visually by giving it
+       matching panel styling so it reads as a continuation of the section,
+       with a top divider line to separate it cleanly from the form above */
+    .agent-bio-card {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 22px;
+      align-items: center;
+      padding: 26px;
+      border-radius: 24px;
+      border: 1px solid rgba(212, 175, 55, 0.16);
+      background:
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.12), transparent 22%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .agent-bio-card img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .agent-bio-copy h3 { margin: 0 0 10px; font-size: 30px; line-height: 1.1; }
+    .agent-bio-copy p { margin: 0; color: var(--muted); font-size: 17px; }
+
     .contact-name { margin: 0 0 8px; font-size: 28px; font-weight: 800; }
 
     .contact-role,
     .contact-link { color: var(--muted); font-size: 17px; margin: 6px 0; }
 
     .contact-link a:hover { color: var(--gold-soft); }
-
-    .contact-grid-form {
-  grid-template-columns: 1fr 1fr;
-  gap: 34px;
-  align-items: start;
-}
-
-.contact-left {
-  min-width: 0;
-}
-
-.contact-form-wrap {
-  min-width: 0;
-}
-
-.contact-form {
-  width: 100%;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.form-grid input,
-.form-grid select,
-.form-grid textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff;
-  font: inherit;
-  outline: none;
-  appearance: none;
-}
-
-.form-grid input::placeholder,
-.form-grid textarea::placeholder {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.form-grid select {
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.form-grid select:valid {
-  color: #fff;
-}
-
-.form-grid input:focus,
-.form-grid select:focus,
-.form-grid textarea:focus {
-  border-color: rgba(212, 175, 55, 0.55);
-  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2);
-}
-
-.form-grid textarea {
-  grid-column: 1 / -1;
-  resize: vertical;
-  min-height: 110px;
-}
-
-.form-submit {
-  margin-top: 0;
-  min-width: 180px;
-}
-
-.form-disclaimer {
-  font-size: 12px;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.6);
-  white-space: nowrap;
-  margin-left: auto;
-}
-
-    .form-footer {
-  display: flex;
-  align-items: center; /* key change */
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.agent-bio-card {
-  margin-top: 24px;
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 22px;
-  align-items: center;
-  padding: 26px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    radial-gradient(circle at top right, rgba(212, 175, 55, 0.12), transparent 22%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-  box-shadow: var(--shadow);
-}
-
-.agent-bio-card img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.agent-bio-copy h3 {
-  margin: 0 0 10px;
-  font-size: 30px;
-  line-height: 1.1;
-}
-
-.agent-bio-copy p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 17px;
-}
 
     footer {
       padding: 30px 0 50px;
@@ -734,17 +716,17 @@
 
       .contact-grid > div:last-child { justify-content: flex-start; }
 
+      /* FIX 1: contact-grid-form now explicitly collapses at tablet —
+         previously its 1fr 1fr columns overrode the .contact-grid 1fr rule */
       .contact-grid-form,
-.form-grid,
-.agent-bio-card {
-  grid-template-columns: 1fr;
-}
+      .form-grid,
+      .agent-bio-card { grid-template-columns: 1fr; }
 
-.agent-bio-card img {
-  width: 100%;
-  max-width: 220px;
-  height: auto;
-}
+      .agent-bio-card img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+      }
     }
 
     /* ─── MOBILE HEADER  (≤ 1024px) ─────────────────────── */
@@ -842,27 +824,22 @@
       .contact-grid > div:last-child { width: 100%; }
       .contact-grid > div:last-child .btn { width: 100%; justify-content: center; }
 
-      .form-submit {
-  width: 100%;
-}
+      .form-submit { width: 100%; }
 
- .form-footer {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-}
+      .form-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+      }
 
-.form-disclaimer {
-  white-space: normal;
-  margin-left: 0;
-  transform: none;
-  margin-top: 8px;
-}
-      
-.contact-left .section-header {
-  margin-bottom: 24px;
-}
+      .form-disclaimer {
+        white-space: normal;
+        margin-left: 0;
+        margin-top: 8px;
+      }
+
+      .contact-left .section-header { margin-bottom: 24px; }
     }
 
     /* ─── SMALL MOBILE  (≤ 480px) ───────────────────────── */
@@ -1064,89 +1041,83 @@
   </section>
 
   <section id="contact">
-  <div class="wrap">
-    <div class="contact-panel">
-      <div class="contact-grid contact-grid-form">
-        <div class="contact-left">
-          <div class="section-header">
-            <span class="kicker">Contact</span>
-            <h2>Request Details or Arrange a Private Viewing</h2>
-            <p class="intro">
-              Submit your details for additional information or to schedule a private viewing. Dov will respond directly.
-            </p>
-          </div>
-
-          <div>
-            <h3 class="contact-name">
-              Dov Markowich, <span style="font-size: 0.7em;">Broker</span>
-            </h3>
-            <div class="contact-role">RE/MAX Realtron Realty Inc.</div>
-            <div class="contact-link">Phone: <a href="tel:14167274829">416-727-4829</a></div>
-          </div>
-        </div>
-
-        <div class="contact-form-wrap">
-          <form action="https://formsubmit.co/2ff0ff8688d3d38770646acf60d37cd4" method="POST" class="contact-form">
-            <input type="hidden" name="_subject" value="Landing Page Lead - 41 Thornbank Rd.">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-
-            <div class="form-grid">
-              <input type="text" name="First Name" placeholder="First Name*" required>
-              <input type="text" name="Last Name" placeholder="Last Name*" required>
-
-              <input type="email" name="Email" placeholder="Email*" required>
-              <input type="tel" name="Phone Number" placeholder="Phone Number*" required>
-
-              <select name="Working with a Realtor?" required>
-                <option value="" disabled selected>Working with a Realtor?*</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-
-              <select name="When's the Best Time To Call" required>
-                <option value="" disabled selected>When’s the best time to call?*</option>
-                <option value="Morning">Morning</option>
-                <option value="Afternoon">Afternoon</option>
-                <option value="Evening">Evening</option>
-                <option value="Anytime">Anytime</option>
-              </select>
-
-              <textarea name="Message" placeholder="Any specific questions or details you'd like to know? (Optional)"></textarea>
+    <div class="wrap">
+      <div class="contact-panel">
+        <div class="contact-grid contact-grid-form">
+          <div class="contact-left">
+            <div class="section-header">
+              <span class="kicker">Contact</span>
+              <h2>Request Details or Arrange a Private Viewing</h2>
+              <p class="intro">
+                Submit your details for additional information or to schedule a private viewing. Dov will respond directly.
+              </p>
             </div>
-<div class="form-footer">
-  <button type="submit" class="btn btn-primary form-submit">Submit</button>
-  <div class="form-disclaimer">
-    Not intended to solicit clients under contract.
-  </div>
-</div>
-            
-          </form>
+            <div>
+              <h3 class="contact-name">Dov Markowich, <span style="font-size: 0.7em;">Broker</span></h3>
+              <div class="contact-role">RE/MAX Realtron Realty Inc.</div>
+              <div class="contact-link">Phone: <a href="tel:14167274829">416-727-4829</a></div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap">
+            <form action="https://formsubmit.co/2ff0ff8688d3d38770646acf60d37cd4" method="POST" class="contact-form">
+              <input type="hidden" name="_subject" value="Landing Page Lead - 41 Thornbank Rd.">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+
+              <div class="form-grid">
+                <input type="text" name="First Name" placeholder="First Name*" required>
+                <input type="text" name="Last Name" placeholder="Last Name*" required>
+                <input type="email" name="Email" placeholder="Email*" required>
+                <input type="tel" name="Phone Number" placeholder="Phone Number*" required>
+
+                <select name="Working with a Realtor?" required>
+                  <option value="" disabled selected>Working with a Realtor?*</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+
+                <select name="When's the Best Time To Call" required>
+                  <option value="" disabled selected>When's the best time to call?*</option>
+                  <option value="Morning">Morning</option>
+                  <option value="Afternoon">Afternoon</option>
+                  <option value="Evening">Evening</option>
+                  <option value="Anytime">Anytime</option>
+                </select>
+
+                <textarea name="Message" placeholder="Any specific questions or details you'd like to know? (Optional)"></textarea>
+              </div>
+
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary form-submit">Submit</button>
+                <div class="form-disclaimer">Not intended to solicit clients under contract.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIX 3: agent-bio-card given matching panel border/background styling
+           so it reads as a cohesive continuation of the contact section,
+           not an orphaned element with mismatched styling -->
+      <div class="agent-bio-card">
+        <img src="dov-headshot.jpg" alt="Dov Markowich">
+        <div class="agent-bio-copy">
+          <span class="kicker">Agent Bio</span>
+          <h3 class="contact-name">Dov Markowich, <span style="font-size: 0.7em;">Broker</span></h3>
+          <p>
+            Dov Markowich is a Toronto and GTA real estate broker specializing in luxury residential properties, strategic acquisitions, and discreet client representation. Known for a proactive, hands-on approach and sharp market insight, he delivers a white-glove experience to clients who value precision, responsiveness, and confidentiality. A successful respondent in a landmark Supreme Court of Canada decision in 2025, Dov brings a rare level of strategic judgment and composure to complex, high-value transactions.
+          </p>
+          <div style="margin-top: 10px; font-size: 13px; color: rgba(255,255,255,0.5);">
+            Featured in
+            <a href="https://realestatemagazine.ca/toronto-realtor-at-the-centre-of-landmark-supreme-court-securities-ruling/" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.7); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2);">
+              Real Estate Magazine
+            </a>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="agent-bio-card">
-      <img src="dov-headshot.jpg" alt="Dov Markowich">
-      <div class="agent-bio-copy">
-        <span class="kicker">Agent Bio</span>
-        <h3 class="contact-name">
-              Dov Markowich, <span style="font-size: 0.7em;">Broker</span>
-            </h3>
-        <p>
-  Dov Markowich is a Toronto and GTA real estate broker specializing in luxury residential properties, strategic acquisitions, and discreet client representation. Known for a proactive, hands-on approach and sharp market insight, he delivers a white-glove experience to clients who value precision, responsiveness, and confidentiality. A successful respondent in a landmark Supreme Court of Canada decision in 2025, Dov brings a rare level of strategic judgment and composure to complex, high-value transactions.
-</p>
-
-<div style="margin-top: 10px; font-size: 13px; color: rgba(255,255,255,0.5);">
-  Featured in
-  <a href="https://realestatemagazine.ca/toronto-realtor-at-the-centre-of-landmark-supreme-court-securities-ruling/" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.7); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2);">
-    Real Estate Magazine
-  </a>
-</div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <footer>
     <div class="wrap">41 Thornbank Road, Vaughan (Uplands), private inquiries only.</div>
@@ -1166,9 +1137,6 @@
 
     const totalFullGalleryPhotos = 50;
 
-    // NOTE: The missing comma after the "Front of House - Day time" entry in
-    // the previous version caused a JS syntax error that crashed the entire
-    // script — preventing both grid clicks and View Full Gallery from working.
     const fullGalleryImages = [
       { thumb: "thornbank-hero.jpg?w=800", full: "thornbank-hero.jpg?w=1920", caption: "Actual House with Rendered Driveway & Landscaping" },
       { thumb: "thornbank-hero1.jpg?w=800", full: "thornbank-hero1.jpg?w=1920", caption: "Actual House with Rendered Driveway & Landscaping" },
