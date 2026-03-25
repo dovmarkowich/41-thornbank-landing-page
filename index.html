@@ -663,10 +663,17 @@
 }
 
 .form-disclaimer {
-  margin-top: 12px;
-  text-align: center;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+    .form-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .agent-bio-card {
@@ -1072,20 +1079,20 @@
             <input type="hidden" name="_template" value="table">
 
             <div class="form-grid">
-              <input type="text" name="First Name" placeholder="First Name *" required>
-              <input type="text" name="Last Name" placeholder="Last Name *" required>
+              <input type="text" name="First Name" placeholder="First Name*" required>
+              <input type="text" name="Last Name" placeholder="Last Name*" required>
 
-              <input type="email" name="Email" placeholder="Email *" required>
-              <input type="tel" name="Cell Number" placeholder="Cell Number *" required>
+              <input type="email" name="Email" placeholder="Email*" required>
+              <input type="tel" name="Cell Number" placeholder="Cell Number*" required>
 
               <select name="Currently Working With An Agent" required>
-                <option value="" disabled selected>Working with an agent? *</option>
+                <option value="" disabled selected>Working with an agent?*</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
               </select>
 
               <select name="Best Time To Call">
-                <option value="" disabled selected>When’s the best time to call? *</option>
+                <option value="" disabled selected>When’s the best time to call?*</option>
                 <option value="Morning">Morning</option>
                 <option value="Afternoon">Afternoon</option>
                 <option value="Evening">Evening</option>
@@ -1107,7 +1114,7 @@
     </div>
 
     <div class="agent-bio-card">
-      <img src="dov-headshot.jpg" alt="Dov Markowich">
+      <img src="dov-headshot1.jpg" alt="Dov Markowich">
       <div class="agent-bio-copy">
         <span class="kicker">Agent Bio</span>
         <h3>Dov Markowich</h3>
