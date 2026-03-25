@@ -23,13 +23,9 @@
       --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -41,15 +37,8 @@
       text-rendering: optimizeLegibility;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
     .wrap {
       width: min(var(--max), calc(100% - 32px));
@@ -79,67 +68,19 @@
       padding: 10px 0;
     }
 
-    /* Mobile CTA hidden by default; desktop CTA visible by default */
-    .header-cta-mobile {
-      display: none !important;
-    }
+    .header-cta-mobile { display: none !important; }
+    .header-cta-desktop { display: inline-flex !important; }
 
-    .header-cta-desktop {
-      display: inline-flex !important;
-    }
+    .brand-block { display: flex; flex-direction: column; gap: 3px; }
+    .brand { font-size: 16px; letter-spacing: 0.3px; color: var(--gold-soft); font-weight: 700; }
+    .brand-sub { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .brand-contact { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .brand-contact a:hover { color: var(--gold-soft); }
 
-    .brand-block {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .brand {
-      font-size: 16px;
-      letter-spacing: 0.3px;
-      color: var(--gold-soft);
-      font-weight: 700;
-    }
-
-    .brand-sub {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .brand-contact {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .brand-contact a:hover {
-      color: var(--gold-soft);
-    }
-
-    .nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .nav a {
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.2px;
-      color: var(--muted);
-    }
-
-    .nav a:hover {
-      color: var(--gold-soft);
-    }
-
-    .nav .btn {
-      width: auto;
-      flex: 0 0 auto;
-      margin-left: 8px;
-    }
+    .nav { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .nav a { font-size: 15px; font-weight: 500; letter-spacing: 0.2px; color: var(--muted); }
+    .nav a:hover { color: var(--gold-soft); }
+    .nav .btn { width: auto; flex: 0 0 auto; margin-left: 8px; }
 
     /* ─── BUTTONS ────────────────────────────────────────── */
 
@@ -189,11 +130,7 @@
 
     /* ─── GALLERY FOOTER ─────────────────────────────────── */
 
-    .gallery-footer {
-      display: flex;
-      justify-content: center;
-      margin-top: 22px;
-    }
+    .gallery-footer { display: flex; justify-content: center; margin-top: 22px; }
 
     .gallery-more-link {
       appearance: none;
@@ -227,7 +164,7 @@
       position: relative;
       min-height: calc(100vh - 82px);
       display: flex;
-      align-items: flex-end;       /* FIX: was flex-start — content was flush to header */
+      align-items: flex-end;
       overflow: hidden;
       border-bottom: 1px solid var(--line);
       padding: 0;
@@ -241,7 +178,6 @@
       z-index: 1;
     }
 
-    /* FIX: added bottom gradient overlay so text always reads against the image */
     .hero::after {
       content: "";
       position: absolute;
@@ -269,7 +205,7 @@
       position: relative;
       z-index: 2;
       max-width: 880px;
-      padding: 40px 0 52px;   /* FIX: was margin-top: 16px with no padding — too tight top+bottom */
+      padding: 40px 0 52px;
       width: 100%;
     }
 
@@ -277,9 +213,7 @@
     .hero-content .price-line,
     .hero-content .hero-subtitle,
     .hero-content .eyebrow {
-      text-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.6),
-        0 1px 3px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
     .eyebrow {
@@ -332,11 +266,8 @@
       margin-bottom: 24px;
     }
 
-    .hero .btn {
-      width: auto;
-    }
+    .hero .btn { width: auto; }
 
-    /* FIX: stats 2-col at mid-range so 8 items don't collapse to a single column too early */
     .stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -349,7 +280,7 @@
       background: rgba(18, 18, 18, 0.72);
       border: 1px solid rgba(255, 255, 255, 0.10);
       border-radius: 16px;
-      padding: 16px 16px;
+      padding: 16px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(8px);
     }
@@ -375,34 +306,11 @@
 
     /* ─── GENERAL ────────────────────────────────────────── */
 
-    section:not(.hero) {
-      padding: 72px 0;
-    }
-section[id] {
-  scroll-margin-top: 30px;
-}
+    section:not(.hero) { padding: 72px 0; }
 
-@media (max-width: 1024px) {
-  section[id] {
-    scroll-margin-top: 100px;
-  }
-}
+    section[id] { scroll-margin-top: 30px; }
 
-@media (max-width: 768px) {
-  section[id] {
-    scroll-margin-top: 105px;
-  }
-}
-
-@media (max-width: 480px) {
-  section[id] {
-    scroll-margin-top: 105px;
-  }
-}
-    .section-header {
-      max-width: 780px;
-      margin-bottom: 30px;
-    }
+    .section-header { max-width: 780px; margin-bottom: 30px; }
 
     .kicker {
       display: inline-block;
@@ -422,11 +330,7 @@ section[id] {
       letter-spacing: -0.8px;
     }
 
-    .intro {
-      font-size: 18px;
-      color: var(--muted);
-      margin: 0;
-    }
+    .intro { font-size: 18px; color: var(--muted); margin: 0; }
 
     .grid-2 {
       display: grid;
@@ -443,11 +347,7 @@ section[id] {
       box-shadow: var(--shadow);
     }
 
-    .card p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 17px;
-    }
+    .card p { margin: 0 0 16px; color: var(--muted); font-size: 17px; }
 
     .quote {
       margin-top: 18px;
@@ -461,11 +361,7 @@ section[id] {
       font-weight: 500;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
+    .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
     .feature {
       background: var(--panel);
@@ -474,17 +370,8 @@ section[id] {
       padding: 22px 20px;
     }
 
-    .feature h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-      color: #fff;
-    }
-
-    .feature p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-    }
+    .feature h3 { margin: 0 0 8px; font-size: 20px; color: #fff; }
+    .feature p { margin: 0; color: var(--muted); font-size: 16px; }
 
     /* ─── GALLERY GRID ───────────────────────────────────── */
 
@@ -506,15 +393,11 @@ section[id] {
       background: #111;
       cursor: pointer;
       transition: transform 0.25s ease, opacity 0.25s ease;
-      image-rendering: auto;
       backface-visibility: hidden;
       filter: contrast(1.02) saturate(1.03);
     }
 
-    .photo-grid img:hover {
-      transform: scale(1.01);
-      opacity: 0.92;
-    }
+    .photo-grid img:hover { transform: scale(1.01); opacity: 0.92; }
 
     /* ─── GALLERY MODAL ──────────────────────────────────── */
 
@@ -529,77 +412,66 @@ section[id] {
       padding: 60px 80px;
     }
 
-    .gallery-modal.open {
-      display: flex;
-    }
+    .gallery-modal.open { display: flex; }
 
-    /* FIX: .gallery-media-wrap was referenced in HTML but never defined in CSS.
-       Must be position:relative so the absolutely-positioned caption anchors to it. */
     .gallery-media-wrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: min(92vw, 1800px);
-  width: 100%;
-  z-index: 1;
-}
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: min(92vw, 1800px);
+      width: 100%;
+      z-index: 1;
+    }
 
     .gallery-modal img {
       width: auto;
       height: auto;
       max-width: 100%;
-      max-height: 82vh;          /* FIX: was 90vh — leaves room for caption below image */
+      max-height: 82vh;
       object-fit: contain;
       border-radius: 10px;
-      box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 
-   .gallery-close,
-.gallery-nav {
-  position: absolute;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1003;
-}
+    .gallery-close,
+    .gallery-nav {
+      position: absolute;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1003;
+    }
 
-.gallery-close {
-  top: 18px;
-  right: 22px;
-  width: 52px;
-  height: 52px;
-  border-radius: 999px;
-  font-size: 30px;
-  line-height: 1;
-}
+    .gallery-close {
+      top: 18px;
+      right: 22px;
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      font-size: 30px;
+      line-height: 1;
+    }
 
-.gallery-nav {
-  top: 50%;
-  transform: translateY(-50%);
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  font-size: 38px;
-  line-height: 1;
-  padding: 0;
-}
+    .gallery-nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      font-size: 38px;
+      line-height: 1;
+      padding: 0;
+    }
 
-.gallery-nav.prev {
-  left: 18px;
-}
-
-.gallery-nav.next {
-  right: 18px;
-}
+    .gallery-nav.prev { left: 18px; }
+    .gallery-nav.next { right: 18px; }
 
     .gallery-counter {
       position: absolute;
@@ -615,8 +487,6 @@ section[id] {
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
     }
 
-    /* FIX: caption is now static flow inside .gallery-media-wrap, not absolute.
-       Absolute + wrong parent caused it to escape containment on some browsers. */
     .gallery-caption {
       width: 100%;
       max-width: min(92vw, 900px);
@@ -627,20 +497,13 @@ section[id] {
       margin-top: 12px;
       padding: 0 8px;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-      min-height: 20px;          /* reserves space so layout doesn't jump when empty */
+      min-height: 20px;
     }
 
     /* ─── FLOORPLAN ──────────────────────────────────────── */
 
-    /* FIX: .mobile-only base rule was missing — it was only set inside the media query.
-       Must be hidden at desktop by default so .mobile-floorplan doesn't show on desktop. */
-    .mobile-only {
-      display: none !important;
-    }
-
-    .desktop-only {
-      display: block;
-    }
+    .mobile-only { display: none !important; }
+    .desktop-only { display: block; }
 
     .mobile-floorplan img {
       width: 100%;
@@ -658,12 +521,7 @@ section[id] {
       box-shadow: var(--shadow);
     }
 
-    .embed iframe {
-      width: 100%;
-      min-height: 640px;
-      border: 0;
-      display: block;
-    }
+    .embed iframe { width: 100%; min-height: 640px; border: 0; display: block; }
 
     .pdf-viewer-shell {
       position: relative;
@@ -696,11 +554,7 @@ section[id] {
       transition: opacity 0.35s ease, visibility 0.35s ease;
     }
 
-    .pdf-preview.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+    .pdf-preview.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
     .pdf-preview img {
       width: 100%;
@@ -711,10 +565,7 @@ section[id] {
       transform: scale(1.02);
     }
 
-    .pdf-frame {
-      z-index: 1;
-      background: #fff;
-    }
+    .pdf-frame { z-index: 1; background: #fff; }
 
     /* ─── CONTACT ────────────────────────────────────────── */
 
@@ -735,22 +586,12 @@ section[id] {
       align-items: end;
     }
 
-    .contact-name {
-      margin: 0 0 8px;
-      font-size: 28px;
-      font-weight: 800;
-    }
+    .contact-name { margin: 0 0 8px; font-size: 28px; font-weight: 800; }
 
     .contact-role,
-    .contact-link {
-      color: var(--muted);
-      font-size: 17px;
-      margin: 6px 0;
-    }
+    .contact-link { color: var(--muted); font-size: 17px; margin: 6px 0; }
 
-    .contact-link a:hover {
-      color: var(--gold-soft);
-    }
+    .contact-link a:hover { color: var(--gold-soft); }
 
     footer {
       padding: 30px 0 50px;
@@ -762,35 +603,24 @@ section[id] {
     /* ─── TABLET  (≤ 980px) ──────────────────────────────── */
 
     @media (max-width: 980px) {
-      .stats,
       .grid-2,
       .feature-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
+      .contact-grid { grid-template-columns: 1fr; }
 
-      /* FIX: 2-col stats at tablet so 8 items don't stretch to one tall column */
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .stats { grid-template-columns: repeat(2, 1fr); }
 
-      .photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-      .embed iframe {
-        min-height: 420px;
-      }
+      .embed iframe { min-height: 420px; }
 
-      /* FIX: contact CTA div aligns left when stacked */
-      .contact-grid > div:last-child {
-        justify-content: flex-start;
-      }
+      .contact-grid > div:last-child { justify-content: flex-start; }
     }
 
     /* ─── MOBILE HEADER  (≤ 1024px) ─────────────────────── */
 
     @media (max-width: 1024px) {
+      section[id] { scroll-margin-top: 100px; }
+
       .topbar-inner {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -802,10 +632,7 @@ section[id] {
         padding: 10px 0;
       }
 
-      .brand-block {
-        grid-area: brand;
-        align-self: start;
-      }
+      .brand-block { grid-area: brand; align-self: start; }
 
       .header-cta-mobile {
         display: inline-flex !important;
@@ -822,9 +649,7 @@ section[id] {
         border-radius: 999px;
       }
 
-      .header-cta-desktop {
-        display: none !important;
-      }
+      .header-cta-desktop { display: none !important; }
 
       .nav {
         grid-area: nav;
@@ -836,151 +661,70 @@ section[id] {
         margin-top: 0;
       }
 
-      .nav a:not(.btn) {
-        font-size: 14px;
-        line-height: 1.2;
-      }
+      .nav a:not(.btn) { font-size: 14px; line-height: 1.2; }
 
-      .hero {
-        min-height: auto;
-      }
+      .hero { min-height: auto; }
+      .hero-content { padding: 32px 0 40px; }
+      .hero .btn { width: 100%; }
+      .hero-actions { flex-direction: column; }
 
-      /* FIX: hero content top/bottom padding for mobile — was 0 top, too cramped */
-      .hero-content {
-        padding: 32px 0 40px;
-      }
+      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-      .hero .btn {
-        width: 100%;
-      }
+      .embed iframe { min-height: 420px; }
 
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .embed iframe {
-        min-height: 420px;
-      }
-
-      .gallery-modal {
-        padding: 60px 18px;
-      }
+      .gallery-modal { padding: 60px 18px; }
     }
 
     /* ─── MOBILE  (≤ 768px) ──────────────────────────────── */
+
     @media (max-width: 768px) {
-  section:not(.hero) {
-    padding: 56px 0;
-  }
-}
-    @media (max-width: 768px) {
-      /* Restore full-size buttons on mobile — base .btn was tightened for desktop */
-      .btn {
-        padding: 13px 20px;
-        font-size: 14px;
-      }
+      section[id] { scroll-margin-top: 105px; }
 
-      /* FIX: base .desktop-only / .mobile-only rules properly toggled here */
-      .desktop-only {
-        display: none !important;
-      }
+      section:not(.hero) { padding: 56px 0; }
 
-      .mobile-only {
-        display: block !important;
-      }
+      /* Restore full-size buttons on mobile */
+      .btn { padding: 13px 20px; font-size: 14px; }
 
-      .pdf-viewer-shell {
-        padding: 0;
-        background: #fff;
-      }
+      .desktop-only { display: none !important; }
+      .mobile-only { display: block !important; }
+
+      .pdf-viewer-shell { padding: 0; background: #fff; }
 
       .pdf-frame,
-      .pdf-preview {
-        height: 62vh;
-        min-height: 460px;
-      }
+      .pdf-preview { height: 62vh; min-height: 460px; }
 
-      /* FIX: stats stay 2-col on small mobile for readability */
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 100%;
-      }
+      .stats { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
 
-      .gallery-footer {
-        margin-top: 18px;
-      }
+      .gallery-footer { margin-top: 18px; }
 
-      .gallery-more-link {
-        width: auto;
-        max-width: 100%;
-        padding: 11px 18px;
-        font-size: 14px;
-      }
+      .gallery-more-link { width: auto; max-width: 100%; padding: 11px 18px; font-size: 14px; }
 
-      .gallery-modal {
-  padding: 56px 12px 56px;
-  align-items: center;
-}
+      .gallery-modal { padding: 56px 12px 56px; align-items: center; }
 
-.gallery-nav {
-  width: 48px;
-  height: 48px;
-  font-size: 32px;
-}
+      .gallery-nav { width: 48px; height: 48px; font-size: 32px; }
+      .gallery-nav.prev { left: 8px; }
+      .gallery-nav.next { right: 8px; }
 
-.gallery-nav.prev {
-  left: 8px;
-}
+      .gallery-counter { top: 16px; font-size: 13px; }
+      .gallery-caption { font-size: 13px; margin-top: 10px; }
 
-.gallery-nav.next {
-  right: 8px;
-}
-
-.gallery-counter {
-  top: 16px;
-  font-size: 13px;
-}
-
-.gallery-caption {
-  font-size: 13px;
-  margin-top: 10px;
-}
-
-      /* FIX: contact CTA button full width on mobile */
-      .contact-grid > div:last-child {
-        width: 100%;
-      }
-
-      .contact-grid > div:last-child .btn {
-        width: 100%;
-        justify-content: center;
-      }
+      .contact-grid > div:last-child { width: 100%; }
+      .contact-grid > div:last-child .btn { width: 100%; justify-content: center; }
     }
 
     /* ─── SMALL MOBILE  (≤ 480px) ───────────────────────── */
-    @media (max-width: 480px) {
-  section:not(.hero) {
-    padding: 48px 0;
-  }
-}
-    @media (max-width: 480px) {
-  .photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
 
-  .photo-grid img {
-    height: 170px;
-  }
+    @media (max-width: 480px) {
+      section[id] { scroll-margin-top: 105px; }
 
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-}
+      section:not(.hero) { padding: 48px 0; }
+
+      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+
+      .photo-grid img { height: 170px; }
+
+      .feature-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -1021,44 +765,18 @@ section[id] {
         <p class="hero-subtitle">
           A rare golf course estate in Thornhill, Vaughan (Uplands), newly built, architecturally striking, and positioned as a compelling acquisition below replacement value.
         </p>
-
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Request a Private Showing</a>
         </div>
-
         <div class="stats">
-          <div class="stat">
-            <strong>16,000+ Sq.Ft.</strong>
-            <span>Total Living Space</span>
-          </div>
-          <div class="stat">
-            <strong>5+2</strong>
-            <span>Bedrooms</span>
-          </div>
-          <div class="stat">
-            <strong>7</strong>
-            <span>Bathrooms</span>
-          </div>
-          <div class="stat">
-            <strong>11</strong>
-            <span>Parking Spaces</span>
-          </div>
-          <div class="stat">
-            <strong>100 x 302 Ft.</strong>
-            <span>Estate Lot</span>
-          </div>
-          <div class="stat">
-            <strong>Golf Course</strong>
-            <span>Views</span>
-          </div>
-          <div class="stat">
-            <strong>Uplands</strong>
-            <span>Community</span>
-          </div>
-          <div class="stat">
-            <strong>Vaughan (Uplands)</strong>
-            <span>Location</span>
-          </div>
+          <div class="stat"><strong>16,000+ Sq.Ft.</strong><span>Total Living Space</span></div>
+          <div class="stat"><strong>5+2</strong><span>Bedrooms</span></div>
+          <div class="stat"><strong>7</strong><span>Bathrooms</span></div>
+          <div class="stat"><strong>11</strong><span>Parking Spaces</span></div>
+          <div class="stat"><strong>100 x 302 Ft.</strong><span>Estate Lot</span></div>
+          <div class="stat"><strong>Golf Course</strong><span>Views</span></div>
+          <div class="stat"><strong>Uplands</strong><span>Community</span></div>
+          <div class="stat"><strong>Vaughan (Uplands)</strong><span>Location</span></div>
         </div>
       </div>
     </div>
@@ -1073,20 +791,12 @@ section[id] {
           Set on a spectacular lot backing directly onto the Thornhill Golf &amp; Country Club, this newly built custom estate delivers scale, privacy, architectural drama, and long-term positioning in one of Vaughan (Uplands)'s most exclusive residential enclaves.
         </p>
       </div>
-
       <div class="grid-2">
         <div class="card">
-          <p>
-            Opportunities of this nature are increasingly difficult to replicate. The combined cost of land acquisition, design, approvals, construction, and carrying time for a residence of this scale and caliber would likely exceed the current asking price.
-          </p>
-          <p>
-            For the right buyer, this is less about simply purchasing a home and more about securing a turnkey estate without the delay, uncertainty, and friction of building from scratch.
-          </p>
-          <div class="quote">
-            For buyers seeking scale, privacy, and permanence, this represents value through replacement logic, not just price per square foot.
-          </div>
+          <p>Opportunities of this nature are increasingly difficult to replicate. The combined cost of land acquisition, design, approvals, construction, and carrying time for a residence of this scale and caliber would likely exceed the current asking price.</p>
+          <p>For the right buyer, this is less about simply purchasing a home and more about securing a turnkey estate without the delay, uncertainty, and friction of building from scratch.</p>
+          <div class="quote">For buyers seeking scale, privacy, and permanence, this represents value through replacement logic, not just price per square foot.</div>
         </div>
-
         <div class="feature-grid">
           <div class="feature">
             <h3>Architectural Presence</h3>
@@ -1114,11 +824,8 @@ section[id] {
       <div class="section-header">
         <span class="kicker">Photos</span>
         <h2>Property Gallery</h2>
-        <p class="intro">
-          Click any image to view it full screen.
-        </p>
+        <p class="intro">Click any image to view it full screen.</p>
       </div>
-
       <div class="photo-grid">
         <img src="thornbank-hero.jpg" data-full="thornbank-hero.jpg" alt="41 Thornbank Road photo 1" data-index="0" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
         <img src="thornbank-hero1.jpg" data-full="thornbank-hero1.jpg" alt="41 Thornbank Road photo 2" data-index="1" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
@@ -1134,25 +841,19 @@ section[id] {
         <img src="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=800" data-full="https://cdn.show.tours/p/QBKgUnEY01YVmbIEfqPt@8e5a391f7d.jpg?w=1920" alt="41 Thornbank Road photo 12" data-index="11" class="gallery-item" loading="lazy" onerror="this.style.display='none'" />
       </div>
       <div class="gallery-footer">
-        <button class="gallery-more-link" id="viewFullGallery" type="button">
-          View Full Gallery
-        </button>
+        <button class="gallery-more-link" id="viewFullGallery" type="button">View Full Gallery</button>
       </div>
     </div>
   </section>
 
-  <!-- FIX: gallery-media-wrap now has CSS defined (position:relative, flex column)
-       so caption renders in flow below the image rather than escaping its container -->
   <div class="gallery-modal" id="galleryModal" aria-hidden="true">
     <button class="gallery-close" id="galleryClose" type="button">×</button>
     <div class="gallery-counter" id="galleryCounter"></div>
     <button class="gallery-nav prev" id="galleryPrev" type="button">‹</button>
-
     <div class="gallery-media-wrap">
       <img id="galleryModalImage" src="" alt="Expanded property photo" />
       <div class="gallery-caption" id="galleryCaption"></div>
     </div>
-
     <button class="gallery-nav next" id="galleryNext" type="button">›</button>
   </div>
 
@@ -1161,19 +862,9 @@ section[id] {
       <div class="section-header">
         <span class="kicker">Matterport 3D</span>
         <h2>Immersive 3D Walkthrough</h2>
-        
       </div>
-
       <div class="embed">
-        <iframe
-          src="https://my.matterport.com/show/?m=WcbbH2PnRUe"
-          width="100%"
-          height="640"
-          frameborder="0"
-          allowfullscreen
-          allow="xr-spatial-tracking"
-          loading="lazy">
-        </iframe>
+        <iframe src="https://my.matterport.com/show/?m=WcbbH2PnRUe" width="100%" height="640" frameborder="0" allowfullscreen allow="xr-spatial-tracking" loading="lazy"></iframe>
       </div>
     </div>
   </section>
@@ -1183,48 +874,27 @@ section[id] {
       <div class="section-header">
         <span class="kicker">Video</span>
         <h2>Cinematic Property Video</h2>
-              </div>
-
+      </div>
       <div class="embed">
-        <iframe
-          src="https://www.youtube.com/embed/yZ0LhIEfoW4"
-          title="41 Thornbank Road property video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/yZ0LhIEfoW4" title="41 Thornbank Road property video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </section>
+
   <section id="floorplan">
     <div class="wrap">
       <div class="section-header">
         <span class="kicker">Floorplan</span>
         <h2>Floorplan</h2>
-        
       </div>
-
       <div class="pdf-viewer-shell desktop-only">
         <div class="pdf-preview" id="pdfPreview">
-          <img
-            src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=256"
-            alt="Floorplan preview"
-          />
+          <img src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=256" alt="Floorplan preview" />
         </div>
-
-        <iframe
-          id="floorplanPdf"
-          class="pdf-frame"
-          src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.pdf#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width"
-          title="41 Thornbank Road floorplan PDF">
-        </iframe>
+        <iframe id="floorplanPdf" class="pdf-frame" src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.pdf#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width" title="41 Thornbank Road floorplan PDF"></iframe>
       </div>
-
       <div class="mobile-floorplan mobile-only">
-        <img
-          src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=1600"
-          alt="41 Thornbank Road floorplan"
-        />
+        <img src="https://cdn.show.tours/pdf/iuf4yTOo460AxdJVYRmQ@b76151dfc7.jpg?w=1600" alt="41 Thornbank Road floorplan" />
       </div>
     </div>
   </section>
@@ -1234,19 +904,9 @@ section[id] {
       <div class="section-header">
         <span class="kicker">Map</span>
         <h2>Location</h2>
-        
       </div>
-
       <div class="embed">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5757.652142173766!2d-79.43256600000001!3d43.817967!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2c66e8645243%3A0x4dda15f5f64b76ab!2s41%20Thornbank%20Rd%2C%20Thornhill%2C%20ON%20L4J%202A1%2C%20Canada!5e0!3m2!1sen!2sus!4v1774143918649!5m2!1sen!2sus"
-          width="100%"
-          height="640"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5757.652142173766!2d-79.43256600000001!3d43.817967!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2c66e8645243%3A0x4dda15f5f64b76ab!2s41%20Thornbank%20Rd%2C%20Thornhill%2C%20ON%20L4J%202A1%2C%20Canada!5e0!3m2!1sen!2sus!4v1774143918649!5m2!1sen!2sus" width="100%" height="640" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -1257,11 +917,8 @@ section[id] {
         <div class="section-header">
           <span class="kicker">Contact</span>
           <h2>Request Private Details or Arrange a Confidential Viewing</h2>
-          <p class="intro">
-            For a private property brief or confidential showing, contact Dov Markowich directly.
-          </p>
+          <p class="intro">For a private property brief or confidential showing, contact Dov Markowich directly.</p>
         </div>
-
         <div class="contact-grid">
           <div>
             <h3 class="contact-name">Dov Markowich</h3>
@@ -1269,7 +926,6 @@ section[id] {
             <div class="contact-link">Phone: <a href="tel:14167274829">416-727-4829</a></div>
             <div class="contact-link">Email: <a href="mailto:dov@dmhomes.ca">dov@dmhomes.ca</a></div>
           </div>
-
           <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
             <a class="btn btn-primary" href="mailto:dov@dmhomes.ca">Email Dov</a>
           </div>
@@ -1279,9 +935,7 @@ section[id] {
   </section>
 
   <footer>
-    <div class="wrap">
-      41 Thornbank Road, Vaughan (Uplands), private inquiries only.
-    </div>
+    <div class="wrap">41 Thornbank Road, Vaughan (Uplands), private inquiries only.</div>
   </footer>
 
   <script>
@@ -1296,8 +950,11 @@ section[id] {
     const galleryCounter = document.getElementById("galleryCounter");
     const galleryCaption = document.getElementById("galleryCaption");
 
-    const totalFullGalleryPhotos = 50;
+    const totalFullGalleryPhotos = 49;
 
+    // NOTE: The missing comma after the "Front of House - Day time" entry in
+    // the previous version caused a JS syntax error that crashed the entire
+    // script — preventing both grid clicks and View Full Gallery from working.
     const fullGalleryImages = [
       { thumb: "thornbank-hero.jpg", full: "thornbank-hero.jpg", caption: "Actual House with Rendered Driveway & Landscaping" },
       { thumb: "thornbank-hero1.jpg", full: "thornbank-hero1.jpg", caption: "Actual House with Rendered Driveway & Landscaping" },
@@ -1307,7 +964,7 @@ section[id] {
       { thumb: "https://cdn.show.tours/p/e6RAWYVmueVl94R5RkFO@22f0bb4089.jpg?w=800", full: "https://cdn.show.tours/p/e6RAWYVmueVl94R5RkFO@22f0bb4089.jpg?w=1920", caption: "Office with 2 Separate Entrances" },
       { thumb: "https://cdn.show.tours/p/wJ6mxCnB1cZSb0q0pIgn@edbbb9db8b.jpg?w=800", full: "https://cdn.show.tours/p/wJ6mxCnB1cZSb0q0pIgn@edbbb9db8b.jpg?w=1920", caption: "Main Foyer - View into Living Room" },
       { thumb: "https://cdn.show.tours/p/MHZBNXchjOuLXt9yT9Kw@7c358829e6.jpg?w=800", full: "https://cdn.show.tours/p/MHZBNXchjOuLXt9yT9Kw@7c358829e6.jpg?w=1920", caption: "Living Room - View into Dining Room" },
-      { thumb: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=800", full: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=1920", caption: "Main Hallway -View of Staircase & Elevator Hallway" },
+      { thumb: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=800", full: "https://cdn.show.tours/p/aKK5kBeIQQEUSDIVE8Pz@7ce2e850a8.jpg?w=1920", caption: "Main Hallway - View of Staircase & Elevator Hallway" },
       { thumb: "https://cdn.show.tours/p/bJJ3Z7XvozmRvKnSKgD1@57a13ce384.jpg?w=800", full: "https://cdn.show.tours/p/bJJ3Z7XvozmRvKnSKgD1@57a13ce384.jpg?w=1920", caption: "Main Hallway - View into Kitchen & Family Room" },
       { thumb: "https://cdn.show.tours/p/3vPu0hZVL7uoSyBPaol0@e6377780a7.jpg?w=800", full: "https://cdn.show.tours/p/3vPu0hZVL7uoSyBPaol0@e6377780a7.jpg?w=1920", caption: "View of Family Room with 28 Foot Ceiling" },
       { thumb: "https://cdn.show.tours/p/zpjKG0TSgvgfoOXp6WLW@c4469e5392.jpg?w=800", full: "https://cdn.show.tours/p/zpjKG0TSgvgfoOXp6WLW@c4469e5392.jpg?w=1920", caption: "View from Family Room with Feature Wall" },
@@ -1345,7 +1002,7 @@ section[id] {
       { thumb: "https://cdn.show.tours/p/E0YYT7rdK2H3wN7ud0Fc@bcc9ad435f.jpg?w=800", full: "https://cdn.show.tours/p/E0YYT7rdK2H3wN7ud0Fc@bcc9ad435f.jpg?w=1920", caption: "Outdoor Sitting Area - Walk out from Kitchen" },
       { thumb: "https://cdn.show.tours/p/qMPUjHTajWFVepDfNkXd@b3cf43895c.jpg?w=800", full: "https://cdn.show.tours/p/qMPUjHTajWFVepDfNkXd@b3cf43895c.jpg?w=1920", caption: "Outdoor Sitting Area - Walk out from Kitchen" },
       { thumb: "https://cdn.show.tours/p/sIQ9HjJ282rRd8LfJArJ@f9b2bd8cd5.jpg?w=800", full: "https://cdn.show.tours/p/sIQ9HjJ282rRd8LfJArJ@f9b2bd8cd5.jpg?w=1920", caption: "Overhead view Facing N - Unfinished DW & Landscape" },
-      { thumb: "https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=800", full: "https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=1920", caption: "Front of House - Day time" }
+      { thumb: "https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=800", full: "https://cdn.show.tours/p/U81t9hmlmkeDFMhzxkbV@3501607ca1.jpg?w=1920", caption: "Front of House - Day time" },
       { thumb: "https://cdn.show.tours/p/GfSVl0EiwhCXQVlLgXf2@eadb602326.jpg?w=800", full: "https://cdn.show.tours/p/GfSVl0EiwhCXQVlLgXf2@eadb602326.jpg?w=1920", caption: "Front of House - Twilight Shot" },
       { thumb: "https://cdn.show.tours/p/BYpaiKaspmVKh02Pzveu@a107b62440.jpg?w=800", full: "https://cdn.show.tours/p/BYpaiKaspmVKh02Pzveu@a107b62440.jpg?w=1920", caption: "Back of House - Twilight Shot" },
       { thumb: "https://cdn.show.tours/p/OrhBOnc3MZIXx0JH9gqL@c8fed4c71d.jpg?w=800", full: "https://cdn.show.tours/p/OrhBOnc3MZIXx0JH9gqL@c8fed4c71d.jpg?w=1920", caption: "Overhead view Facing N - Twilight" }
