@@ -161,14 +161,14 @@
     /* ─── HERO ───────────────────────────────────────────── */
 
     .hero {
-      position: relative;
-      min-height: calc(100vh - 82px);
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      border-bottom: 1px solid var(--line);
-      padding: 0;
-    }
+  position: relative;
+  min-height: calc(100vh - 82px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  padding: 0;
+}
 
     .hero::before {
       content: "";
@@ -202,12 +202,12 @@
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 880px;
-      padding: 40px 0 52px;
-      width: 100%;
-    }
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  padding: 20px 0 52px;
+  width: 100%;
+}
 
     .hero-content h1,
     .hero-content .price-line,
@@ -846,6 +846,18 @@
   width: 100%;
 }
 
+    .form-footer {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.form-disclaimer {
+  white-space: normal;
+  margin-left: 0;
+  transform: none;
+}
+      
 .contact-left .section-header {
   margin-bottom: 24px;
 }
